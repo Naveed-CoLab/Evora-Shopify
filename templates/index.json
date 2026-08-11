@@ -63,7 +63,10 @@
         "card_3",
         "card_4"
       ],
-      "settings": {}
+      "settings": {
+        "badge_text": "",
+        "heading": ""
+      }
     },
     "evora_empowering": {
       "type": "evora-empowering-banner",
@@ -152,6 +155,139 @@
         "input_placeholder": "Enter your email",
         "button_label": "Subscribe"
       }
+    },
+    "17864408563b0039b7": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1786440952c6882bdf": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_34ccae4_6fQf8N": {
+          "type": "ai_gen_block_34ccae4",
+          "settings": {
+            "container_width": 1300,
+            "horizontal_padding": 40,
+            "padding_top": 60,
+            "main_padding_bottom": 50,
+            "bottom_padding_vertical": 25,
+            "column_gap": 60,
+            "mobile_section_gap": 40,
+            "background_color": "#ffffff",
+            "text_color": "#24222a",
+            "border_color": "#e5e5e5",
+            "logo": "shopify://shop_images/footer-fem-logo.svg",
+            "logo_width": 150,
+            "left_column_gap": 20,
+            "tagline": "Your trusted partner for health and wellness solutions.",
+            "tagline_size": 14,
+            "apple_store_url": "https://apps.apple.com/us/app/flo-cycle-period-tracker/id1038369065",
+            "google_play_url": "https://play.google.com/store/apps/details?id=com.flowalarm.flow",
+            "badge_height": 40,
+            "column_1_heading": "COMPANY",
+            "column_1_link_1_text": "About Us",
+            "column_1_link_1_url": "",
+            "column_1_link_2_text": "Careers",
+            "column_1_link_2_url": "",
+            "column_1_link_3_text": "Press",
+            "column_1_link_3_url": "",
+            "column_1_link_4_text": "Blog",
+            "column_1_link_4_url": "",
+            "column_1_link_5_text": "Contact",
+            "column_1_link_5_url": "",
+            "column_2_heading": "SUPPORT",
+            "column_2_link_1_text": "Help Center",
+            "column_2_link_1_url": "",
+            "column_2_link_2_text": "Privacy Policy",
+            "column_2_link_2_url": "",
+            "column_2_link_3_text": "Terms of Service",
+            "column_2_link_3_url": "",
+            "column_2_link_4_text": "Shipping",
+            "column_2_link_4_url": "",
+            "column_2_link_5_text": "Returns",
+            "column_2_link_5_url": "",
+            "nav_column_gap": 50,
+            "mobile_nav_gap": 30,
+            "nav_link_gap": 12,
+            "heading_size": 13,
+            "heading_margin_bottom": 16,
+            "heading_color": "#24222a",
+            "link_size": 14,
+            "link_color": "#666666",
+            "link_hover_color": "#24222a",
+            "copyright_text": "© 2026 Your Company. All rights reserved.",
+            "copyright_size": 13,
+            "copyright_color": "#666666",
+            "facebook_url": "",
+            "instagram_url": "",
+            "twitter_url": "",
+            "youtube_url": "",
+            "linkedin_url": "",
+            "social_icon_size": 20,
+            "social_gap": 16,
+            "social_icon_color": "#666666",
+            "social_icon_hover_color": "#24222a"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_34ccae4_6fQf8N"
+      ],
+      "settings": {}
+    },
+    "1786441568db3ef6f0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9483963_aWgPwh": {
+          "type": "ai_gen_block_9483963",
+          "settings": {
+            "logo": "shopify://shop_images/footer-fem-logo.svg",
+            "logo_width": 150,
+            "description": "<p>Clinical nutrition meets personalized health-tech intelligence.</p>",
+            "description_font_size": 14,
+            "apple_badge": "shopify://shop_images/app-store.svg",
+            "apple_store_url": "",
+            "google_badge": "shopify://shop_images/google-play.svg",
+            "google_play_url": "",
+            "badge_height": 40,
+            "show_column_1": true,
+            "column_1_title": "Company",
+            "column_1_menu": "",
+            "show_column_2": true,
+            "column_2_title": "Support",
+            "column_2_menu": "",
+            "show_column_3": true,
+            "column_3_title": "Legal",
+            "column_3_menu": "",
+            "copyright_text": "© 2026 Evora. All rights reserved.",
+            "copyright_font_size": 14,
+            "show_social_icons": true,
+            "facebook_url": "",
+            "instagram_url": "",
+            "twitter_url": "",
+            "linkedin_url": "",
+            "social_icon_size": 20,
+            "column_title_font_size": 16,
+            "link_font_size": 14,
+            "background_color": "#FFFFFF",
+            "text_color": "#000000",
+            "link_color": "#ffffff",
+            "link_hover_color": "#ff5b82",
+            "divider_color": "#3d3b45",
+            "social_icon_color": "#ffffff",
+            "social_icon_hover_color": "#ff5b82",
+            "max_width": 1300,
+            "padding_top": 60,
+            "padding_bottom": 40
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9483963_aWgPwh"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -159,6 +295,9 @@
     "evora_features",
     "evora_empowering",
     "evora_testimonials",
-    "evora_newsletter"
+    "evora_newsletter",
+    "17864408563b0039b7",
+    "1786440952c6882bdf",
+    "1786441568db3ef6f0"
   ]
 }
