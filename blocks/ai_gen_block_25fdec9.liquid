@@ -79,6 +79,7 @@
       margin-right: auto;
     {% endif %}
   }
+style="{% if section.settings.background_image %}background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}'); background-size: cover; background-position: center;{% endif %}"
 
   .ai-hero-cta-buttons-{{ ai_gen_id }} {
     display: flex;
