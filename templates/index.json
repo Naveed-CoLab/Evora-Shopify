@@ -190,7 +190,7 @@
             "column_3_menu": "",
             "copyright_text": "© 2026 Evora. All rights reserved.",
             "copyright_font_size": 14,
-            "show_social_icons": true,
+            "show_social_icons": false,
             "facebook_url": "#",
             "instagram_url": "#",
             "twitter_url": "#",
@@ -220,6 +220,36 @@
     "1786441936859f416a": {
       "type": "_blocks",
       "settings": {}
+    },
+    "17864437473c977df9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_0af5af8_pTdQ8J": {
+          "type": "ai_gen_block_0af5af8",
+          "settings": {
+            "linkedin_url": "https://linkedin.com",
+            "twitter_url": "https://x.com",
+            "tiktok_url": "https://tiktok.com",
+            "facebook_url": "https://facebook.com",
+            "instagram_url": "https://instagram.com",
+            "youtube_url": "https://youtube.com",
+            "icon_size": 22,
+            "icon_spacing": 16,
+            "icon_color": "#000000",
+            "hover_opacity": 70,
+            "alignment": "center",
+            "background_color": "#ffffff",
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_0af5af8_pTdQ8J"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -231,6 +261,7 @@
     "17864408563b0039b7",
     "1786440952c6882bdf",
     "1786441568db3ef6f0",
-    "1786441936859f416a"
+    "1786441936859f416a",
+    "17864437473c977df9"
   ]
 }
