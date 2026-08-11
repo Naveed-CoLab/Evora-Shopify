@@ -214,14 +214,14 @@
             "feature_title_spacing": 8,
             "feature_description_size": 14,
             "feature_description_color": "#666666",
-            "feature_1_title": "Personalized",
-            "feature_1_description": "Tailored to your needs",
-            "feature_2_title": "Science-backed",
-            "feature_2_description": "Clinically proven results",
-            "feature_3_title": "Easy to use",
-            "feature_3_description": "Simple daily routine",
-            "feature_4_title": "Track progress",
-            "feature_4_description": "Monitor your wellness"
+            "feature_1_title": "",
+            "feature_1_description": "",
+            "feature_2_title": "",
+            "feature_2_description": "",
+            "feature_3_title": "",
+            "feature_3_description": "",
+            "feature_4_title": "",
+            "feature_4_description": ""
           },
           "blocks": {}
         }
