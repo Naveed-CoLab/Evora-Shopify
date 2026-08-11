@@ -76,7 +76,7 @@
             "button_font_weight": 500,
             "header_bg_color": "#ffffff",
             "border_color": "#f0f0f0",
-            "border_thickness": 1,
+            "border_thickness": 0,
             "vertical_padding": 20,
             "horizontal_padding": 48,
             "container_width": 1300,
