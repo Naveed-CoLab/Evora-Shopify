@@ -272,6 +272,81 @@
     "17864437473c977df9": {
       "type": "_blocks",
       "settings": {}
+    },
+    "17864487063360cdf4": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_25fdec9_34ExMx": {
+          "type": "ai_gen_block_25fdec9",
+          "settings": {
+            "container_max_width": 1300,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "section_padding_horizontal": 32,
+            "content_gap": 60,
+            "features_spacing": 60,
+            "background_gradient": "linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 240, 243, 0.5) 100%)",
+            "logo_width": 180,
+            "headline": "Your Wellness, All in One",
+            "headline_size": 56,
+            "headline_weight": "700",
+            "headline_color": "#24222a",
+            "headline_accent_color": "#ff5b82",
+            "headline_spacing": 20,
+            "subtitle": "<p>Experience personalized wellness solutions designed for your unique health journey.</p>",
+            "subtitle_size": 18,
+            "subtitle_color": "#24222a",
+            "subtitle_max_width": 600,
+            "subtitle_spacing": 32,
+            "text_alignment": "center",
+            "primary_button_label": "Get Started",
+            "primary_button_link": "",
+            "primary_button_bg": "#ff5b82",
+            "primary_button_color": "#ffffff",
+            "primary_button_hover_bg": "#ff3366",
+            "secondary_button_label": "Learn More",
+            "secondary_button_link": "",
+            "secondary_button_color": "#24222a",
+            "secondary_button_border": "#24222a",
+            "secondary_button_hover_bg": "rgba(36, 34, 42, 0.05)",
+            "secondary_button_hover_border": "#24222a",
+            "button_gap": 16,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 32,
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "button_border_radius": 40,
+            "phone_image": "shopify://shop_images/evora_cta.png",
+            "phone_width": 250,
+            "phone_border_radius": 24,
+            "features_columns": 4,
+            "features_gap": 32,
+            "feature_icon_size": 64,
+            "feature_icon_bg": "rgba(255, 91, 130, 0.1)",
+            "feature_icon_radius": 16,
+            "feature_icon_spacing": 16,
+            "feature_title_size": 16,
+            "feature_title_weight": "600",
+            "feature_title_color": "#24222a",
+            "feature_title_spacing": 8,
+            "feature_description_size": 14,
+            "feature_description_color": "#666666",
+            "feature_1_title": "Personalized",
+            "feature_1_description": "Tailored to your needs",
+            "feature_2_title": "Science-backed",
+            "feature_2_description": "Clinically proven results",
+            "feature_3_title": "Easy to use",
+            "feature_3_description": "Simple daily routine",
+            "feature_4_title": "Track progress",
+            "feature_4_description": "Monitor your wellness"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_25fdec9_34ExMx"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -284,6 +359,7 @@
     "17864408563b0039b7",
     "1786440952c6882bdf",
     "1786441568db3ef6f0",
-    "17864437473c977df9"
+    "17864437473c977df9",
+    "17864487063360cdf4"
   ]
 }
