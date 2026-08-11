@@ -169,6 +169,7 @@
             "content_gap": 40,
             "features_spacing": 40,
             "background_image": "shopify://shop_images/cta_evora_bg.png",
+            "logo_image": "shopify://shop_images/footer-fem-logo.svg",
             "logo_width": 180,
             "headline": "Your Wellness, All in One",
             "headline_size": 56,
