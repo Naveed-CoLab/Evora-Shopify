@@ -191,10 +191,10 @@
             "copyright_text": "© 2026 Evora. All rights reserved.",
             "copyright_font_size": 14,
             "show_social_icons": true,
-            "facebook_url": "",
-            "instagram_url": "",
-            "twitter_url": "",
-            "linkedin_url": "",
+            "facebook_url": "https://facebook.com",
+            "instagram_url": "https://instagram.com",
+            "twitter_url": "https://x.com",
+            "linkedin_url": "https://linkedin.com",
             "social_icon_size": 20,
             "column_title_font_size": 16,
             "link_font_size": 14,
@@ -203,7 +203,7 @@
             "link_color": "#ffffff",
             "link_hover_color": "#ff5b82",
             "divider_color": "#3d3b45",
-            "social_icon_color": "#ffffff",
+            "social_icon_color": "#000000",
             "social_icon_hover_color": "#ff5b82",
             "max_width": 1300,
             "padding_top": 60,
@@ -216,6 +216,54 @@
         "ai_gen_block_9483963_aWgPwh"
       ],
       "settings": {}
+    },
+    "1786441936859f416a": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_52bc6b2_qjtRNA": {
+          "type": "ai_gen_block_52bc6b2",
+          "settings": {
+            "logo": "shopify://shop_images/footer-fem-logo.svg",
+            "logo_height": 40,
+            "nav_link_1_text": "Features",
+            "nav_link_1_url": "shopify://products/evora-daily-wellness-powder",
+            "nav_link_2_text": "About",
+            "nav_link_2_url": "",
+            "nav_link_3_text": "Blog",
+            "nav_link_3_url": "",
+            "nav_link_4_text": "Contact",
+            "nav_link_4_url": "",
+            "nav_link_5_text": "",
+            "nav_link_5_url": "",
+            "cta_text": "Try it today",
+            "cta_url": "",
+            "button_bg_start": "#ff5b82",
+            "button_bg_end": "#ff8ba7",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 50,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 28,
+            "button_font_size": 15,
+            "button_font_weight": 500,
+            "header_bg_color": "#ffffff",
+            "border_color": "#f0f0f0",
+            "border_thickness": 1,
+            "vertical_padding": 20,
+            "horizontal_padding": 24,
+            "container_width": 1300,
+            "nav_text_color": "#24222a",
+            "nav_hover_color": "#ff5b82",
+            "nav_font_size": 15,
+            "nav_font_weight": 400,
+            "nav_spacing": 32
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_52bc6b2_qjtRNA"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -226,6 +274,7 @@
     "evora_newsletter",
     "17864408563b0039b7",
     "1786440952c6882bdf",
-    "1786441568db3ef6f0"
+    "1786441568db3ef6f0",
+    "1786441936859f416a"
   ]
 }
