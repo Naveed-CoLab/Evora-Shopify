@@ -10,48 +10,6 @@
 {
   "name": "Footer Group",
   "type": "footer",
-  "sections": {
-    "footer": {
-      "type": "footer",
-      "blocks": {
-        "menu_1": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Flow",
-            "menu": "footer"
-          }
-        },
-        "menu_2": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Company",
-            "menu": "footer"
-          }
-        },
-        "contact_info": {
-          "type": "contact",
-          "settings": {
-            "heading": "Contact Us",
-            "contact_label": "Email",
-            "email": "support@flowalarmclock.com",
-            "extra_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "menu_1",
-        "menu_2",
-        "contact_info"
-      ],
-      "settings": {
-        "brand_title": "Flow",
-        "bio_text": "The alarm that actually gets you out of bed. No snooze. No shortcuts. Just real wake-ups.",
-        "show_app_badges": true,
-        "copyright_text": "© 2026 Flow. All Rights Reserved"
-      }
-    }
-  },
-  "order": [
-    "footer"
-  ]
+  "sections": {},
+  "order": []
 }
