@@ -62,10 +62,10 @@
   --evora-section-spacing-mobile: 48px;
   
   /* Typography Variables */
-  --font-serif: 'Fraunces', Georgia, serif;
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-ui: 'Inter Tight', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Inter Display', 'Inter', sans-serif;
+  --font-heading: 'Inter Display', 'Inter', sans-serif;
+  --font-body: 'Inter Display', 'Inter', sans-serif;
+  --font-ui: 'Inter Display', 'Inter', sans-serif;
   
   --font-size-h1: clamp(2.6rem, 4.8vw, 4.4rem);
   --font-size-h2: clamp(2.2rem, 3.4vw, 3.4rem);
