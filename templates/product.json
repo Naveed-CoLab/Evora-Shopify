@@ -119,12 +119,33 @@
         "input_placeholder": "Enter your email",
         "button_label": "Subscribe"
       }
+    },
+    "178645430617a341d7": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_BkBn8a": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_BkBn8a"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "evora_product_main",
     "evora_how_it_works",
     "evora_trust_bar",
-    "evora_newsletter"
+    "evora_newsletter",
+    "178645430617a341d7"
   ]
 }
