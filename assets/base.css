@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 /* @font-face {
     font-family: 'Inter Display';
     src: url('/cdn/shop/files/InterDisplay-Thin.woff2?v=1772451686') format('woff2'),
@@ -40,9 +42,9 @@
 }
 
 :root {
-  --font-body-family: 'Inter Display', sans-serif !important;
-  --font-heading-family: 'Inter Display', sans-serif !important;
-  --font-inter-display: 'Inter Display', sans-serif;
+  --font-body-family: 'Inter Display', 'Inter', sans-serif !important;
+  --font-heading-family: 'Inter Display', 'Inter', sans-serif !important;
+  --font-inter-display: 'Inter Display', 'Inter', sans-serif;
   --alpha-button-background: 1;
   --alpha-button-border: 1;
   --alpha-link: 0.85;
