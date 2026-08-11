@@ -1,0 +1,348 @@
+{% assign sid = section.id %}
+
+{% style %}
+  .faq_section-{{ sid }} {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .section-{{ sid }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ sid }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .faq_section-{{ sid }} .faq_heading {
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 {{ section.settings.heading_margin_bottom }}px;
+    line-height: 1.2;
+  }
+
+  .faq_section-{{ sid }} .faq_list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid {{ section.settings.border_color }};
+  }
+
+  .faq_section-{{ sid }} .faq_card {
+    border-bottom: 1px solid {{ section.settings.border_color }};
+    overflow: hidden;
+  }
+
+  .faq_section-{{ sid }} .faq_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: {{ section.settings.card_padding_vertical }}px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .faq_section-{{ sid }} .faq_title {
+    font-size: {{ section.settings.question_size }}px;
+    font-weight: {{ section.settings.question_weight }};
+    color: {{ section.settings.question_color }};
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .faq_section-{{ sid }} .faq_chevron {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .faq_section-{{ sid }} .faq_chevron svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+
+  .faq_section-{{ sid }} .faq_card.is_open .faq_chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq_section-{{ sid }} .faq_content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq_section-{{ sid }} .faq_card.is_open .faq_content {
+    max-height: 600px;
+  }
+
+  .faq_section-{{ sid }} .faq_inner {
+    padding: 0 0 {{ section.settings.card_padding_vertical }}px;
+    font-size: {{ section.settings.answer_size }}px;
+    color: {{ section.settings.answer_color }};
+    line-height: 1.6;
+  }
+
+  .faq_section-{{ sid }} .faq_inner p {
+    margin: 0 0 12px;
+  }
+
+  .faq_section-{{ sid }} .faq_inner p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .faq_section-{{ sid }} .faq_title {
+      font-size: {{ section.settings.question_size | minus: 2 }}px;
+    }
+
+    .faq_section-{{ sid }} .faq_heading {
+      font-size: {{ section.settings.heading_size | minus: 8 }}px;
+    }
+  }
+{% endstyle %}
+
+<div
+  class="faq_section-{{ sid }} section-{{ sid }}-padding"
+  id="faq_section_{{ sid }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="faq_heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="faq_list" data-section-id="{{ sid }}" data-single-open="true">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq-item' -%}
+          <div
+            class="faq_card{% if forloop.first and section.settings.open_first %} is_open{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <button type="button" class="faq_header" aria-expanded="{% if forloop.first and section.settings.open_first %}true{% else %}false{% endif %}">
+              <span class="faq_title">{{ block.settings.question }}</span>
+              <span class="faq_chevron" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 13.5L16 19.5L22 13.5" stroke="{{ section.settings.chevron_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </button>
+            <div class="faq_content"{% if forloop.first and section.settings.open_first %} style="max-height:600px"{% endif %}>
+              <div class="faq_inner">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var sid = '{{ sid }}';
+  var list = document.querySelector('[data-section-id="' + sid + '"]');
+  if (!list) return;
+
+  var singleOpen = list.getAttribute('data-single-open') === 'true';
+
+  list.addEventListener('click', function(e) {
+    var btn = e.target.closest('.faq_header');
+    if (!btn) return;
+
+    var card = btn.closest('.faq_card');
+    var isOpen = card.classList.contains('is_open');
+
+    if (singleOpen) {
+      list.querySelectorAll('.faq_card.is_open').forEach(function(c) {
+        c.classList.remove('is_open');
+        c.querySelector('.faq_header').setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    if (!isOpen) {
+      card.classList.add('is_open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading bottom spacing",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Questions"
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "label": "Question font size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "select",
+      "id": "question_weight",
+      "label": "Question font weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "answer_size",
+      "label": "Answer font size",
+      "min": 13,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer color",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "chevron_color",
+      "label": "Chevron color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first question by default",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Divider color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_vertical",
+      "label": "Row padding",
+      "min": 12,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq-item"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section"
+    }
+  ]
+}
+{% endschema %}
