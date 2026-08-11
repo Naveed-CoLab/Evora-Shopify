@@ -1,0 +1,203 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraApp-{{ section.id }}"
+  class="evora-app evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-app-layout">
+      <!-- App Mockup / Visual Left -->
+      <div class="evora-app-layout__visual" style="position: relative;">
+        <div
+          class="evora-card evora-card--soft"
+          style="background: linear-gradient(145deg, #FFF5F6 0%, #F5ECF8 100%); border-radius: var(--evora-radius-xl); border: 1px solid var(--evora-border); padding: 4rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 480px;"
+        >
+          <!-- Stylized Health-Tech Smartphone UI Frame -->
+          <div
+            style="width: 290px; background: #FFFFFF; border-radius: 36px; border: 8px solid #222026; box-shadow: var(--evora-shadow-floating); padding: 2rem 1.6rem; position: relative;"
+          >
+            <!-- Phone Notch -->
+            <div style="width: 80px; height: 16px; background: #222026; border-radius: 0 0 12px 12px; margin: -2rem auto 1.4rem auto;"></div>
+
+            <!-- App Screen Header -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.4rem;">
+              <div>
+                <span style="font-size: 1.1rem; color: var(--evora-muted); font-weight: 600; text-transform: uppercase;">TODAY'S RHYTHM</span>
+                <h4 style="font-size: 1.6rem; font-weight: 800; margin: 0; color: var(--evora-text);">Follicular Phase (Day 9)</h4>
+              </div>
+              <span style="width: 28px; height: 28px; border-radius: 50%; background: var(--evora-primary-light); color: var(--evora-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700;">✓</span>
+            </div>
+
+            <!-- App Metric Card 1 -->
+            <div style="background: var(--evora-surface-soft); border-radius: 16px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--evora-border);">
+              <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.4rem;">
+                <span style="color: var(--evora-text);">Estrogen & Vitality</span>
+                <span style="color: var(--evora-primary);">Rising (+18%)</span>
+              </div>
+              <div style="height: 6px; background: #EFE6E3; border-radius: 4px; overflow: hidden;">
+                <div style="width: 72%; height: 100%; background: var(--evora-primary); border-radius: 4px;"></div>
+              </div>
+            </div>
+
+            <!-- App Metric Card 2 -->
+            <div style="background: #FFFFFF; border-radius: 16px; padding: 1.2rem; margin-bottom: 1.2rem; border: 1px solid var(--evora-border); box-shadow: var(--evora-shadow-subtle);">
+              <span style="font-size: 1.1rem; font-weight: 700; color: var(--evora-accent); text-transform: uppercase;">DAILY PROTOCOL</span>
+              <p style="font-size: 1.3rem; margin: 0.4rem 0 0 0; line-height: 1.4; color: var(--evora-text); font-weight: 600;">1 Scoop Evora Berry Blend + 15 min Light Movement</p>
+            </div>
+
+            <!-- App Bottom Action -->
+            <div style="background: var(--evora-primary); border-radius: 20px; padding: 1rem; text-align: center; color: #FFFFFF; font-size: 1.3rem; font-weight: 700;">
+              Log Today's Mood & Symptoms
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content / Feature List Right -->
+      <div class="evora-app-layout__features">
+        {%- if section.settings.badge_text != blank -%}
+          <div class="evora-badge evora-badge--accent" style="margin-bottom: 1.4rem;">
+            {{ section.settings.badge_text }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 style="font-size: var(--font-size-h2); line-height: 1.18; font-weight: 800; margin-bottom: 1.6rem; color: var(--evora-text);">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.subheading != blank -%}
+          <div style="font-size: 1.65rem; line-height: 1.6; color: var(--evora-text-secondary); margin-bottom: 2.8rem;">
+            {{ section.settings.subheading }}
+          </div>
+        {%- endif -%}
+
+        <div style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3.2rem;">
+          {%- for block in section.blocks -%}
+            <div
+              style="display: flex; align-items: flex-start; gap: 1.6rem;"
+              {{ block.shopify_attributes }}
+            >
+              <div
+                style="width: 4rem; height: 4rem; border-radius: 12px; background: var(--evora-primary-light); color: var(--evora-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h4 style="font-size: 1.75rem; font-weight: 700; color: var(--evora-text); margin-bottom: 0.4rem;">
+                  {{ block.settings.title }}
+                </h4>
+                <p style="font-size: 1.45rem; line-height: 1.55; color: var(--evora-text-secondary); margin: 0;">
+                  {{ block.settings.text }}
+                </p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.button_label != blank -%}
+          {% render 'evora-button',
+            label: section.settings.button_label,
+            link: section.settings.button_link,
+            style: 'primary',
+            size: 'lg'
+          %}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Health-Tech App",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "The Evora App Experience"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your personal wellness companion & cycle intelligence"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Evora bridges nutritional science with biometric tracking. Sync your daily routine with real-time hormonal phase insights.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn About Evora+"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "App Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Predictive Cycle & Energy Tracking"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Description",
+          "default": "Understand exact hormonal fluctuations and receive tailored daily activity and nutrition tips."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Health-Tech App",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Predictive Phase Intelligence",
+            "text": "Anticipate energy shifts, sleep quality changes, and mood variances before they occur."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "One-Tap Nutrition & Symptom Logging",
+            "text": "Track your daily Evora scoop and log physical responses in under 30 seconds."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Clinically Curated Wellness Guides",
+            "text": "Access audio masterclasses, phase-matched recipes, and expert OB-GYN consultations."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

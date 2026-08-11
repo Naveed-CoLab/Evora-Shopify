@@ -1,0 +1,198 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign product = section.settings.product
+-%}
+
+<section
+  id="EvoraProductShowcase-{{ section.id }}"
+  class="evora-product-showcase evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-hero__grid" style="align-items: center;">
+      <!-- Product Visual Media Left -->
+      <div class="evora-product-showcase__media" style="position: relative;">
+        <div
+          class="evora-card evora-card--soft"
+          style="background: linear-gradient(135deg, #FBF2F0 0%, #F5EAE6 100%); border-radius: var(--evora-radius-xl); border: 1px solid var(--evora-border); min-height: 440px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 3rem;"
+        >
+          {%- if product != blank and product.featured_media != blank -%}
+            {{ product.featured_media | image_url: width: 800 | image_tag:
+              loading: 'lazy',
+              class: 'evora-product-showcase__img',
+              style: 'max-width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 16px 24px rgba(34,32,38,0.12));'
+            }}
+          {%- else -%}
+            <div style="text-align: center; padding: 2rem;">
+              <div style="width: 130px; height: 130px; border-radius: 50%; background: #FFFFFF; margin: 0 auto 2rem auto; display: flex; align-items: center; justify-content: center; box-shadow: var(--evora-shadow-card);">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--evora-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/>
+                </svg>
+              </div>
+              <h3 style="font-size: 2.2rem; font-weight: 800; color: var(--evora-text); margin-bottom: 0.6rem;">Evora Daily Wellness Powder</h3>
+              <p style="font-size: 1.4rem; color: var(--evora-muted);">30 Servings • Wild Berry Botanical Blend</p>
+            </div>
+          {%- endif -%}
+
+          <!-- Floating Serving Badge -->
+          <div style="position: absolute; bottom: 2rem; left: 2rem;">
+            <span class="evora-badge evora-badge--primary" style="box-shadow: 0 4px 12px var(--evora-primary-glow);">
+              30 Daily Scoops • 100% Bioavailable
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details Right -->
+      <div class="evora-product-showcase__info">
+        {%- if section.settings.badge_text != blank -%}
+          <div class="evora-badge evora-badge--secondary" style="margin-bottom: 1.4rem;">
+            {{ section.settings.badge_text }}
+          </div>
+        {%- endif -%}
+
+        <h2 style="font-size: var(--font-size-h2); font-weight: 800; color: var(--evora-text); line-height: 1.15; margin-bottom: 1.2rem;">
+          {%- if product != blank -%}
+            {{ product.title }}
+          {%- else -%}
+            {{ section.settings.heading | default: 'Evora Daily Wellness Powder' }}
+          {%- endif -%}
+        </h2>
+
+        <!-- Pricing -->
+        <div style="display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 1.8rem;">
+          <span style="font-size: 2.6rem; font-weight: 800; color: var(--evora-text); font-family: var(--font-heading);">
+            {%- if product != blank -%}
+              {{ product.price | money }}
+            {%- else -%}
+              {{ section.settings.price_display | default: '$54.00' }}
+            {%- endif -%}
+          </span>
+          {%- if product.compare_at_price > product.price or section.settings.compare_price_display != blank -%}
+            <span style="font-size: 1.7rem; color: var(--evora-muted); text-decoration: line-through;">
+              {%- if product != blank and product.compare_at_price > product.price -%}
+                {{ product.compare_at_price | money }}
+              {%- else -%}
+                {{ section.settings.compare_price_display }}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+          <span class="evora-badge evora-badge--success" style="font-size: 1.15rem;">
+            Save 20% on Subscribe & Save
+          </span>
+        </div>
+
+        <div style="font-size: 1.6rem; line-height: 1.65; color: var(--evora-text-secondary); margin-bottom: 2.4rem;">
+          {%- if product != blank and product.description != blank -%}
+            {{ product.description | truncatewords: 35 }}
+          {%- else -%}
+            {{ section.settings.description | default: '<p>A physician-formulated daily botanical powder combining clean adaptogens, bio-available magnesium, and antioxidant berries to harmonize your hormonal cycles.</p>' }}
+          {%- endif -%}
+        </div>
+
+        <!-- Quick Benefit Bullet Points -->
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.8rem;">
+          <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.45rem; color: var(--evora-text); font-weight: 500;">
+            <span style="color: var(--evora-primary); font-weight: 800;">✓</span>
+            <span>Smooths PMS mood swings & cortisol spikes</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.45rem; color: var(--evora-text); font-weight: 500;">
+            <span style="color: var(--evora-primary); font-weight: 800;">✓</span>
+            <span>Prebiotic gut support for flat tummy comfort</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.45rem; color: var(--evora-text); font-weight: 500;">
+            <span style="color: var(--evora-primary); font-weight: 800;">✓</span>
+            <span>Includes 7-day complimentary access to Evora+ app</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 1.4rem; flex-wrap: wrap;">
+          {%- if product != blank -%}
+            {% render 'evora-button',
+              label: 'View Product Details',
+              link: product.url,
+              style: 'primary',
+              size: 'lg'
+            %}
+          {%- else -%}
+            {%- liquid
+              assign showcase_btn_label = section.settings.button_label | default: 'Shop Evora Powder'
+              assign showcase_btn_link = section.settings.button_link | default: '/collections/all'
+            -%}
+            {% render 'evora-button',
+              label: showcase_btn_label,
+              link: showcase_btn_link,
+              style: 'primary',
+              size: 'lg'
+            %}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Product Showcase",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Featured Product"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Core Formulation"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Fallback Heading",
+      "default": "Evora Daily Wellness Powder"
+    },
+    {
+      "type": "text",
+      "id": "price_display",
+      "label": "Fallback Price Display",
+      "default": "$54.00"
+    },
+    {
+      "type": "text",
+      "id": "compare_price_display",
+      "label": "Fallback Compare Price",
+      "default": "$68.00"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Fallback Description",
+      "default": "<p>A physician-formulated daily botanical powder combining clean adaptogens, bio-available magnesium, and antioxidant berries to harmonize your hormonal cycles.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Evora Powder"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Product Showcase"
+    }
+  ]
+}
+{% endschema %}

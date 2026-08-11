@@ -1,0 +1,132 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraHowItWorks-{{ section.id }}"
+  class="evora-how-it-works evora-section-padding evora-bg-gradient"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-section-header">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="evora-section-header__badge">
+          {{ section.settings.badge_text }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="evora-section-header__title">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <div class="evora-section-header__subtitle">
+          {{ section.settings.subheading }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="evora-steps-grid">
+      {%- for block in section.blocks -%}
+        <div
+          class="evora-card evora-card--glass evora-card--hover-lift"
+          style="position: relative; text-align: left; padding: 3.2rem 2.4rem;"
+          {{ block.shopify_attributes }}
+        >
+          <!-- Step Number Pill -->
+          <div
+            style="width: 4.4rem; height: 4.4rem; border-radius: 50%; background: var(--evora-primary); color: #FFFFFF; font-weight: 800; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; box-shadow: 0 4px 14px var(--evora-primary-glow);"
+          >
+            0{{ forloop.index }}
+          </div>
+
+          <h3 style="font-size: 2rem; font-weight: 700; color: var(--evora-text); margin-bottom: 1rem;">
+            {{ block.settings.title }}
+          </h3>
+
+          <div style="font-size: 1.5rem; line-height: 1.65; color: var(--evora-text-secondary);">
+            {{ block.settings.text }}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora How It Works",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Simple 3-Step Daily Ritual"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How Evora transforms your wellness"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>A seamless fusion of clinically validated daily nutrition and smart health-tech companion guidance.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Routine Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Mix Your Daily Scoop"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Step Description",
+          "default": "<p>Blend 1 scoop with cold water, juice, or your morning smoothie. Light, refreshing berry-botanical flavor.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Mix Your Daily Scoop",
+            "text": "<p>Stir one scoop into 8oz of chilled water or your favorite smoothie each morning for instant bioactive absorption.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Sync with Evora App",
+            "text": "<p>Log your daily intake and symptoms in under 30 seconds to receive customized phase-specific nutrition recommendations.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Thrive in Hormonal Harmony",
+            "text": "<p>Experience sustained energy, reduced cycle fatigue, radiant skin, and personalized health clarity week over week.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

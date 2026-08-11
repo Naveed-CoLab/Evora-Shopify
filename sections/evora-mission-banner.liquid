@@ -1,0 +1,72 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraMissionBanner-{{ section.id }}"
+  class="evora-mission-banner evora-section-padding"
+  style="background: #FFFFFF;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container evora-container--narrow">
+    <div
+      class="evora-card"
+      style="background: linear-gradient(135deg, #F9F1FB 0%, #F5ECF8 100%); border: 1px solid #EFE4F2; border-radius: 28px; padding: 4.5rem 3.5rem; text-align: center; box-shadow: var(--evora-shadow-soft);"
+    >
+      <h2 style="font-size: clamp(2.2rem, 3.4vw, 3.4rem); font-weight: 800; color: var(--evora-text); margin-bottom: 1.4rem; letter-spacing: -0.02em;">
+        {{ section.settings.heading | default: 'Access for all, not just the privileged' }}
+      </h2>
+
+      <div style="font-size: 1.65rem; line-height: 1.65; color: var(--evora-text-secondary); max-width: 620px; margin: 0 auto 2.4rem auto;">
+        {{ section.settings.text | default: '<p>Through the Evora Women’s Health Initiative, we partner with health clinics to ensure medically vetted cycle intelligence and clean nutrition reach underserved communities worldwide.</p>' }}
+      </div>
+
+      {%- if section.settings.link_label != blank -%}
+        <a
+          href="{{ section.settings.link_url | default: '#' }}"
+          style="display: inline-flex; align-items: center; gap: 0.6rem; color: var(--evora-primary); font-size: 1.55rem; font-weight: 700; text-decoration: none;"
+        >
+          <span>{{ section.settings.link_label }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Mission Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Access for all, not just the privileged"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Through the Evora Women’s Health Initiative, we partner with health clinics to ensure medically vetted cycle intelligence and clean nutrition reach underserved communities worldwide.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link Label",
+      "default": "Learn more about the Evora Health Project"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Mission Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,42 @@
+{% comment %}
+  Renders an Evora pill CTA button.
+  Accepts:
+  - label: {String} Button label text
+  - link: {String} Button link URL
+  - style: {String} 'primary' | 'secondary' | 'outline' | 'dark' (default: 'primary')
+  - size: {String} 'sm' | 'md' | 'lg' (default: 'md')
+  - is_submit: {Boolean} Whether this is a form submit button
+  - full_width: {Boolean} Make button 100% width
+  - class: {String} Additional classes
+  - icon: {String} Optional icon SVG or string
+
+  Usage:
+  {% render 'evora-button', label: 'Explore Evora', link: '/collections/all', style: 'primary' %}
+{% endcomment %}
+
+{%- liquid
+  assign btn_style = style | default: 'primary'
+  assign btn_size = size | default: 'md'
+-%}
+
+{%- if is_submit -%}
+  <button
+    type="submit"
+    class="evora-btn evora-btn--{{ btn_style }} evora-btn--{{ btn_size }}{% if full_width %} evora-btn--full{% endif %}{% if class != blank %} {{ class }}{% endif %}"
+  >
+    <span class="evora-btn__text">{{ label }}</span>
+    {%- if icon != blank -%}
+      <span class="evora-btn__icon" aria-hidden="true">{{ icon }}</span>
+    {%- endif -%}
+  </button>
+{%- else -%}
+  <a
+    href="{{ link | default: '#' }}"
+    class="evora-btn evora-btn--{{ btn_style }} evora-btn--{{ btn_size }}{% if full_width %} evora-btn--full{% endif %}{% if class != blank %} {{ class }}{% endif %}"
+  >
+    <span class="evora-btn__text">{{ label }}</span>
+    {%- if icon != blank -%}
+      <span class="evora-btn__icon" aria-hidden="true">{{ icon }}</span>
+    {%- endif -%}
+  </a>
+{%- endif -%}

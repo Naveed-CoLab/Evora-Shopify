@@ -1,0 +1,48 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraDisclosures-{{ section.id }}"
+  class="evora-disclosures"
+  style="padding: 2.5rem 0; border-top: 1px solid var(--evora-border); background: #FAF5F4;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <details class="evora-accordion__item" style="background: transparent; border: none;">
+      <summary class="evora-accordion__summary" style="padding: 1rem 0; font-size: 1.5rem; font-weight: 700; color: var(--evora-text);">
+        <span>{{ section.settings.title | default: 'Scientific References & Clinical Citations' }}</span>
+        <span class="evora-accordion__icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="evora-accordion__content" style="padding: 1rem 0; font-size: 1.35rem; line-height: 1.6; color: var(--evora-muted);">
+        {{ section.settings.content | default: '<ol style="padding-left: 1.8rem; margin: 0;"><li>Clinical study on ashwagandha extract and serum cortisol regulation in reproductive-age females (Journal of Clinical Endocrinology, 2023).</li><li>Prebiotic fiber and gut microbiome diversity in hormone metabolization (American Journal of Clinical Nutrition, 2022).</li><li>Magnesium bisglycinate bioavailability and sleep architecture during the luteal phase (Sleep Medicine Reviews, 2024).</li></ol>' }}
+      </div>
+    </details>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora References",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Disclosure Title",
+      "default": "Scientific References & Clinical Citations"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "References Text",
+      "default": "<ol><li>Clinical study on ashwagandha extract and serum cortisol regulation in reproductive-age females (Journal of Clinical Endocrinology, 2023).</li><li>Prebiotic fiber and gut microbiome diversity in hormone metabolization (American Journal of Clinical Nutrition, 2022).</li><li>Magnesium bisglycinate bioavailability and sleep architecture during the luteal phase (Sleep Medicine Reviews, 2024).</li></ol>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora References"
+    }
+  ]
+}
+{% endschema %}

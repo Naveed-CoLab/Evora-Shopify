@@ -1,0 +1,230 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share Evora"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 24
+      }
+    },
+    "benefits": {
+      "type": "evora-benefits",
+      "blocks": {
+        "ben_1": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "heart",
+            "badge_tag": "Cycle Harmony",
+            "title": "Hormonal Equilibrium",
+            "text": "<p>Targeted bio-adaptogens smooth out cortisol spikes, reduce cycle discomfort, and stabilize mood.</p>"
+          }
+        },
+        "ben_2": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "sparkle",
+            "badge_tag": "Sustained Vitality",
+            "title": "Clean, Jitter-Free Energy",
+            "text": "<p>Active B-complex and cellular CoQ10 power steady all-day focus without caffeine crashes.</p>"
+          }
+        },
+        "ben_3": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "leaf",
+            "badge_tag": "Microbiome Focus",
+            "title": "Gut Harmony & Digestion",
+            "text": "<p>Gentle prebiotic botanicals nurture gut flora, soothing bloating and enhancing nutrient absorption.</p>"
+          }
+        },
+        "ben_4": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "shield",
+            "badge_tag": "Pure & Tested",
+            "title": "Third-Party Verified",
+            "text": "<p>Triple-tested for heavy metals, microbial safety, and active phytonutrient potency.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ben_1",
+        "ben_2",
+        "ben_3",
+        "ben_4"
+      ],
+      "settings": {
+        "badge_text": "The Evora Difference",
+        "heading": "Why our formula works when others don't",
+        "subheading": "<p>Developed alongside OB-GYNs and endocrinologists to nourish female physiology across all 4 cycle phases.</p>"
+      }
+    },
+    "how_it_works": {
+      "type": "evora-how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "step_number": "01",
+            "title": "Mix 1 Scoop Daily",
+            "text": "<p>Blend effortlessly into 8-10 oz of chilled water, oat milk, or your morning smoothie.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "step_number": "02",
+            "title": "Log in Companion App",
+            "text": "<p>Track energy, cycle phase, and symptoms in seconds with your complimentary Evora+ access.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "step_number": "03",
+            "title": "Feel Continuous Balance",
+            "text": "<p>Enjoy sustained vitality, deeper restorative sleep, and calm PMS symptom-free cycles.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "badge_text": "Simple Daily Ritual",
+        "heading": "Three steps to biological harmony",
+        "subheading": "<p>Designed to fit seamlessly into your existing morning routine with effortless daily consistency.</p>"
+      }
+    },
+    "faq": {
+      "type": "evora-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How soon will I notice results?",
+            "answer": "<p>Most women report improved energy and digestion within the first 7-10 days, with noticeable PMS and cycle comfort improvements within 30-60 days of consistent daily use.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does the Evora powder taste like?",
+            "answer": "<p>A naturally crisp, refreshing wild berry flavor lightly sweetened with organic monk fruit. No chalky texture or artificial aftertaste.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do subscriptions work?",
+            "answer": "<p>Subscribers save 20% on every jar and receive automatic fresh deliveries every 30 days. You can pause, adjust delivery dates, or cancel anytime in 1 click from your account.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ],
+      "settings": {
+        "badge_text": "Got Questions?",
+        "heading": "Product FAQ & Guidance",
+        "subheading": "<p>Everything you need to know about ingredients, timing, and results.</p>",
+        "open_first": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "benefits",
+    "how_it_works",
+    "faq",
+    "related-products"
+  ]
+}

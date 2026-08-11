@@ -1,0 +1,199 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraSubscription-{{ section.id }}"
+  class="evora-subscription evora-section-padding evora-bg-gradient"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container evora-container--narrow">
+    <div
+      class="evora-card evora-subscription-card"
+      style="background: #FFFFFF; border: 2px solid var(--evora-primary); border-radius: var(--evora-radius-xl); padding: 4.8rem 3.6rem; box-shadow: var(--evora-shadow-card); position: relative;"
+    >
+      <!-- Top Pill Banner -->
+      <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%);">
+        <span class="evora-badge evora-badge--primary" style="padding: 0.6rem 2rem; font-size: 1.35rem; font-weight: 700; box-shadow: 0 4px 14px var(--evora-primary-glow);">
+          {{ section.settings.badge_text | default: 'Evora+ Annual Membership' }}
+        </span>
+      </div>
+
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3rem auto;">
+        <h2 style="font-size: var(--font-size-h2); font-weight: 800; color: var(--evora-text); margin-bottom: 1.2rem;">
+          {{ section.settings.heading | default: 'Unlock personalized wellness intelligence' }}
+        </h2>
+        <p style="font-size: 1.65rem; color: var(--evora-text-secondary); line-height: 1.6; margin: 0;">
+          {{ section.settings.subheading | default: 'Your continuous digital health companion. Real-time cycle tracking, nutritionist-curated protocols, and audio wellness masterclasses.' }}
+        </p>
+      </div>
+
+      <!-- Pricing & Trial Highlight -->
+      <div
+        style="background: var(--evora-surface-soft); border-radius: var(--evora-radius-md); padding: 2rem; border: 1px solid var(--evora-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.6rem; margin-bottom: 2.8rem;"
+      >
+        <div>
+          <div style="display: flex; align-items: baseline; gap: 0.8rem;">
+            <span style="font-size: 3.2rem; font-weight: 800; color: var(--evora-text); font-family: var(--font-heading);">
+              {{ section.settings.price_text | default: '$40' }}
+            </span>
+            <span style="font-size: 1.5rem; color: var(--evora-muted); font-weight: 600;">
+              {{ section.settings.billing_frequency | default: '/year' }}
+            </span>
+          </div>
+          <span style="font-size: 1.3rem; color: var(--evora-primary); font-weight: 700;">
+            {{ section.settings.trial_text | default: 'Includes 7-day free trial • Cancel anytime' }}
+          </span>
+        </div>
+
+        <div>
+          {% render 'evora-badge',
+            text: 'Billed Annually',
+            style: 'secondary'
+          %}
+        </div>
+      </div>
+
+      <!-- Benefit Checklist -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; margin-bottom: 3.2rem;">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <div
+              style="display: flex; align-items: center; gap: 1.2rem; font-size: 1.5rem; color: var(--evora-text); font-weight: 500;"
+              {{ block.shopify_attributes }}
+            >
+              <span style="width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--evora-primary-light); color: var(--evora-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; flex-shrink: 0;">✓</span>
+              <span>{{ block.settings.text }}</span>
+            </div>
+          {%- elsif block.type == '@app' -%}
+            <!-- Shopify App Block Container for Subscription Widget -->
+            <div class="shopify-app-block evora-subscription-widget-container" style="grid-column: 1 / -1;" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- CTA Action -->
+      {%- if section.settings.cta_label != blank -%}
+        <div style="text-align: center;">
+          {% render 'evora-button',
+            label: section.settings.cta_label,
+            link: section.settings.cta_link,
+            style: 'primary',
+            size: 'lg',
+            full_width: true
+          %}
+          <p style="font-size: 1.25rem; color: var(--evora-muted); margin-top: 1.2rem;">
+            7 days free, then $40 billed annually. Manage or cancel in one click.
+          </p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora+ Membership",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Evora+ Annual Membership"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your 24/7 Digital Wellness Companion"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Daily body intelligence, predictive hormonal guidance, and personalized nutrition routines in your pocket."
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price Display",
+      "default": "$40"
+    },
+    {
+      "type": "text",
+      "id": "billing_frequency",
+      "label": "Billing Frequency",
+      "default": "/year"
+    },
+    {
+      "type": "text",
+      "id": "trial_text",
+      "label": "Trial Text",
+      "default": "Includes 7-day free trial • Cancel anytime"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Label",
+      "default": "Start 7-Day Free Trial"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Membership Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit",
+          "default": "Full access to personalized cycle insights"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora+ Membership",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Daily hormonal phase & energy forecasts"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Symptom & mood trend analysis"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Custom nutrition protocols matched to your cycle"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Exclusive subscriber member discounts on Evora refills"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

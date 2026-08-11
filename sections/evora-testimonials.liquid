@@ -1,0 +1,201 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraTestimonials-{{ section.id }}"
+  class="evora-testimonials evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <!-- Header with Medical Authority Statement -->
+    <div class="evora-section-header" style="max-width: 760px;">
+      <h2 class="evora-section-header__title" style="font-size: clamp(2.4rem, 3.8vw, 3.8rem); font-weight: 800; margin-bottom: 1.4rem;">
+        {{ section.settings.heading | default: 'What our community says about Evora' }}
+      </h2>
+      <p style="font-size: 1.6rem; line-height: 1.6; color: var(--evora-text-secondary); margin: 0;">
+        {{ section.settings.subheading | default: 'Partnered with 100+ doctors, biochemists, and OB-GYNs reviewing our bioactive formulations and clinical companion algorithms.' }}
+      </p>
+    </div>
+
+    <!-- Testimonials Cards Grid -->
+    <div class="evora-testimonials-grid" style="margin-bottom: 4.5rem;">
+      {%- for block in section.blocks -%}
+        <div
+          class="evora-card evora-card--soft evora-card--hover-lift"
+          style="display: flex; flex-direction: column; justify-content: space-between; border-radius: 24px; padding: 2.8rem 2.4rem; background: #FFFFFF; border: 1px solid var(--evora-border); box-shadow: var(--evora-shadow-subtle);"
+          {{ block.shopify_attributes }}
+        >
+          <div>
+            <h3 style="font-size: 1.85rem; font-weight: 800; color: var(--evora-text); margin-bottom: 1.2rem; line-height: 1.35;">
+              "{{ block.settings.title }}"
+            </h3>
+            <div style="font-size: 1.5rem; line-height: 1.65; color: var(--evora-text-secondary); margin-bottom: 2rem;">
+              {{ block.settings.text }}
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 1.2rem; border-top: 1px solid var(--evora-border); padding-top: 1.4rem;">
+            <div style="width: 3.8rem; height: 3.8rem; border-radius: 50%; background: var(--evora-primary-light); color: var(--evora-primary); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; flex-shrink: 0;">
+              {{ block.settings.author | slice: 0 }}
+            </div>
+            <div>
+              <span style="font-size: 1.45rem; font-weight: 800; color: var(--evora-text); display: block;">
+                {{ block.settings.author }}
+              </span>
+              <span style="font-size: 1.2rem; color: var(--evora-muted);">
+                {{ block.settings.author_subtitle | default: 'Verified Member' }}
+              </span>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <!-- Flo-Style Laurel Rating Badge -->
+    <div style="text-align: center; max-width: 620px; margin: 0 auto 3.5rem auto;">
+      <div class="evora-stars" style="color: #E88D72; margin-bottom: 1rem;" aria-label="5 stars">
+        <svg viewBox="0 0 20 20" style="width: 1.8rem; height: 1.8rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg viewBox="0 0 20 20" style="width: 1.8rem; height: 1.8rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg viewBox="0 0 20 20" style="width: 1.8rem; height: 1.8rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg viewBox="0 0 20 20" style="width: 1.8rem; height: 1.8rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg viewBox="0 0 20 20" style="width: 1.8rem; height: 1.8rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <h3 style="font-size: 2.4rem; font-weight: 800; color: var(--evora-text); margin-bottom: 0.8rem;">
+        {{ section.settings.rating_headline | default: 'Over 14,000 5-star ratings' }}
+      </h3>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; font-size: 1.45rem; font-weight: 700; color: var(--evora-muted);">
+        <span>🍎 App Store 4.9 ★</span>
+        <span>•</span>
+        <span>🤖 Google Play 4.8 ★</span>
+      </div>
+    </div>
+
+    <!-- QR Code / Download Banner Card -->
+    {%- if section.settings.show_qr_banner -%}
+      <div
+        class="evora-card"
+        style="background: #FDF4F2; border: 1px solid #F6E2DE; border-radius: 24px; padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; max-width: 860px; margin: 0 auto;"
+      >
+        <div style="display: flex; align-items: center; gap: 1.6rem;">
+          <div style="width: 4.8rem; height: 4.8rem; background: #FFFFFF; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: var(--evora-shadow-subtle);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--evora-text)" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </div>
+          <div>
+            <h4 style="font-size: 1.65rem; font-weight: 800; color: var(--evora-text); margin: 0 0 0.2rem 0;">
+              Get a complete picture of your body & rhythm
+            </h4>
+            <span style="font-size: 1.35rem; color: var(--evora-muted);">Available on iOS and Android devices</span>
+          </div>
+        </div>
+
+        {% render 'evora-button',
+          label: 'Download App',
+          link: '#',
+          style: 'dark',
+          size: 'md'
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What our community says about Evora"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Partnered with 100+ doctors, biochemists, and OB-GYNs reviewing our bioactive formulations and clinical companion algorithms."
+    },
+    {
+      "type": "text",
+      "id": "rating_headline",
+      "label": "Rating Laurel Headline",
+      "default": "Over 14,000 5-star ratings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_qr_banner",
+      "label": "Show Download Banner",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Review Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Headline",
+          "default": "The only ritual that made my PMS fatigue disappear"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Review Text",
+          "default": "<p>Over the years I have tried ten different supplement powders and tracking apps, but Evora is in a league of its own. Steady energy and zero cycle bloat.</p>"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Hazel M."
+        },
+        {
+          "type": "text",
+          "id": "author_subtitle",
+          "label": "Author Detail",
+          "default": "Verified Subscriber • 6 Months"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "title": "The only ritual that made my PMS fatigue disappear",
+            "text": "<p>Over the years I have tried ten different supplement powders and tracking apps, but Evora is in a league of its own. Steady energy and zero cycle bloat.</p>",
+            "author": "Hazel M.",
+            "author_subtitle": "Verified Subscriber • 6 Months"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "title": "Clear skin, calm digestion, and no more luteal crashes",
+            "text": "<p>I started pairing the powder with the phase predictions in the app. I finally know why my energy dipped on day 21 and how to prevent it.</p>",
+            "author": "Dr. Clara W.",
+            "author_subtitle": "Verified Customer • 8 Months"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "title": "It replaced 5 bottles on my bathroom counter",
+            "text": "<p>No more guessing games. Clean ingredients, subtle berry taste, and real measurable hormonal harmony.</p>",
+            "author": "Elena K.",
+            "author_subtitle": "Verified Customer • 4 Months"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

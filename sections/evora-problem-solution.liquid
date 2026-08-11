@@ -1,0 +1,211 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraProblemSolution-{{ section.id }}"
+  class="evora-problem-solution evora-section-padding evora-bg-cream"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-section-header">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="evora-section-header__badge">
+          {{ section.settings.badge_text }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="evora-section-header__title">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <div class="evora-section-header__subtitle">
+          {{ section.settings.subheading }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="evora-comparison-grid">
+      <!-- The Old Way Card -->
+      <div class="evora-card evora-card--soft" style="background: #F6F1EF; border-color: #E8DFDC;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+          <div style="width: 3.6rem; height: 3.6rem; border-radius: 50%; background: #EADBD7; color: #8F6964; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </div>
+          <h3 style="font-size: 2rem; font-weight: 700; color: var(--evora-text); margin: 0;">
+            {{ section.settings.problem_title | default: 'Traditional Supplements' }}
+          </h3>
+        </div>
+
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.6rem;">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'problem_item' -%}
+              <li style="display: flex; align-items: flex-start; gap: 1.2rem; font-size: 1.55rem; color: var(--evora-text-secondary); line-height: 1.5;" {{ block.shopify_attributes }}>
+                <span style="color: #BA7069; font-weight: 700; flex-shrink: 0; margin-top: 0.2rem;">✕</span>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <!-- The Evora Way Card (Highlighted) -->
+      <div class="evora-card" style="background: #FFFFFF; border: 2px solid var(--evora-primary); box-shadow: var(--evora-shadow-card); position: relative;">
+        <div style="position: absolute; top: -14px; right: 24px;">
+          <span class="evora-badge evora-badge--primary" style="box-shadow: 0 4px 12px var(--evora-primary-glow);">
+            The Evora Difference
+          </span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+          <div style="width: 3.6rem; height: 3.6rem; border-radius: 50%; background: var(--evora-primary-light); color: var(--evora-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-size: 2rem; font-weight: 700; color: var(--evora-text); margin: 0;">
+            {{ section.settings.solution_title | default: 'The Evora Ritual' }}
+          </h3>
+        </div>
+
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.6rem;">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'solution_item' -%}
+              <li style="display: flex; align-items: flex-start; gap: 1.2rem; font-size: 1.55rem; color: var(--evora-text); line-height: 1.5; font-weight: 500;" {{ block.shopify_attributes }}>
+                <span style="color: var(--evora-primary); font-weight: 800; flex-shrink: 0; margin-top: 0.2rem;">✓</span>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Problem vs Solution",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Why Evora Works"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stop guessing what your body needs"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Generic multivitamins ignore hormonal fluctuation. Evora combines targeted daily nutrition with phase-aware companion data.</p>"
+    },
+    {
+      "type": "text",
+      "id": "problem_title",
+      "label": "Problem Title",
+      "default": "The Traditional Routine"
+    },
+    {
+      "type": "text",
+      "id": "solution_title",
+      "label": "Solution Title",
+      "default": "The Evora Method"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "problem_item",
+      "name": "Old Way Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Problem Description",
+          "default": "Handfuls of generic pills with poor bio-availability"
+        }
+      ]
+    },
+    {
+      "type": "solution_item",
+      "name": "Evora Way Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Solution Description",
+          "default": "All-in-one delicious daily powder with 100% bio-available adaptogens & vitamins"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Problem vs Solution",
+      "blocks": [
+        {
+          "type": "problem_item",
+          "settings": {
+            "text": "Handfuls of separate pills with low absorption"
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "text": "Blind supplementation without knowing cycle phase needs"
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "text": "Hidden synthetic fillers, binders, and sugar spikes"
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "text": "Temporary fixes that ignore root hormonal causes"
+          }
+        },
+        {
+          "type": "solution_item",
+          "settings": {
+            "text": "One refreshing daily scoop with clinically dosed active botanicals"
+          }
+        },
+        {
+          "type": "solution_item",
+          "settings": {
+            "text": "Personalized body data & cycle phase tracking in the Evora app"
+          }
+        },
+        {
+          "type": "solution_item",
+          "settings": {
+            "text": "100% clean, vegan, sugar-free, naturally flavored with botanical berries"
+          }
+        },
+        {
+          "type": "solution_item",
+          "settings": {
+            "text": "Holistic support for mood, deep sleep, clear skin, and all-day vitality"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,345 @@
+{
+  "sections": {
+    "evora_hero": {
+      "type": "evora-hero",
+      "settings": {
+        "top_badge_text": "OB-GYN Formulated & Clinically Backed",
+        "heading": "We're Evora, the modern daily wellness & body intelligence ritual",
+        "subheading": "<p>Over 14,000 women use the Evora daily powder and companion app to harmonize cycle phases, optimize natural energy, and unlock complete biological clarity.</p>",
+        "primary_button_label": "Shop Evora Powder",
+        "primary_button_link": "/collections/all",
+        "secondary_button_label": "Explore Evora+ App",
+        "secondary_button_link": "/collections/all",
+        "show_app_badges": true,
+        "app_store_link": "https://apple.com",
+        "play_store_link": "https://google.com"
+      }
+    },
+    "evora_interactive_app": {
+      "type": "evora-interactive-app-showcase",
+      "blocks": {
+        "tab_1": {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Track your cycle and symptoms",
+            "description": "<p>Log your daily powder intake, mood, and symptoms in under 30 seconds to uncover biological patterns.</p>",
+            "screen_tag": "CYCLE & SYMPTOM LOGGING",
+            "screen_headline": "Real-Time Phase Sync",
+            "screen_metric_label": "Hormonal State",
+            "screen_metric_value": "Follicular Phase: Day 9 of 28"
+          }
+        },
+        "tab_2": {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Understand your body & fertility better",
+            "description": "<p>Get clear predictive insights into ovulation windows, hormonal peaks, and physical energy rhythms.</p>",
+            "screen_tag": "FERTILITY & OVULATION",
+            "screen_headline": "Fertility Window Forecast",
+            "screen_metric_label": "Ovulation Prediction",
+            "screen_metric_value": "Optimal window begins in 4 days"
+          }
+        },
+        "tab_3": {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Harmonize with the Evora Daily Powder Ritual",
+            "description": "<p>Receive tailored micronutrient protocols matched to what your body is metabolizing during each phase.</p>",
+            "screen_tag": "DAILY NUTRITION PROTOCOL",
+            "screen_headline": "Bioactive Powder Routine",
+            "screen_metric_label": "Recommended Blend",
+            "screen_metric_value": "1 Scoop Evora Berry with 8oz Chilled Water"
+          }
+        },
+        "tab_4": {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Share biological insights with your partner",
+            "description": "<p>Keep your partner in sync with your monthly energy variances, mood transitions, and rest requirements.</p>",
+            "screen_tag": "PARTNER SYNC",
+            "screen_headline": "Seamless Communication",
+            "screen_metric_label": "Shared Phase Status",
+            "screen_metric_value": "Luteal phase rest protocol enabled"
+          }
+        },
+        "tab_5": {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Feel supported through PMS & Perimenopause",
+            "description": "<p>Targeted adaptogens ease hot flashes, mood fluctuations, brain fog, and monthly cycle discomfort.</p>",
+            "screen_tag": "PMS & PERIMENOPAUSE",
+            "screen_headline": "Complete Hormonal Comfort",
+            "screen_metric_label": "Symptom Reduction",
+            "screen_metric_value": "88% decrease in monthly bloating & fatigue"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4",
+        "tab_5"
+      ],
+      "settings": {
+        "badge_text": "Interactive Companion",
+        "heading": "What can you do with the Evora app?"
+      }
+    },
+    "evora_why_choose": {
+      "type": "evora-why-choose",
+      "blocks": {
+        "pillar_1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "clock",
+            "title": "Predictions you can plan around",
+            "link_label": "Why we're more than a powder",
+            "link_url": "/collections/all"
+          }
+        },
+        "pillar_2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "lock",
+            "title": "Personal data that stays private to you",
+            "link_label": "Everything data answered",
+            "link_url": "/collections/all"
+          }
+        },
+        "pillar_3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "shield",
+            "title": "Partnered by doctors, trusted by millions",
+            "link_label": "Meet our medical board",
+            "link_url": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "pillar_1",
+        "pillar_2",
+        "pillar_3"
+      ],
+      "settings": {
+        "heading": "Why choose Evora?"
+      }
+    },
+    "evora_video_banner": {
+      "type": "evora-video-banner",
+      "settings": {
+        "tag": "THE EVORA STORY",
+        "heading": "Bridging clinical nutrition with daily body intelligence"
+      }
+    },
+    "evora_testimonials": {
+      "type": "evora-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "title": "The only ritual that made my PMS fatigue disappear",
+            "text": "<p>Over the years I have tried ten different supplement powders and tracking apps, but Evora is in a league of its own. Steady energy and zero cycle bloat.</p>",
+            "author": "Hazel M.",
+            "author_subtitle": "Verified Subscriber • 6 Months"
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Clear skin, calm digestion, and no more luteal crashes",
+            "text": "<p>I started pairing the powder with the phase predictions in the app. I finally know why my energy dipped on day 21 and how to prevent it.</p>",
+            "author": "Dr. Clara W.",
+            "author_subtitle": "Verified Customer • 8 Months"
+          }
+        },
+        "test_3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "It replaced 5 bottles on my bathroom counter",
+            "text": "<p>No more guessing games. Clean ingredients, subtle berry taste, and real measurable hormonal harmony.</p>",
+            "author": "Elena K.",
+            "author_subtitle": "Verified Customer • 4 Months"
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3"
+      ],
+      "settings": {
+        "heading": "What our community says about Evora",
+        "subheading": "Partnered with 100+ doctors, biochemists, and OB-GYNs reviewing our bioactive formulations and clinical companion algorithms.",
+        "rating_headline": "Over 14,000 5-star ratings",
+        "show_qr_banner": true
+      }
+    },
+    "evora_mission_banner": {
+      "type": "evora-mission-banner",
+      "settings": {
+        "heading": "Access for all, not just the privileged",
+        "text": "<p>Through the Evora Women’s Health Initiative, we partner with health clinics to ensure medically vetted cycle intelligence and clean nutrition reach underserved communities worldwide.</p>",
+        "link_label": "Learn more about the Evora Health Project",
+        "link_url": "/collections/all"
+      }
+    },
+    "evora_expert_articles": {
+      "type": "evora-expert-articles",
+      "blocks": {
+        "art_1": {
+          "type": "article_card",
+          "settings": {
+            "category": "HORMONAL HEALTH",
+            "title": "Luteal phase fatigue: What is it, and what adaptogens smooth it out?",
+            "author": "Dr. Sarah Lin, MD • 4 min read",
+            "link": "/collections/all"
+          }
+        },
+        "art_2": {
+          "type": "article_card",
+          "settings": {
+            "category": "CLINICAL NUTRITION",
+            "title": "Why bioavailable magnesium and prebiotics transform PMS bloating",
+            "author": "Dr. Clara Wu, OB-GYN • 5 min read",
+            "link": "/collections/all"
+          }
+        },
+        "art_3": {
+          "type": "article_card",
+          "settings": {
+            "category": "FERTILITY & CYCLES",
+            "title": "Spotting ovulation windows vs. irregular cycles: The complete guide",
+            "author": "Medical Review Board • 6 min read",
+            "link": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "art_1",
+        "art_2",
+        "art_3"
+      ],
+      "settings": {
+        "heading": "Questions about your body, answered by experts",
+        "footer_link_label": "See our clinically verified health library",
+        "footer_link_url": "/collections/all"
+      }
+    },
+    "evora_product_showcase": {
+      "type": "evora-product-showcase",
+      "settings": {
+        "badge_text": "Core Daily Ritual",
+        "heading": "Evora Daily Wellness Powder",
+        "price_display": "$54.00",
+        "compare_price_display": "$68.00",
+        "description": "<p>A physician-formulated daily botanical powder combining clean adaptogens, bio-available magnesium, and antioxidant berries to harmonize your hormonal cycles.</p>",
+        "button_label": "Shop Evora Powder",
+        "button_link": "/collections/all"
+      }
+    },
+    "evora_subscription": {
+      "type": "evora-subscription",
+      "blocks": {
+        "sub_1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Daily hormonal phase & energy forecasts"
+          }
+        },
+        "sub_2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Symptom & mood trend analysis"
+          }
+        },
+        "sub_3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Custom nutrition protocols matched to your cycle"
+          }
+        },
+        "sub_4": {
+          "type": "benefit",
+          "settings": {
+            "text": "Exclusive subscriber member discounts on Evora refills"
+          }
+        }
+      },
+      "block_order": [
+        "sub_1",
+        "sub_2",
+        "sub_3",
+        "sub_4"
+      ],
+      "settings": {
+        "badge_text": "Evora+ Annual Membership",
+        "heading": "Your 24/7 Digital Wellness Companion",
+        "subheading": "Daily body intelligence, predictive hormonal guidance, and personalized nutrition routines in your pocket.",
+        "price_text": "$40",
+        "billing_frequency": "/year",
+        "trial_text": "Includes 7-day free trial • Cancel anytime",
+        "cta_label": "Start 7-Day Free Trial",
+        "cta_link": "/collections/all"
+      }
+    },
+    "evora_faq": {
+      "type": "evora-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How and when should I take Evora Daily Powder?",
+            "answer": "<p>Mix one scoop with 8-10 oz of cold water, sparkling water, or your morning smoothie. We recommend drinking it with breakfast to prime your metabolism and hormone response for the day.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does Evora connect with the companion mobile app?",
+            "answer": "<p>Upon ordering, you receive immediate access to Evora+ with a 7-day free trial. The app allows you to log daily symptoms in seconds, forecasts your hormonal phases, and provides nutritionist protocols tailored to your biological rhythms.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Evora safe to take with other vitamins or birth control?",
+            "answer": "<p>Evora is formulated with clean, food-derived adaptogens and gentle micronutrients. It is non-GMO, vegan, gluten-free, and contains no synthetic hormones.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ],
+      "settings": {
+        "badge_text": "Frequently Asked Questions",
+        "heading": "Everything you need to know",
+        "subheading": "<p>Have questions regarding ingredients, cycle timing, or subscription management? We have answers.</p>",
+        "open_first": true
+      }
+    },
+    "evora_disclosures": {
+      "type": "evora-disclosures",
+      "settings": {
+        "title": "References & Clinical Study Sources",
+        "content": "<ol><li>Clinical study on ashwagandha extract and serum cortisol regulation in reproductive-age females (Journal of Clinical Endocrinology, 2023).</li><li>Prebiotic fiber and gut microbiome diversity in hormone metabolization (American Journal of Clinical Nutrition, 2022).</li><li>Magnesium bisglycinate bioavailability and sleep architecture during the luteal phase (Sleep Medicine Reviews, 2024).</li></ol>"
+      }
+    }
+  },
+  "order": [
+    "evora_hero",
+    "evora_interactive_app",
+    "evora_why_choose",
+    "evora_video_banner",
+    "evora_testimonials",
+    "evora_mission_banner",
+    "evora_expert_articles",
+    "evora_product_showcase",
+    "evora_subscription",
+    "evora_faq",
+    "evora_disclosures"
+  ]
+}

@@ -1,0 +1,196 @@
+/* ==========================================================================
+   EVORA DESIGN SYSTEM: BASE & TOKENS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+  /* Brand Color Tokens */
+  --evora-primary: #D9777F;
+  --evora-primary-hover: #C5656D;
+  --evora-primary-light: #FBECEE;
+  --evora-primary-glow: rgba(217, 119, 127, 0.22);
+  
+  --evora-secondary: #E88D72;
+  --evora-secondary-hover: #D4795E;
+  --evora-secondary-light: #FDF3F0;
+  
+  --evora-accent: #8E7DBE;
+  --evora-accent-light: #F4F1FA;
+  
+  --evora-background: #FDFBFA;
+  --evora-surface: #FFFFFF;
+  --evora-surface-soft: #F9F4F2;
+  --evora-surface-alt: #F3EBE7;
+  
+  --evora-text: #222026;
+  --evora-text-secondary: #585563;
+  --evora-muted: #7E7B8A;
+  --evora-border: #EFE6E3;
+  --evora-border-light: rgba(239, 230, 227, 0.7);
+  
+  --evora-success: #3E885B;
+  --evora-success-light: #EBF7EE;
+  
+  /* Sizing & Radii Tokens */
+  --evora-radius-sm: 8px;
+  --evora-radius-md: 16px;
+  --evora-radius-lg: 24px;
+  --evora-radius-xl: 32px;
+  --evora-radius-pill: 9999px;
+  --evora-radius: var(--evora-radius-lg);
+  
+  /* Elevation & Shadows */
+  --evora-shadow-subtle: 0 2px 10px rgba(34, 32, 38, 0.03);
+  --evora-shadow-soft: 0 10px 30px rgba(34, 32, 38, 0.05);
+  --evora-shadow-card: 0 14px 36px rgba(217, 119, 127, 0.08), 0 4px 12px rgba(34, 32, 38, 0.03);
+  --evora-shadow-floating: 0 20px 48px rgba(34, 32, 38, 0.1);
+  --evora-glow: 0 0 24px var(--evora-primary-glow);
+  
+  /* Layout & Spacing */
+  --evora-container: 1240px;
+  --evora-container-narrow: 980px;
+  --evora-section-spacing: 96px;
+  --evora-section-spacing-mobile: 56px;
+  
+  /* Typography Variables */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --font-size-h1: clamp(2.4rem, 4.5vw, 4.2rem);
+  --font-size-h2: clamp(2rem, 3.2vw, 3.2rem);
+  --font-size-h3: clamp(1.6rem, 2.2vw, 2.4rem);
+  --font-size-body: 1.6rem;
+  --font-size-small: 1.3rem;
+  
+  --line-height-heading: 1.15;
+  --line-height-body: 1.6;
+  
+  /* Transitions */
+  --evora-transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --evora-transition-slow: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Global Typography & Font Overrides for Dawn Harmony */
+body, 
+.font-body-family,
+p, 
+span, 
+input, 
+button, 
+select, 
+textarea {
+  font-family: var(--font-body) !important;
+  color: var(--evora-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5,
+.font-heading-family {
+  font-family: var(--font-heading) !important;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--evora-text);
+  line-height: var(--line-height-heading);
+}
+
+/* Evora Container Utility */
+.evora-container {
+  max-width: var(--evora-container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+}
+
+.evora-container--narrow {
+  max-width: var(--evora-container-narrow);
+}
+
+.evora-section-padding {
+  padding-top: var(--evora-section-spacing-mobile);
+  padding-bottom: var(--evora-section-spacing-mobile);
+}
+
+@media screen and (min-width: 750px) {
+  .evora-section-padding {
+    padding-top: var(--evora-section-spacing);
+    padding-bottom: var(--evora-section-spacing);
+  }
+}
+
+/* Section Header Shared Pattern */
+.evora-section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.evora-section-header--left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.evora-section-header__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.4rem;
+  border-radius: var(--evora-radius-pill);
+  background: var(--evora-primary-light);
+  color: var(--evora-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+}
+
+.evora-section-header__title {
+  font-size: var(--font-size-h2);
+  margin-bottom: 1.2rem;
+  color: var(--evora-text);
+}
+
+.evora-section-header__subtitle {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--evora-text-secondary);
+  margin: 0;
+}
+
+/* Background Variations */
+.evora-bg-surface {
+  background-color: var(--evora-surface);
+}
+
+.evora-bg-soft {
+  background-color: var(--evora-surface-soft);
+}
+
+.evora-bg-cream {
+  background-color: var(--evora-background);
+}
+
+.evora-bg-gradient {
+  background: linear-gradient(180deg, #FDFBFA 0%, #FAF2EF 100%);
+}
+
+.evora-bg-primary-tint {
+  background: linear-gradient(135deg, #FDF7F8 0%, #FAF0EE 100%);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

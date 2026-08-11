@@ -1,0 +1,167 @@
+/* ==========================================================================
+   EVORA DESIGN SYSTEM: RESPONSIVE & MOBILE-FIRST LAYOUTS
+   ========================================================================== */
+
+/* Mobile Touch & Spacing Enhancements (<= 749px) */
+@media screen and (max-width: 749px) {
+  :root {
+    --evora-radius: 20px;
+  }
+  
+  .evora-container {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+  
+  .evora-card {
+    padding: 2rem 1.6rem;
+  }
+  
+  .evora-btn {
+    width: 100%;
+    min-height: 4.8rem;
+    font-size: 1.5rem;
+  }
+  
+  .evora-section-header {
+    margin-bottom: 2.8rem;
+  }
+
+  /* Intentional Mobile Hero Stack */
+  .evora-hero__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    text-align: center;
+  }
+  
+  .evora-hero__badge-wrapper {
+    justify-content: center;
+  }
+  
+  .evora-hero__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.2rem;
+  }
+
+  .evora-hero__trust {
+    justify-content: center;
+  }
+  
+  .evora-hero__media {
+    order: 2;
+    margin-top: 1rem;
+  }
+
+  /* Problem vs Solution Mobile Accordion/Swipe */
+  .evora-comparison-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Benefits Mobile Scroll/Grid */
+  .evora-benefits-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.6rem !important;
+  }
+
+  /* How It Works Mobile Steps */
+  .evora-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.4rem !important;
+  }
+
+  /* App Experience Mobile */
+  .evora-app-layout {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  
+  .evora-app-layout__features {
+    text-align: left;
+  }
+  
+  .evora-app-layout__visual {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+
+  /* Subscription Container Mobile */
+  .evora-subscription-card {
+    padding: 2.4rem 1.8rem !important;
+  }
+  
+  /* Testimonial Cards Mobile */
+  .evora-testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.6rem !important;
+  }
+}
+
+/* Tablet Layout (750px to 989px) */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .evora-comparison-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  .evora-benefits-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .evora-testimonials-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Desktop & Large Screen (>= 990px) */
+@media screen and (min-width: 990px) {
+  .evora-hero__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 6rem;
+  }
+  
+  .evora-hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  
+  .evora-hero__btn {
+    width: auto;
+  }
+
+  .evora-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.2rem;
+  }
+
+  .evora-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4rem;
+  }
+
+  .evora-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+    position: relative;
+  }
+
+  .evora-app-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 6rem;
+  }
+
+  .evora-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.8rem;
+  }
+}

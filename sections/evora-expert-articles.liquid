@@ -1,0 +1,148 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraExpertArticles-{{ section.id }}"
+  class="evora-expert-articles evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-section-header">
+      <h2 class="evora-section-header__title" style="font-size: clamp(2.4rem, 3.8vw, 3.8rem); font-weight: 800;">
+        {{ section.settings.heading | default: 'Questions about your body, answered by experts' }}
+      </h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.8rem; margin-bottom: 3.5rem;">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link | default: '#' }}"
+          class="evora-card evora-card--hover-lift"
+          style="display: flex; flex-direction: column; text-decoration: none; border-radius: 20px; overflow: hidden; padding: 0; background: #FFFFFF; border: 1px solid var(--evora-border);"
+          {{ block.shopify_attributes }}
+        >
+          <!-- Stylized Article Thumbnail Top -->
+          <div style="height: 180px; background: {% cycle 'linear-gradient(135deg, #2E6B5D 0%, #1A463C 100%)', 'linear-gradient(135deg, #D4E3FB 0%, #B8D3FA 100%)', 'linear-gradient(135deg, #1C403B 0%, #102623 100%)' %}; display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+              <span style="font-size: 2.4rem;">{% cycle '🌿', '🩺', '🩸' %}</span>
+            </div>
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.4); color: #FFFFFF; font-size: 1.1rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 6px;">
+              {{ block.settings.category | default: 'WOMEN\'S HEALTH' }}
+            </span>
+          </div>
+
+          <div style="padding: 2.2rem;">
+            <h3 style="font-size: 1.75rem; font-weight: 800; color: var(--evora-text); line-height: 1.35; margin: 0 0 1rem 0;">
+              {{ block.settings.title }}
+            </h3>
+            <span style="font-size: 1.25rem; color: var(--evora-muted); font-weight: 600;">
+              {{ block.settings.author | default: 'Medical Review Team' }}
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footer_link_label != blank -%}
+      <div style="text-align: center;">
+        <a
+          href="{{ section.settings.footer_link_url | default: '#' }}"
+          style="display: inline-flex; align-items: center; gap: 0.6rem; color: #1E6B8B; font-size: 1.55rem; font-weight: 700; text-decoration: none;"
+        >
+          <span>{{ section.settings.footer_link_label }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Expert Articles",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Questions about your body, answered by experts"
+    },
+    {
+      "type": "text",
+      "id": "footer_link_label",
+      "label": "Bottom Link Text",
+      "default": "See our clinically verified health library"
+    },
+    {
+      "type": "url",
+      "id": "footer_link_url",
+      "label": "Bottom Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article_card",
+      "name": "Health Article",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category Tag",
+          "default": "CYCLE INTELLIGENCE"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article Title",
+          "default": "Luteal phase fatigue: What is it, and what to eat to smooth it out?"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author / Reviewer",
+          "default": "Dr. Sarah Lin, MD • 4 min read"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Article URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Expert Articles",
+      "blocks": [
+        {
+          "type": "article_card",
+          "settings": {
+            "category": "HORMONAL HEALTH",
+            "title": "Luteal phase fatigue: What is it, and what adaptogens smooth it out?",
+            "author": "Dr. Sarah Lin, MD • 4 min read"
+          }
+        },
+        {
+          "type": "article_card",
+          "settings": {
+            "category": "CLINICAL NUTRITION",
+            "title": "Why bioavailable magnesium and prebiotics transform PMS bloating",
+            "author": "Dr. Clara Wu, OB-GYN • 5 min read"
+          }
+        },
+        {
+          "type": "article_card",
+          "settings": {
+            "category": "FERTILITY & CYCLES",
+            "title": "Spotting ovulation windows vs. irregular cycles: The complete guide",
+            "author": "Medical Review Board • 6 min read"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

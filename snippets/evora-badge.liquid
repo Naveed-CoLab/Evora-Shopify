@@ -1,0 +1,26 @@
+{% comment %}
+  Renders an Evora design system badge/pill.
+  Accepts:
+  - text: {String} Badge text (required)
+  - style: {String} 'primary' | 'secondary' | 'accent' | 'success' | 'outline' (default: 'primary')
+  - icon: {String} Optional icon name or custom HTML
+  - class: {String} Additional classes
+  - show_dot: {Boolean} Show pulsating status dot
+
+  Usage:
+  {% render 'evora-badge', text: 'Clinical Grade', style: 'primary', show_dot: true %}
+{% endcomment %}
+
+{%- liquid
+  assign badge_style = style | default: 'primary'
+-%}
+
+<span class="evora-badge evora-badge--{{ badge_style }}{% if class != blank %} {{ class }}{% endif %}">
+  {%- if show_dot -%}
+    <span class="evora-badge__dot" aria-hidden="true"></span>
+  {%- endif -%}
+  {%- if icon != blank -%}
+    <span class="evora-badge__icon" aria-hidden="true">{{ icon }}</span>
+  {%- endif -%}
+  <span class="evora-badge__text">{{ text }}</span>
+</span>

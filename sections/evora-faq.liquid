@@ -1,0 +1,137 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraFAQ-{{ section.id }}"
+  class="evora-faq evora-section-padding evora-bg-cream"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container evora-container--narrow">
+    <div class="evora-section-header">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="evora-section-header__badge">
+          {{ section.settings.badge_text }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="evora-section-header__title">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <div class="evora-section-header__subtitle">
+          {{ section.settings.subheading }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="evora-accordion" data-single-open="true">
+      {%- for block in section.blocks -%}
+        <details
+          class="evora-accordion__item"
+          {% if forloop.first and section.settings.open_first %}open{% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary class="evora-accordion__summary">
+            <span>{{ block.settings.question }}</span>
+            <span class="evora-accordion__icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="evora-accordion__content">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything you need to know"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Have questions regarding ingredients, cycle timing, or subscription management? We have answers.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Keep first question open by default",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question & Answer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How and when should I take Evora Daily Powder?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Mix one scoop with 8-10 oz of cold water, sparkling water, or your morning smoothie. We recommend drinking it with breakfast to prime your metabolism and hormone response for the day.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How soon will I notice the benefits?",
+            "answer": "<p>Most women experience enhanced morning energy, improved digestive comfort, and calmer focus within the first 7 to 10 days. Meaningful reductions in PMS symptoms and cycle regularity typically blossom over 30 to 60 days of continuous daily use.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does Evora connect with the companion mobile app?",
+            "answer": "<p>Upon ordering, you receive immediate access to Evora+ with a 7-day free trial. The app allows you to log daily symptoms in seconds, forecasts your hormonal phases, and provides nutritionist protocols tailored to your biological rhythms.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Evora safe to take with other vitamins or birth control?",
+            "answer": "<p>Evora is formulated with clean, food-derived adaptogens and gentle micronutrients. It is non-GMO, vegan, gluten-free, and contains no synthetic hormones. As with any wellness routine, consult your physician if you have specific clinical conditions or prescriptions.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I pause or cancel my subscription at any time?",
+            "answer": "<p>Yes! You have complete control inside your customer portal. You can adjust delivery frequencies, skip months, or cancel anytime with zero hidden fees or commitments.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

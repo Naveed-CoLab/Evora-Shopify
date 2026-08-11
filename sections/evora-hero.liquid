@@ -1,0 +1,215 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraHero-{{ section.id }}"
+  class="evora-hero evora-section-padding"
+  style="background: linear-gradient(180deg, #FDF9F8 0%, #FFFFFF 100%); padding-top: 4rem; padding-bottom: 5rem;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-hero__grid" style="align-items: center; gap: 4rem;">
+      <!-- Content Column Left -->
+      <div class="evora-hero__content" style="text-align: left;">
+        <!-- Star Rating / Top Social Proof -->
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.6rem;">
+          <div class="evora-stars" style="color: #E88D72;" aria-label="5 stars">
+            <svg viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <span style="font-size: 1.3rem; font-weight: 700; color: var(--evora-primary);">
+            {{ section.settings.top_badge_text | default: 'OB-GYN Recommended & Verified' }}
+          </span>
+        </div>
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="evora-hero__title" style="font-size: clamp(2.8rem, 4.5vw, 4.6rem); line-height: 1.08; font-weight: 800; color: var(--evora-text); margin-bottom: 2rem; letter-spacing: -0.03em;">
+            {{ section.settings.heading }}
+          </h1>
+        {%- endif -%}
+
+        {%- if section.settings.subheading != blank -%}
+          <div class="evora-hero__subheading" style="font-size: 1.75rem; line-height: 1.55; color: var(--evora-text-secondary); margin-bottom: 2.8rem; max-width: 520px;">
+            {{ section.settings.subheading }}
+          </div>
+        {%- endif -%}
+
+        <!-- Action CTAs + App Store Buttons -->
+        <div style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2.4rem;">
+          <div class="evora-hero__actions" style="display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap;">
+            {%- if section.settings.primary_button_label != blank -%}
+              {% render 'evora-button',
+                label: section.settings.primary_button_label,
+                link: section.settings.primary_button_link,
+                style: 'primary',
+                size: 'lg'
+              %}
+            {%- endif -%}
+
+            {%- if section.settings.secondary_button_label != blank -%}
+              {% render 'evora-button',
+                label: section.settings.secondary_button_label,
+                link: section.settings.secondary_button_link,
+                style: 'secondary',
+                size: 'lg'
+              %}
+            {%- endif -%}
+          </div>
+
+          <!-- App Store Download Badges -->
+          {%- if section.settings.show_app_badges -%}
+            <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
+              <a href="{{ section.settings.app_store_link | default: '#' }}" style="display: inline-flex; align-items: center; gap: 0.8rem; background: #000000; color: #FFFFFF; padding: 0.7rem 1.6rem; border-radius: 12px; text-decoration: none; font-size: 1.2rem; font-weight: 600;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.78 1.06-1.87.94-2.97-1 .04-2.17.67-2.84 1.45-.58.67-1.1 1.77-.96 2.84 1.11.09 2.23-.55 2.86-1.32z"/></svg>
+                <span>Download on the<br><strong style="font-size: 1.35rem; line-height: 1;">App Store</strong></span>
+              </a>
+
+              <a href="{{ section.settings.play_store_link | default: '#' }}" style="display: inline-flex; align-items: center; gap: 0.8rem; background: #000000; color: #FFFFFF; padding: 0.7rem 1.6rem; border-radius: 12px; text-decoration: none; font-size: 1.2rem; font-weight: 600;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a2.072 2.072 0 0 1-.61-.957V2.771c.142-.363.357-.69.609-.957zm11.235 11.238l2.585 2.585-11.83 6.83 9.245-9.415zm0-2.104L5.6 1.533l11.829 6.83-2.585 2.585zm1.533 1.052l3.415 1.972a1.364 1.364 0 0 1 0 2.368l-3.415 1.972-2.115-2.156 2.115-2.156z"/></svg>
+                <span>GET IT ON<br><strong style="font-size: 1.35rem; line-height: 1;">Google Play</strong></span>
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Visual Graphic Column Right (Flo-Style Wellness Tech Composition) -->
+      <div class="evora-hero__media" style="position: relative;">
+        <!-- Circular Soft Background Glow -->
+        <div style="position: absolute; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(247, 183, 192, 0.4) 0%, rgba(253, 243, 240, 0.1) 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0;"></div>
+
+        <div style="position: relative; z-index: 1; display: flex; justify-content: center;">
+          <!-- Smartphone UI Frame -->
+          <div
+            style="width: 310px; background: #FFFFFF; border-radius: 40px; border: 8px solid #222026; box-shadow: 0 24px 50px rgba(217, 119, 127, 0.2), 0 10px 20px rgba(34, 32, 38, 0.08); padding: 2.2rem 1.8rem; position: relative;"
+          >
+            <!-- Speaker Notch -->
+            <div style="width: 80px; height: 16px; background: #222026; border-radius: 0 0 12px 12px; margin: -2.2rem auto 1.6rem auto;"></div>
+
+            <!-- Flo-Style Phase Dial Header -->
+            <div style="text-align: center; margin-bottom: 1.6rem;">
+              <span style="font-size: 1.15rem; color: var(--evora-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Cycle Phase Intelligence</span>
+              
+              <!-- Circular Phase Ring -->
+              <div style="width: 140px; height: 140px; border-radius: 50%; border: 6px solid #FDF0F2; border-top-color: var(--evora-primary); border-right-color: var(--evora-primary); margin: 1.2rem auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, #FFF8F9 0%, #FFFFFF 100%);">
+                <span style="font-size: 1.2rem; color: var(--evora-muted); font-weight: 600;">Phase 2</span>
+                <strong style="font-size: 2.4rem; font-weight: 800; color: var(--evora-text); line-height: 1;">Day 9</strong>
+                <span style="font-size: 1.2rem; color: var(--evora-primary); font-weight: 700;">Follicular</span>
+              </div>
+            </div>
+
+            <!-- Daily Nutrition Log Card -->
+            <div style="background: #FDF4F2; border-radius: 18px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; border: 1px solid #F4E2DE; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <span style="font-size: 1.1rem; color: var(--evora-secondary); font-weight: 800; text-transform: uppercase;">DAILY PROTOCOL</span>
+                <p style="font-size: 1.35rem; font-weight: 700; margin: 0.2rem 0 0 0; color: var(--evora-text);">1 Scoop Evora Berry Ritual</p>
+              </div>
+              <span style="width: 26px; height: 26px; border-radius: 50%; background: var(--evora-primary); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800;">✓</span>
+            </div>
+
+            <!-- Energy & Hormone Level Card -->
+            <div style="background: #FFFFFF; border-radius: 18px; padding: 1.2rem 1.4rem; border: 1px solid var(--evora-border); box-shadow: var(--evora-shadow-subtle);">
+              <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem;">
+                <span style="color: var(--evora-text);">Estrogen & Metabolic Drive</span>
+                <span style="color: var(--evora-primary);">Peak (+22%)</span>
+              </div>
+              <div style="height: 6px; background: #F0E6E4; border-radius: 4px; overflow: hidden;">
+                <div style="width: 78%; height: 100%; background: linear-gradient(90deg, #E88D72, #D9777F); border-radius: 4px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Notification Badge Left -->
+          <div style="position: absolute; top: 18%; left: -25px; background: #FFFFFF; border-radius: 18px; padding: 1rem 1.4rem; box-shadow: var(--evora-shadow-card); border: 1px solid var(--evora-border); display: flex; align-items: center; gap: 0.8rem; z-index: 2;">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--evora-success);"></span>
+            <span style="font-size: 1.25rem; font-weight: 700; color: var(--evora-text);">Ovulation in 4 Days</span>
+          </div>
+
+          <!-- Floating Powder Scoop Badge Right -->
+          <div style="position: absolute; bottom: 12%; right: -25px; background: #FFFFFF; border-radius: 18px; padding: 1rem 1.4rem; box-shadow: var(--evora-shadow-card); border: 1px solid var(--evora-border); display: flex; align-items: center; gap: 0.8rem; z-index: 2;">
+            <span style="font-size: 1.6rem;">✨</span>
+            <div>
+              <strong style="font-size: 1.25rem; color: var(--evora-text); display: block;">Bio-Active Micronutrients</strong>
+              <span style="font-size: 1.1rem; color: var(--evora-muted);">100% Cellular Absorption</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "top_badge_text",
+      "label": "Top Star Rating / Credential",
+      "default": "OB-GYN Formulated & Clinically Backed"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hero Headline",
+      "default": "We're Evora, the modern daily wellness & body intelligence ritual"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Hero Subheading",
+      "default": "<p>Over 14,000 women use the Evora daily powder and companion app to harmonize cycle phases, optimize natural energy, and unlock complete biological clarity.</p>"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary Button Label",
+      "default": "Shop Evora Powder"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary Button Label",
+      "default": "Explore Evora+ App"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_app_badges",
+      "label": "Show App Store Badges",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "app_store_link",
+      "label": "App Store Link"
+    },
+    {
+      "type": "url",
+      "id": "play_store_link",
+      "label": "Google Play Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Hero"
+    }
+  ]
+}
+{% endschema %}

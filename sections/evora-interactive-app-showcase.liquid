@@ -1,0 +1,246 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+{{ 'evora-responsive.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraInteractiveApp-{{ section.id }}"
+  class="evora-interactive-app evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+  data-evora-tabs
+>
+  <div class="evora-container">
+    <div class="evora-section-header">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="evora-section-header__badge">
+          {{ section.settings.badge_text }}
+        </div>
+      {%- endif -%}
+
+      <h2 class="evora-section-header__title" style="font-size: clamp(2.4rem, 3.8vw, 3.8rem); font-weight: 800;">
+        {{ section.settings.heading | default: 'What can you do with Evora?' }}
+      </h2>
+    </div>
+
+    <div class="evora-app-layout" style="align-items: center; gap: 5rem;">
+      <!-- Interactive Smartphone Frame Left -->
+      <div class="evora-interactive-app__visual" style="display: flex; justify-content: center;">
+        <div
+          style="width: 320px; background: #FFFFFF; border-radius: 42px; border: 8px solid #222026; box-shadow: 0 24px 60px rgba(217, 119, 127, 0.18), 0 8px 24px rgba(34, 32, 38, 0.06); padding: 2.4rem 1.8rem; position: relative; min-height: 480px;"
+        >
+          <!-- Speaker Notch -->
+          <div style="width: 80px; height: 16px; background: #222026; border-radius: 0 0 12px 12px; margin: -2.4rem auto 1.6rem auto;"></div>
+
+          <!-- Dynamic Tab Screens (controlled by data-evora-tabs) -->
+          {%- for block in section.blocks -%}
+            <div
+              id="TabPanel-{{ section.id }}-{{ forloop.index }}"
+              class="evora-tab-panel{% if forloop.first %} is-active{% endif %}"
+              role="tabpanel"
+              {% unless forloop.first %}hidden{% endunless %}
+              style="transition: var(--evora-transition);"
+            >
+              <!-- Screen Header -->
+              <div style="background: linear-gradient(135deg, #FFF5F6 0%, #F9ECEE 100%); border-radius: 20px; padding: 1.6rem; margin-bottom: 1.4rem; text-align: center; border: 1px solid var(--evora-border);">
+                <span style="font-size: 1.1rem; color: var(--evora-primary); font-weight: 800; text-transform: uppercase;">
+                  {{ block.settings.screen_tag | default: 'EVORA WELLNESS INTELLIGENCE' }}
+                </span>
+                <h4 style="font-size: 1.8rem; font-weight: 800; margin: 0.4rem 0 0 0; color: var(--evora-text);">
+                  {{ block.settings.screen_headline | default: block.settings.title }}
+                </h4>
+              </div>
+
+              <!-- Screen Metric Highlight -->
+              <div style="background: #FFFFFF; border-radius: 18px; padding: 1.4rem; border: 1px solid var(--evora-border); margin-bottom: 1.2rem; box-shadow: var(--evora-shadow-subtle);">
+                <span style="font-size: 1.15rem; font-weight: 700; color: var(--evora-muted); text-transform: uppercase; display: block; margin-bottom: 0.4rem;">
+                  {{ block.settings.screen_metric_label | default: 'Current Physiological Rhythm' }}
+                </span>
+                <p style="font-size: 1.4rem; font-weight: 700; color: var(--evora-text); margin: 0; line-height: 1.4;">
+                  {{ block.settings.screen_metric_value | default: 'Optimal estrogen balance & peak natural vitality' }}
+                </p>
+              </div>
+
+              <!-- Screen Routine Checklist -->
+              <div style="background: var(--evora-surface-soft); border-radius: 18px; padding: 1.4rem; border: 1px solid var(--evora-border);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+                  <span style="font-size: 1.2rem; font-weight: 700; color: var(--evora-text);">Daily Botanical Protocol</span>
+                  <span style="font-size: 1.1rem; color: var(--evora-primary); font-weight: 800;">SYNCED</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; color: var(--evora-text-secondary); font-weight: 500;">
+                  <span style="width: 20px; height: 20px; border-radius: 50%; background: var(--evora-primary-light); color: var(--evora-primary); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800;">✓</span>
+                  <span>1 Scoop Evora Berry Ritual</span>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Interactive Tab Buttons Right (Flo List Style) -->
+      <div class="evora-interactive-app__list" role="tablist" style="display: flex; flex-direction: column; gap: 1.2rem;">
+        {%- for block in section.blocks -%}
+          <button
+            type="button"
+            role="tab"
+            id="TabBtn-{{ section.id }}-{{ forloop.index }}"
+            aria-controls="TabPanel-{{ section.id }}-{{ forloop.index }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            class="evora-tab-trigger{% if forloop.first %} is-active{% endif %}"
+            style="text-align: left; background: {% if forloop.first %}#FDF3F5{% else %}transparent{% endif %}; border: 1px solid {% if forloop.first %}#F5DDE2{% else %}transparent{% endif %}; border-radius: 20px; padding: 1.8rem 2.2rem; cursor: pointer; transition: var(--evora-transition); width: 100%;"
+            {{ block.shopify_attributes }}
+          >
+            <h3 style="font-size: 1.85rem; font-weight: 700; color: var(--evora-text); margin: 0 0 0.4rem 0;">
+              {{ block.settings.title }}
+            </h3>
+            <div class="evora-tab-trigger__desc" style="font-size: 1.45rem; line-height: 1.55; color: var(--evora-text-secondary); display: {% if forloop.first %}block{% else %}none{% endif %};">
+              {{ block.settings.description }}
+            </div>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .evora-tab-trigger.is-active {
+    background: #FDF3F5 !important;
+    border-color: #F5DDE2 !important;
+  }
+  .evora-tab-trigger.is-active h3 {
+    color: var(--evora-primary) !important;
+  }
+  .evora-tab-trigger.is-active .evora-tab-trigger__desc {
+    display: block !important;
+  }
+  .evora-tab-trigger:hover:not(.is-active) {
+    background: var(--evora-surface-soft);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Evora App Showcase",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Interactive Companion"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What can you do with the Evora app?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_tab",
+      "name": "App Feature Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Tab Title",
+          "default": "Track your cycle and symptoms"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "<p>Log your daily intake, mood, and symptoms in under 30 seconds. Receive AI-curated hormonal phase forecasts and nutrition guidance.</p>"
+        },
+        {
+          "type": "text",
+          "id": "screen_tag",
+          "label": "Screen Top Tag",
+          "default": "PHASE 1: MENSTRUAL & FOLLICULAR"
+        },
+        {
+          "type": "text",
+          "id": "screen_headline",
+          "label": "Screen Headline",
+          "default": "Cycle & Vitality Forecasting"
+        },
+        {
+          "type": "text",
+          "id": "screen_metric_label",
+          "label": "Screen Metric Label",
+          "default": "Personalized Phase Analysis"
+        },
+        {
+          "type": "text",
+          "id": "screen_metric_value",
+          "label": "Screen Metric Value",
+          "default": "Energy rising + steady metabolic balance"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora App Showcase",
+      "blocks": [
+        {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Track your cycle and symptoms",
+            "description": "<p>Log your daily powder intake, mood, and symptoms in under 30 seconds to uncover biological patterns.</p>",
+            "screen_tag": "CYCLE & SYMPTOM LOGGING",
+            "screen_headline": "Real-Time Phase Sync",
+            "screen_metric_label": "Hormonal State",
+            "screen_metric_value": "Follicular Phase: Day 9 of 28"
+          }
+        },
+        {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Understand your body & fertility better",
+            "description": "<p>Get clear predictive insights into ovulation windows, hormonal peaks, and physical energy rhythms.</p>",
+            "screen_tag": "FERTILITY & OVULATION",
+            "screen_headline": "Fertility Window Forecast",
+            "screen_metric_label": "Ovulation Prediction",
+            "screen_metric_value": "Optimal window begins in 4 days"
+          }
+        },
+        {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Harmonize with the Evora Daily Powder Ritual",
+            "description": "<p>Receive tailored micronutrient protocols matched to what your body is metabolizing during each phase.</p>",
+            "screen_tag": "DAILY NUTRITION PROTOCOL",
+            "screen_headline": "Bioactive Powder Routine",
+            "screen_metric_label": "Recommended Blend",
+            "screen_metric_value": "1 Scoop Evora Berry with 8oz Chilled Water"
+          }
+        },
+        {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Share biological insights with your partner",
+            "description": "<p>Keep your partner in sync with your monthly energy variances, mood transitions, and rest requirements.</p>",
+            "screen_tag": "PARTNER SYNC",
+            "screen_headline": "Seamless Communication",
+            "screen_metric_label": "Shared Phase Status",
+            "screen_metric_value": "Luteal phase rest protocol enabled"
+          }
+        },
+        {
+          "type": "feature_tab",
+          "settings": {
+            "title": "Feel supported through PMS & Perimenopause",
+            "description": "<p>Targeted adaptogens ease hot flashes, mood fluctuations, brain fog, and monthly cycle discomfort.</p>",
+            "screen_tag": "PMS & PERIMENOPAUSE",
+            "screen_headline": "Complete Hormonal Comfort",
+            "screen_metric_label": "Symptom Reduction",
+            "screen_metric_value": "88% decrease in monthly bloating & fatigue"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
