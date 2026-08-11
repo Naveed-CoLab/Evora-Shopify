@@ -135,26 +135,78 @@
             "quote": "I feel more in control and confident every cycle.",
             "author": "Priya M."
           }
+        },
+        "testimonial_6rUJyK": {
+          "type": "testimonial",
+          "settings": {
+            "avatar_url": "",
+            "quote": "Evora has helped me understand my body so much better.",
+            "author": "Emily R."
+          }
         }
       },
       "block_order": [
         "test_1",
         "test_2",
-        "test_3"
+        "test_3",
+        "testimonial_6rUJyK"
       ],
       "settings": {
         "heading": "Loved by Thousands of Women",
         "subheading": "Our community is growing stronger every day."
       }
     },
-    "evora_newsletter": {
-      "type": "evora-newsletter-banner",
-      "settings": {
-        "heading": "Stay in the Loop 💖",
-        "subheading": "Get wellness tips, app updates, and special offers straight to your inbox.",
-        "input_placeholder": "Enter your email",
-        "button_label": "Subscribe"
-      }
+    "178644800414baf65f": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_4b0d157_hcCXbK": {
+          "type": "ai_gen_block_4b0d157",
+          "settings": {
+            "heading": "Stay in the Loop ❤️",
+            "description": "<p>Subscribe to get special offers, free giveaways, and exclusive deals.</p>",
+            "email_placeholder": "Enter your email",
+            "button_text": "Subscribe",
+            "success_message": "Thanks for subscribing!",
+            "image": "shopify://shop_images/BeigeMinimalistModernNewinMyBlogInstagramStory_1242x2688px.png",
+            "image_max_width": 400,
+            "image_border_radius": 20,
+            "desktop_width_percent": 100,
+            "border_radius": 24,
+            "padding_vertical": 60,
+            "padding_horizontal": 60,
+            "column_gap": 40,
+            "content_gap": 20,
+            "mobile_padding_vertical": 40,
+            "mobile_padding_horizontal": 20,
+            "mobile_gap": 30,
+            "background_color": "#ff8ba7",
+            "heading_color": "#ffffff",
+            "text_color": "#ffffff",
+            "input_background_color": "#ffffff",
+            "input_text_color": "#ffffff",
+            "input_placeholder_color": "#999999",
+            "input_border_color": "#ffffff",
+            "button_color": "#ff5b82",
+            "button_hover_color": "#24222a",
+            "button_text_color": "#ffffff",
+            "success_color": "#ffffff",
+            "error_color": "#ffffff",
+            "heading_size": 36,
+            "text_size": 16,
+            "input_border_radius": 40,
+            "button_border_radius": 40
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_4b0d157_hcCXbK"
+      ],
+      "settings": {}
+    },
+    "1786441936859f416a": {
+      "type": "_blocks",
+      "settings": {}
     },
     "17864408563b0039b7": {
       "type": "_blocks",
@@ -217,59 +269,8 @@
       ],
       "settings": {}
     },
-    "1786441936859f416a": {
-      "type": "_blocks",
-      "settings": {}
-    },
     "17864437473c977df9": {
       "type": "_blocks",
-      "settings": {}
-    },
-    "178644800414baf65f": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_4b0d157_hcCXbK": {
-          "type": "ai_gen_block_4b0d157",
-          "settings": {
-            "heading": "Stay in the Loop ❤️",
-            "description": "<p>Subscribe to get special offers, free giveaways, and exclusive deals.</p>",
-            "email_placeholder": "Enter your email",
-            "button_text": "Subscribe",
-            "success_message": "Thanks for subscribing!",
-            "image_max_width": 400,
-            "image_border_radius": 20,
-            "desktop_width_percent": 100,
-            "border_radius": 24,
-            "padding_vertical": 60,
-            "padding_horizontal": 60,
-            "column_gap": 40,
-            "content_gap": 20,
-            "mobile_padding_vertical": 40,
-            "mobile_padding_horizontal": 20,
-            "mobile_gap": 30,
-            "background_color": "#ff8ba7",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "input_background_color": "#ffffff",
-            "input_text_color": "#24222a",
-            "input_placeholder_color": "#999999",
-            "input_border_color": "#ffffff",
-            "button_color": "#ff5b82",
-            "button_hover_color": "#24222a",
-            "button_text_color": "#ffffff",
-            "success_color": "#ffffff",
-            "error_color": "#ffffff",
-            "heading_size": 36,
-            "text_size": 16,
-            "input_border_radius": 40,
-            "button_border_radius": 40
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_4b0d157_hcCXbK"
-      ],
       "settings": {}
     }
   },
@@ -278,12 +279,11 @@
     "evora_features",
     "evora_empowering",
     "evora_testimonials",
-    "evora_newsletter",
+    "178644800414baf65f",
+    "1786441936859f416a",
     "17864408563b0039b7",
     "1786440952c6882bdf",
     "1786441568db3ef6f0",
-    "1786441936859f416a",
-    "17864437473c977df9",
-    "178644800414baf65f"
+    "17864437473c977df9"
   ]
 }
