@@ -164,7 +164,7 @@
           "settings": {
             "background_image": "shopify://shop_images/cta_evora_bg.png",
             "background_overlay": "#FFFFFF",
-            "overlay_opacity": 100,
+            "overlay_opacity": 0,
             "container_max_width": 1300,
             "hero_min_height": 640,
             "section_padding_top": 32,
