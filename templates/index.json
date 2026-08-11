@@ -9,153 +9,6 @@
  */
 {
   "sections": {
-    "evora_hero": {
-      "type": "evora-hero",
-      "settings": {
-        "pill_badge": "#1 Women's Wellness Companion",
-        "heading": "Your Daily Wellness, All in One",
-        "subheading": "<p>Track your cycle, mood, and health to feel your best every day.</p>",
-        "primary_button_label": "Explore The App",
-        "primary_button_link": "/collections/all",
-        "show_social_proof": true,
-        "social_proof_text": "Join 50,000+ women on their wellness journey"
-      }
-    },
-    "evora_features": {
-      "type": "evora-features-grid",
-      "blocks": {
-        "card_1": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "cycle",
-            "title": "Cycle Tracking",
-            "description": "Accurate & easy to use"
-          }
-        },
-        "card_2": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "ai",
-            "title": "AI Wellness Insights",
-            "description": "Personalised tips just for you"
-          }
-        },
-        "card_3": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "mood",
-            "title": "Mood & Symptom Logging",
-            "description": "Understand your body better"
-          }
-        },
-        "card_4": {
-          "type": "feature_card",
-          "settings": {
-            "icon": "guides",
-            "title": "Health & Lifestyle Guides",
-            "description": "Curated for your everyday wellness"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4"
-      ],
-      "settings": {
-        "badge_text": "",
-        "heading": ""
-      }
-    },
-    "evora_empowering": {
-      "type": "evora-empowering-banner",
-      "blocks": {
-        "item_1": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "Track your cycle & ovulation"
-          }
-        },
-        "item_2": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "Log mood, symptoms & energy"
-          }
-        },
-        "item_3": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "Get AI-powered daily insights"
-          }
-        },
-        "item_4": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "Learn with expert wellness guides"
-          }
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3",
-        "item_4"
-      ],
-      "settings": {
-        "heading": "Empowering Women Every Day",
-        "description": "<p>Evora helps you take control of your health with smart tracking, meaningful insights, and gentle reminders.</p>",
-        "button_label": "Learn More",
-        "button_link": "/collections/all"
-      }
-    },
-    "evora_testimonials": {
-      "type": "evora-testimonials",
-      "blocks": {
-        "test_1": {
-          "type": "testimonial",
-          "settings": {
-            "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=face",
-            "quote": "Evora has helped me understand my body so much better.",
-            "author": "Emily R."
-          }
-        },
-        "test_2": {
-          "type": "testimonial",
-          "settings": {
-            "avatar_url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&h=120&fit=crop&crop=face",
-            "quote": "The insights are so accurate and the app is beautiful!",
-            "author": "Sarah J."
-          }
-        },
-        "test_3": {
-          "type": "testimonial",
-          "settings": {
-            "avatar_url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=face",
-            "quote": "I feel more in control and confident every cycle.",
-            "author": "Priya M."
-          }
-        },
-        "testimonial_6rUJyK": {
-          "type": "testimonial",
-          "settings": {
-            "avatar_url": "",
-            "quote": "Evora has helped me understand my body so much better.",
-            "author": "Emily R."
-          }
-        }
-      },
-      "block_order": [
-        "test_1",
-        "test_2",
-        "test_3",
-        "testimonial_6rUJyK"
-      ],
-      "settings": {
-        "heading": "Loved by Thousands of Women",
-        "subheading": "Our community is growing stronger every day."
-      }
-    },
     "17864487063360cdf4": {
       "type": "_blocks",
       "blocks": {
@@ -163,7 +16,7 @@
           "type": "ai_gen_block_25fdec9",
           "settings": {
             "background_image": "shopify://shop_images/cta_evora_bg.png",
-            "background_overlay": "#FFFFFF",
+            "background_overlay": "#ffffff",
             "overlay_opacity": 0,
             "container_max_width": 1300,
             "hero_min_height": 640,
@@ -284,10 +137,6 @@
     }
   },
   "order": [
-    "evora_hero",
-    "evora_features",
-    "evora_empowering",
-    "evora_testimonials",
     "17864487063360cdf4",
     "1786441936859f416a",
     "17864408563b0039b7",
