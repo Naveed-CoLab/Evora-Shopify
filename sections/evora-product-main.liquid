@@ -1,0 +1,335 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<section
+  id="EvoraProductMain-{{ section.id }}"
+  class="evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <!-- Breadcrumb -->
+    <div style="font-size: 1.35rem; color: var(--evora-muted); margin-bottom: 2.5rem;">
+      <a href="/" style="color: var(--evora-muted); text-decoration: none;">Home</a> &gt; 
+      <a href="/collections/all" style="color: var(--evora-muted); text-decoration: none;">Shop</a> &gt; 
+      <span style="color: var(--evora-text);">{{ product.title | default: section.settings.title | default: 'Flow Alarm' }}</span>
+    </div>
+
+    <div class="evora-product-grid">
+      <!-- Left Column: Media Gallery -->
+      <div class="evora-product-gallery">
+        <div class="evora-product-gallery__main">
+          {%- if product.featured_media != blank -%}
+            {{ product.featured_media | image_url: width: 900 | image_tag:
+              loading: 'eager',
+              id: 'EvoraMainProductImg',
+              alt: product.title
+            }}
+          {%- elsif section.settings.custom_image != blank -%}
+            {{ section.settings.custom_image | image_url: width: 900 | image_tag:
+              loading: 'eager',
+              id: 'EvoraMainProductImg',
+              alt: section.settings.title
+            }}
+          {%- else -%}
+            <!-- Fallback Mockup Image -->
+            <div style="position: relative; width: 100%; height: 480px; background: linear-gradient(135deg, #FFDFE8 0%, #FFEBF0 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center;">
+              <div style="font-family: var(--font-serif); font-size: 3.2rem; color: #FF5B82; font-weight: 700; line-height: 1.1; margin-bottom: 1.4rem;">
+                Get up<br>to dismiss.
+              </div>
+              <div style="width: 140px; height: 140px; background: #24222A; border-radius: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #FFFFFF; box-shadow: 0 16px 36px rgba(0,0,0,0.2);">
+                <div style="font-size: 2.8rem; font-weight: 900; color: #FF5B82;">⚡</div>
+                <div style="font-weight: 800; font-size: 1.4rem;">Flow</div>
+              </div>
+              <div style="font-family: var(--font-serif); font-size: 2.8rem; color: #24222A; font-weight: 700; margin-top: 1.8rem;">
+                No snooze.
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <!-- Thumbnail Strip -->
+        <div class="evora-product-gallery__thumbs">
+          {%- if product.media.size > 1 -%}
+            {%- for media in product.media -%}
+              <div class="evora-product-gallery__thumb {% if forloop.first %}evora-product-gallery__thumb--active{% endif %}" onclick="document.getElementById('EvoraMainProductImg').src='{{ media | image_url: width: 900 }}'; document.querySelectorAll('.evora-product-gallery__thumb').forEach(t=>t.classList.remove('evora-product-gallery__thumb--active')); this.classList.add('evora-product-gallery__thumb--active');">
+                {{ media | image_url: width: 140 | image_tag: loading: 'lazy' }}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Right Column: Product Purchase Info & Subscription Widget -->
+      <div class="evora-product-info">
+        <!-- Rating -->
+        <div class="evora-product-info__rating">
+          <span class="evora-product-info__stars">★★★★★</span>
+          <span style="font-weight: 700; color: var(--evora-text);">{{ section.settings.review_text | default: '1,247 Reviews' }}</span>
+        </div>
+
+        <h1 class="evora-product-info__title">
+          {{ product.title | default: section.settings.title | default: 'Flow Alarm' }}
+        </h1>
+
+        <div class="evora-product-info__subtitle">
+          {{ section.settings.subtitle | default: 'The alarm clock that gets you up. No snooze. Just results.' }}
+        </div>
+
+        <!-- Quantity / Variant Selector -->
+        <div class="evora-option-group">
+          <div class="evora-option-group__label">{{ section.settings.option_label | default: 'How many Flow Docks?' }}</div>
+          <div class="evora-option-pills">
+            <button type="button" class="evora-option-pill evora-option-pill--active" onclick="document.querySelectorAll('.evora-option-pill').forEach(p=>p.classList.remove('evora-option-pill--active')); this.classList.add('evora-option-pill--active');">
+              {{ section.settings.opt_1_label | default: '1 Dock' }}
+            </button>
+            <button type="button" class="evora-option-pill" onclick="document.querySelectorAll('.evora-option-pill').forEach(p=>p.classList.remove('evora-option-pill--active')); this.classList.add('evora-option-pill--active');">
+              {{ section.settings.opt_2_label | default: '2 Docks' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Subscription & Purchase Box -->
+        <div class="evora-subscription-widget">
+          <!-- Tier 1: Subscribe & Save (Active) -->
+          <div class="evora-plan-card evora-plan-card--active" id="EvoraPlanSub" onclick="document.getElementById('planSubRadio').checked=true; document.getElementById('EvoraPlanOne').classList.remove('evora-plan-card--active'); this.classList.add('evora-plan-card--active');">
+            <div class="evora-plan-card__badge">
+              {{ section.settings.sub_badge | default: 'MOST POPULAR: GET 20% OFF + FREE GIFTS 🎁' }}
+            </div>
+
+            <div class="evora-plan-card__header">
+              <label class="evora-plan-card__radio-label">
+                <input type="radio" name="purchase_plan" id="planSubRadio" class="evora-plan-card__radio" checked>
+                <span>{{ section.settings.sub_title | default: 'Subscribe & Save' }}</span>
+              </label>
+              <div class="evora-plan-card__price-box">
+                <span class="evora-plan-card__price">{{ section.settings.sub_price | default: '$40.80' }}</span>
+                <span class="evora-plan-card__compare-price">{{ section.settings.sub_compare_price | default: '$51.00' }}</span>
+              </div>
+            </div>
+
+            <div class="evora-plan-card__details">
+              {{ section.settings.sub_desc | default: '1 Flow Dock & Flow+ membership' }}<br>
+              <small style="color: var(--evora-muted);">7-day free trial, then $3.99/year for Flow+.</small>
+            </div>
+
+            <div class="evora-plan-card__perks">
+              <div style="font-weight: 800; font-size: 1.3rem; margin-bottom: 0.2rem; color: #FF5B82;">
+                Flow+ membership includes:
+              </div>
+              <div class="evora-plan-card__perk-item">
+                <span class="evora-plan-card__perk-check">✓</span>
+                <span>100+ Alarm Sounds in the App</span>
+              </div>
+              <div class="evora-plan-card__perk-item">
+                <span class="evora-plan-card__perk-check">✓</span>
+                <span>Historical Sleep Analytics</span>
+              </div>
+              <div class="evora-plan-card__perk-item">
+                <span class="evora-plan-card__perk-check">✓</span>
+                <span>Snoring & Sleep Talk Capture</span>
+              </div>
+            </div>
+
+            <!-- Guarantees -->
+            <div style="margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; font-size: 1.25rem; font-weight: 600; color: var(--evora-text);">
+              <div><span style="color: var(--evora-success);">✓</span> Free Shipping Today</div>
+              <div><span style="color: var(--evora-success);">✓</span> Pause Or Cancel Anytime</div>
+              <div><span style="color: var(--evora-success);">✓</span> 30-Day Money-Back Guarantee</div>
+            </div>
+
+            <!-- Free Gifts Included -->
+            <div class="evora-free-gifts">
+              <div class="evora-free-gifts__title">🎁 Free gifts included with your order</div>
+              <div class="evora-free-gifts__grid">
+                <div class="evora-gift-card">
+                  <div class="evora-gift-card__icon">🚚</div>
+                  <div class="evora-gift-card__label">Free Shipping</div>
+                </div>
+                <div class="evora-gift-card">
+                  <div class="evora-gift-card__icon">📱</div>
+                  <div class="evora-gift-card__label">Companion App</div>
+                </div>
+                <div class="evora-gift-card">
+                  <div class="evora-gift-card__icon">📖</div>
+                  <div class="evora-gift-card__label">Digital Detox Guide</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tier 2: One Time Purchase -->
+          <div class="evora-plan-card" id="EvoraPlanOne" onclick="document.getElementById('planOneRadio').checked=true; document.getElementById('EvoraPlanSub').classList.remove('evora-plan-card--active'); this.classList.add('evora-plan-card--active');">
+            <div class="evora-plan-card__header">
+              <label class="evora-plan-card__radio-label">
+                <input type="radio" name="purchase_plan" id="planOneRadio" class="evora-plan-card__radio">
+                <span>{{ section.settings.one_title | default: 'One Time Purchase' }}</span>
+              </label>
+              <div class="evora-plan-card__price-box">
+                <span class="evora-plan-card__price">{{ section.settings.one_price | default: '$54.40' }}</span>
+                <span class="evora-plan-card__compare-price">{{ section.settings.one_compare_price | default: '$68.00' }}</span>
+              </div>
+            </div>
+            <div class="evora-plan-card__details">
+              {{ section.settings.one_desc | default: '1 Flow Dock delivered once' }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Add to Cart Form -->
+        {%- form 'product', product, id: 'EvoraProductForm', class: 'form' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+          <button
+            type="submit"
+            name="add"
+            class="evora-btn evora-btn--primary"
+            style="width: 100%; font-size: 1.8rem; padding: 1.6rem;"
+          >
+            {{ section.settings.add_to_cart_label | default: 'Add to Cart' }}
+          </button>
+        {%- endform -%}
+
+        <!-- Checkout Trust -->
+        <div class="evora-checkout-trust">
+          <span>🔒</span>
+          <span>Secure Checkout</span>
+        </div>
+
+        <!-- Delivery Estimate -->
+        <div class="evora-delivery-estimation">
+          <div>📦 <strong>Delivers to your door</strong></div>
+          <div style="color: var(--evora-text-secondary); margin-top: 0.3rem;">
+            Estimated delivery: <strong>Mon, Aug 24 – Thu, Aug 27</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Product Main",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "review_text",
+      "label": "Review Text",
+      "default": "1,247 Reviews"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Product Title Fallback",
+      "default": "Flow Alarm"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Product Subtitle",
+      "default": "The alarm clock that gets you up. No snooze. Just results."
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom Gallery Fallback Image"
+    },
+    {
+      "type": "text",
+      "id": "option_label",
+      "label": "Option Title",
+      "default": "How many Flow Docks?"
+    },
+    {
+      "type": "text",
+      "id": "opt_1_label",
+      "label": "Option 1",
+      "default": "1 Dock"
+    },
+    {
+      "type": "text",
+      "id": "opt_2_label",
+      "label": "Option 2",
+      "default": "2 Docks"
+    },
+    {
+      "type": "header",
+      "content": "Subscription Plan"
+    },
+    {
+      "type": "text",
+      "id": "sub_badge",
+      "label": "Subscription Badge",
+      "default": "MOST POPULAR: GET 20% OFF + FREE GIFTS 🎁"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Subscription Title",
+      "default": "Subscribe & Save"
+    },
+    {
+      "type": "text",
+      "id": "sub_price",
+      "label": "Subscription Price",
+      "default": "$40.80"
+    },
+    {
+      "type": "text",
+      "id": "sub_compare_price",
+      "label": "Subscription Compare Price",
+      "default": "$51.00"
+    },
+    {
+      "type": "text",
+      "id": "sub_desc",
+      "label": "Subscription Description",
+      "default": "1 Flow Dock & Flow+ membership"
+    },
+    {
+      "type": "header",
+      "content": "One Time Purchase Plan"
+    },
+    {
+      "type": "text",
+      "id": "one_title",
+      "label": "One Time Title",
+      "default": "One Time Purchase"
+    },
+    {
+      "type": "text",
+      "id": "one_price",
+      "label": "One Time Price",
+      "default": "$54.40"
+    },
+    {
+      "type": "text",
+      "id": "one_compare_price",
+      "label": "One Time Compare Price",
+      "default": "$68.00"
+    },
+    {
+      "type": "text",
+      "id": "one_desc",
+      "label": "One Time Description",
+      "default": "1 Flow Dock delivered once"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add To Cart Button Label",
+      "default": "Add to Cart"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Product Main"
+    }
+  ]
+}
+{% endschema %}

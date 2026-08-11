@@ -1,0 +1,145 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraFeaturesGrid-{{ section.id }}"
+  class="evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    {%- if section.settings.heading != blank or section.settings.badge_text != blank -%}
+      <div class="evora-section-header">
+        {%- if section.settings.badge_text != blank -%}
+          <div class="evora-section-header__badge">
+            {{ section.settings.badge_text }}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="evora-section-header__title">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="evora-features-grid">
+      {%- for block in section.blocks -%}
+        <div class="evora-feature-card" {{ block.shopify_attributes }}>
+          <div class="evora-feature-card__icon-box">
+            {%- case block.settings.icon -%}
+              {%- when 'cycle' -%}
+                🌸
+              {%- when 'ai' -%}
+                ✨
+              {%- when 'mood' -%}
+                💖
+              {%- when 'guides' -%}
+                📖
+              {%- when 'heart' -%}
+                ❤️
+              {%- when 'shield' -%}
+                🛡️
+              {%- else -%}
+                🌸
+            {%- endcase -%}
+          </div>
+          <h3 class="evora-feature-card__title">{{ block.settings.title }}</h3>
+          <div class="evora-feature-card__desc">{{ block.settings.description }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora 4-Feature Cards",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Section Badge"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Card Icon",
+          "options": [
+            { "value": "cycle", "label": "Cycle (Flower)" },
+            { "value": "ai", "label": "AI (Sparkles)" },
+            { "value": "mood", "label": "Mood (Heart)" },
+            { "value": "guides", "label": "Guides (Book)" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield" }
+          ],
+          "default": "cycle"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Cycle Tracking"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Accurate & easy to use"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora 4-Feature Cards",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "cycle",
+            "title": "Cycle Tracking",
+            "description": "Accurate & easy to use"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "ai",
+            "title": "AI Wellness Insights",
+            "description": "Personalised tips just for you"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "mood",
+            "title": "Mood & Symptom Logging",
+            "description": "Understand your body better"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "guides",
+            "title": "Health & Lifestyle Guides",
+            "description": "Curated for your everyday wellness"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

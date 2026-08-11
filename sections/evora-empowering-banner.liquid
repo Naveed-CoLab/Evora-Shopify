@@ -1,0 +1,143 @@
+{{ 'evora-base.css' | asset_url | stylesheet_tag }}
+{{ 'evora-components.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="EvoraEmpowering-{{ section.id }}"
+  class="evora-section-padding evora-bg-surface"
+  data-section-id="{{ section.id }}"
+>
+  <div class="evora-container">
+    <div class="evora-empowering-grid">
+      <!-- Left Column: Content & Checkpoints -->
+      <div class="evora-empowering__content">
+        <h2 class="evora-serif" style="font-size: var(--font-size-h2); color: var(--evora-text); line-height: 1.18; margin-bottom: 1.6rem;">
+          {{ section.settings.heading | default: 'Empowering Women Every Day' }}
+        </h2>
+        
+        <div style="font-size: 1.65rem; line-height: 1.6; color: var(--evora-text-secondary); margin-bottom: 2.4rem;">
+          {{ section.settings.description | default: '<p>Evora helps you take control of your health with smart tracking, meaningful insights, and gentle reminders.</p>' }}
+        </div>
+
+        <div class="evora-checklist">
+          {%- for block in section.blocks -%}
+            <div class="evora-checklist__item" {{ block.shopify_attributes }}>
+              <div class="evora-checklist__check">✓</div>
+              <span>{{ block.settings.text }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.button_label != blank -%}
+          <div style="margin-top: 2rem;">
+            <a
+              href="{{ section.settings.button_link | default: '/collections/all' }}"
+              class="evora-btn evora-btn--primary"
+            >
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Right Column: Arched Image Frame -->
+      <div class="evora-arch-wrapper">
+        <div class="evora-arch-media">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 800 | image_tag:
+              loading: 'lazy',
+              alt: section.settings.heading
+            }}
+          {%- else -%}
+            <img
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=900&fit=crop&crop=top"
+              alt="Empowering Women"
+              loading="lazy"
+              width="420"
+              height="480"
+            >
+          {%- endif -%}
+
+          <!-- Floating Heart Pill -->
+          <div class="evora-floating-heart">
+            💖
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evora Empowering Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Empowering Women Every Day"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Evora helps you take control of your health with smart tracking, meaningful insights, and gentle reminders.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "checklist_item",
+      "name": "Checklist Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Bullet Text",
+          "default": "Track your cycle & ovulation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evora Empowering Banner",
+      "blocks": [
+        {
+          "type": "checklist_item",
+          "settings": { "text": "Track your cycle & ovulation" }
+        },
+        {
+          "type": "checklist_item",
+          "settings": { "text": "Log mood, symptoms & energy" }
+        },
+        {
+          "type": "checklist_item",
+          "settings": { "text": "Get AI-powered daily insights" }
+        },
+        {
+          "type": "checklist_item",
+          "settings": { "text": "Learn with expert wellness guides" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

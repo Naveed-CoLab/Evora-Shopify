@@ -1,216 +1,70 @@
 /* ==========================================================================
-   EVORA DESIGN SYSTEM: COMPONENTS & ATOMS
+   EVORA DESIGN SYSTEM: COMPONENTS (100% Pixel Match to Evora Mockup)
    ========================================================================== */
 
-/* 1. BUTTONS & CTAS */
-.evora-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  font-family: var(--font-body);
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  padding: 1.4rem 2.8rem;
-  border-radius: var(--evora-radius-pill);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: var(--evora-transition);
-  text-align: center;
+/* --------------------------------------------------------------------------
+   1. HERO SECTION & PHONE APP MOCKUP
+   -------------------------------------------------------------------------- */
+.evora-hero {
   position: relative;
   overflow: hidden;
-  box-sizing: border-box;
+  background: linear-gradient(180deg, #FFF0F3 0%, #FFF8FA 60%, #FFFFFF 100%);
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
 
-.evora-btn--primary {
-  background-color: var(--evora-primary);
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 16px var(--evora-primary-glow);
-}
-
-.evora-btn--primary:hover {
-  background-color: var(--evora-primary-hover);
-  box-shadow: 0 6px 20px rgba(217, 119, 127, 0.35);
-  transform: translateY(-1px);
-}
-
-.evora-btn--secondary {
-  background-color: var(--evora-surface);
-  color: var(--evora-text) !important;
-  border-color: var(--evora-border);
-  box-shadow: var(--evora-shadow-subtle);
-}
-
-.evora-btn--secondary:hover {
-  background-color: var(--evora-surface-soft);
-  border-color: var(--evora-primary);
-  color: var(--evora-primary) !important;
-  transform: translateY(-1px);
-}
-
-.evora-btn--outline {
-  background-color: transparent;
-  color: var(--evora-primary) !important;
-  border-color: var(--evora-primary);
-}
-
-.evora-btn--outline:hover {
-  background-color: var(--evora-primary-light);
-  transform: translateY(-1px);
-}
-
-.evora-btn--dark {
-  background-color: var(--evora-text);
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(34, 32, 38, 0.15);
-}
-
-.evora-btn--dark:hover {
-  background-color: #000000;
-  transform: translateY(-1px);
-}
-
-.evora-btn--sm {
-  padding: 1rem 1.8rem;
-  font-size: 1.35rem;
-}
-
-.evora-btn--lg {
-  padding: 1.7rem 3.4rem;
-  font-size: 1.65rem;
-}
-
-.evora-btn--full {
-  width: 100%;
-}
-
-.evora-btn:focus-visible {
-  outline: 2px solid var(--evora-primary);
-  outline-offset: 2px;
-}
-
-/* 2. BADGES & CHIPS */
-.evora-badge {
-  display: inline-flex;
+.evora-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 1.2rem;
-  border-radius: var(--evora-radius-pill);
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.3;
-  width: fit-content;
 }
 
-.evora-badge--primary {
-  background-color: var(--evora-primary-light);
-  color: var(--evora-primary);
+@media screen and (min-width: 990px) {
+  .evora-hero__grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 6rem;
+  }
 }
 
-.evora-badge--secondary {
-  background-color: var(--evora-secondary-light);
-  color: var(--evora-secondary);
+.evora-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.evora-badge--accent {
-  background-color: var(--evora-accent-light);
-  color: var(--evora-accent);
-}
-
-.evora-badge--success {
-  background-color: var(--evora-success-light);
-  color: var(--evora-success);
-}
-
-.evora-badge--outline {
-  background-color: #FFFFFF;
-  border: 1px solid var(--evora-border);
+.evora-hero__title {
+  font-size: var(--font-size-h1);
+  font-family: var(--font-serif);
+  font-weight: 700;
   color: var(--evora-text);
+  line-height: 1.12;
+  margin-top: 1.6rem;
+  margin-bottom: 1.8rem;
+  letter-spacing: -0.02em;
 }
 
-.evora-badge__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: currentColor;
+.evora-hero__subtitle {
+  font-size: 1.75rem;
+  line-height: 1.6;
+  color: var(--evora-text-secondary);
+  margin-bottom: 2.8rem;
+  max-width: 480px;
 }
 
-/* 3. CARDS & CONTAINERS */
-.evora-card {
-  background: var(--evora-surface);
-  border-radius: var(--evora-radius);
-  border: 1px solid var(--evora-border);
-  padding: 2.8rem;
-  box-shadow: var(--evora-shadow-subtle);
-  transition: var(--evora-transition);
-  position: relative;
-}
-
-.evora-card--soft {
-  background: var(--evora-surface-soft);
-  border-color: transparent;
-}
-
-.evora-card--glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: var(--evora-shadow-soft);
-}
-
-.evora-card--hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--evora-shadow-card);
-  border-color: rgba(217, 119, 127, 0.3);
-}
-
-/* 4. ICON CONTAINERS */
-.evora-icon-box {
-  width: 4.8rem;
-  height: 4.8rem;
-  border-radius: var(--evora-radius-md);
+.evora-hero__actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: var(--evora-primary-light);
-  color: var(--evora-primary);
-  margin-bottom: 1.6rem;
+  gap: 1.6rem;
+  margin-bottom: 2.8rem;
+  flex-wrap: wrap;
 }
 
-.evora-icon-box svg {
-  width: 2.2rem;
-  height: 2.2rem;
-}
-
-.evora-icon-box--secondary {
-  background: var(--evora-secondary-light);
-  color: var(--evora-secondary);
-}
-
-.evora-icon-box--accent {
-  background: var(--evora-accent-light);
-  color: var(--evora-accent);
-}
-
-.evora-icon-box--circle {
-  border-radius: 50%;
-}
-
-/* 5. TRUST & SOCIAL PROOF PILLS */
-.evora-trust-pill {
-  display: inline-flex;
+/* Social Proof Avatar Stack */
+.evora-social-proof {
+  display: flex;
   align-items: center;
-  gap: 1.2rem;
-  padding: 0.8rem 1.6rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--evora-border);
-  border-radius: var(--evora-radius-pill);
-  box-shadow: var(--evora-shadow-subtle);
+  gap: 1.4rem;
 }
 
 .evora-avatar-stack {
@@ -218,287 +72,846 @@
   align-items: center;
 }
 
-.evora-avatar-stack img,
-.evora-avatar-stack span {
-  width: 2.8rem;
-  height: 2.8rem;
+.evora-avatar-stack img {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 2px solid #FFFFFF;
-  margin-left: -0.8rem;
+  margin-left: -10px;
   object-fit: cover;
-  background-color: var(--evora-primary-light);
-  color: var(--evora-primary);
-  font-size: 1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.evora-avatar-stack img:first-child,
-.evora-avatar-stack span:first-child {
+.evora-avatar-stack img:first-child {
   margin-left: 0;
 }
 
-.evora-stars {
-  display: inline-flex;
+.evora-social-proof__text {
+  font-size: 1.35rem;
+  color: var(--evora-text-secondary);
+  font-weight: 600;
+}
+
+/* Realistic Phone App UI Mockup */
+.evora-phone-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.3rem;
-  color: #E88D72;
 }
 
-.evora-stars svg {
-  width: 1.4rem;
-  height: 1.4rem;
-  fill: currentColor;
+.evora-phone-mockup {
+  width: 100%;
+  max-width: 340px;
+  background: #FFFFFF;
+  border-radius: 42px;
+  box-shadow: 0 24px 60px rgba(212, 165, 172, 0.3), 0 4px 20px rgba(36, 34, 42, 0.06);
+  border: 8px solid #FFFFFF;
+  outline: 1px solid #F0E6E8;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-ui);
 }
 
-/* 6. ACCORDION / FAQ */
-.evora-accordion {
+.evora-phone__statusbar {
+  padding: 0.8rem 1.6rem 0.4rem 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--evora-text);
+}
+
+.evora-phone__body {
+  padding: 1.2rem 1.4rem 1.6rem 1.4rem;
+  background: #FFFDFE;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  max-width: 820px;
-  margin: 0 auto;
 }
 
-.evora-accordion__item {
-  background: var(--evora-surface);
-  border: 1px solid var(--evora-border);
-  border-radius: var(--evora-radius-md);
-  overflow: hidden;
-  transition: var(--evora-transition);
+.evora-phone__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.evora-accordion__item[open] {
-  border-color: var(--evora-primary);
-  box-shadow: var(--evora-shadow-subtle);
+.evora-phone__greeting {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--evora-text);
 }
 
-.evora-accordion__summary {
+.evora-phone__subgreeting {
+  font-size: 1.1rem;
+  color: var(--evora-muted);
+}
+
+/* Score Card */
+.evora-app-score-card {
+  background: #FFFFFF;
+  border: 1px solid #F8DCE2;
+  border-radius: 18px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 14px rgba(212, 165, 172, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 2.4rem;
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: var(--evora-text);
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
 }
 
-.evora-accordion__summary::-webkit-details-marker {
-  display: none;
-}
-
-.evora-accordion__icon {
-  width: 2.8rem;
-  height: 2.8rem;
+.evora-app-score__circle {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: var(--evora-surface-soft);
+  border: 3px solid #FF5B82;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FFF0F3;
+}
+
+.evora-app-score__num {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #FF5B82;
+  line-height: 1;
+}
+
+.evora-app-score__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--evora-text);
+  text-transform: uppercase;
+}
+
+.evora-app-score__quote {
+  font-size: 1.1rem;
+  color: var(--evora-text-secondary);
+  font-style: italic;
+  max-width: 140px;
+  line-height: 1.35;
+}
+
+/* Mini Insight Cards */
+.evora-app-mini-card {
+  background: #FFFFFF;
+  border: 1px solid #F0E6E8;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.evora-app-mini-card__tag {
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #FF5B82;
+  margin-bottom: 0.4rem;
+}
+
+.evora-app-mini-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--evora-text);
+}
+
+.evora-app-mini-card__desc {
+  font-size: 1.05rem;
+  color: var(--evora-muted);
+  margin-top: 0.2rem;
+}
+
+/* Phone Nav */
+.evora-phone__nav {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.8rem;
+  border-top: 1px solid #F0E6E8;
+  color: var(--evora-muted);
+  font-size: 1.4rem;
+}
+
+.evora-phone__nav-item--active {
+  color: #FF5B82;
+}
+
+/* --------------------------------------------------------------------------
+   2. 4-COLUMN FEATURE CARDS
+   -------------------------------------------------------------------------- */
+.evora-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .evora-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .evora-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4rem;
+  }
+}
+
+.evora-feature-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #F8DCE2;
+  padding: 2.8rem 2.2rem;
+  text-align: center;
+  box-shadow: var(--evora-shadow-card);
+  transition: var(--evora-transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evora-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: #FF5B82;
+  box-shadow: 0 16px 36px rgba(255, 91, 130, 0.16);
+}
+
+.evora-feature-card__icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #FFF0F3;
+  color: #FF5B82;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.28s ease, background-color 0.28s ease;
+  font-size: 2.4rem;
+  margin-bottom: 1.8rem;
+  border: 1px solid #F8DCE2;
+}
+
+.evora-feature-card__title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--evora-text);
+  margin-bottom: 0.8rem;
+  font-family: var(--font-ui);
+}
+
+.evora-feature-card__desc {
+  font-size: 1.4rem;
+  color: var(--evora-text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   3. SPLIT EMPOWERING SECTION (Editorial Arch & Checklist)
+   -------------------------------------------------------------------------- */
+.evora-empowering-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media screen and (min-width: 990px) {
+  .evora-empowering-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.evora-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 2.4rem 0 3rem 0;
+}
+
+.evora-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.55rem;
+  font-weight: 600;
   color: var(--evora-text);
 }
 
-.evora-accordion__item[open] .evora-accordion__icon {
-  transform: rotate(45deg);
-  background: var(--evora-primary-light);
-  color: var(--evora-primary);
+.evora-checklist__check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FFF0F3;
+  color: #FF5B82;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+  flex-shrink: 0;
 }
 
-.evora-accordion__content {
-  padding: 0 2.4rem 2.4rem 2.4rem;
+.evora-arch-media {
+  position: relative;
+  border-radius: 200px 200px 28px 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FFE8EF 0%, #FFF0F3 100%);
+  padding: 2rem 2rem 0 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: var(--evora-shadow-card);
+}
+
+.evora-arch-media img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 180px 180px 0 0;
+  object-fit: cover;
+}
+
+.evora-floating-heart {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #FF5B82;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   4. TESTIMONIALS SECTION
+   -------------------------------------------------------------------------- */
+.evora-testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .evora-testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.evora-testimonial-card {
+  background: #FFFFFF;
+  border: 1px solid #F8DCE2;
+  border-radius: 20px;
+  padding: 3rem 2.4rem;
+  text-align: center;
+  box-shadow: var(--evora-shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evora-testimonial-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.6rem;
+  border: 2px solid #FFF0F3;
+}
+
+.evora-testimonial-card__stars {
+  color: #FF5B82;
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.4rem;
+}
+
+.evora-testimonial-card__quote {
   font-size: 1.55rem;
-  line-height: 1.7;
+  line-height: 1.55;
+  color: var(--evora-text);
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+  flex-grow: 1;
+}
+
+.evora-testimonial-card__author {
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--evora-text-secondary);
 }
 
-/* 7. DAWN COMPONENT STYLING HARMONIZATION */
-/* Header & Nav */
-.header {
-  padding-top: 1.6rem !important;
-  padding-bottom: 1.6rem !important;
-}
-
-.header__heading-link {
-  font-family: var(--font-heading) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.03em !important;
-  color: var(--evora-text) !important;
-}
-
-.header__menu-item {
-  font-weight: 500 !important;
-  font-size: 1.5rem !important;
-  color: var(--evora-text) !important;
-  transition: var(--evora-transition) !important;
-  border-radius: var(--evora-radius-pill) !important;
-  padding: 0.8rem 1.4rem !important;
-}
-
-.header__menu-item:hover {
-  color: var(--evora-primary) !important;
-  background-color: var(--evora-primary-light) !important;
-}
-
-.utility-bar {
-  background: #FFF7F8 !important;
-  border-bottom: 1px solid #F6E6E8 !important;
-  color: var(--evora-text) !important;
-}
-
-.announcement-bar__message {
-  font-size: 1.3rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-}
-
-/* Product Cards & Grids */
-.card-wrapper {
-  transition: var(--evora-transition);
-}
-
-.card--standard,
-.card--card {
-  border-radius: var(--evora-radius) !important;
-  border: 1px solid var(--evora-border) !important;
-  background: var(--evora-surface) !important;
+/* --------------------------------------------------------------------------
+   5. NEWSLETTER BANNER (Stay in the Loop)
+   -------------------------------------------------------------------------- */
+.evora-newsletter-box {
+  background: linear-gradient(135deg, #FFE8EF 0%, #FFF0F3 100%);
+  border-radius: 28px;
+  border: 1px solid #F8DCE2;
+  padding: 4rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
   overflow: hidden;
-  box-shadow: var(--evora-shadow-subtle) !important;
-  transition: var(--evora-transition) !important;
-}
-
-.card-wrapper:hover .card--standard,
-.card-wrapper:hover .card--card {
-  transform: translateY(-4px);
-  box-shadow: var(--evora-shadow-card) !important;
-  border-color: rgba(217, 119, 127, 0.3) !important;
-}
-
-.card__heading a {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  color: var(--evora-text) !important;
-  text-decoration: none !important;
-}
-
-.card__heading a:hover {
-  color: var(--evora-primary) !important;
-}
-
-/* Buttons in Dawn */
-.button, 
-.shopify-challenge__button, 
-.customer button {
-  border-radius: var(--evora-radius-pill) !important;
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0 !important;
-  transition: var(--evora-transition) !important;
-}
-
-.button--primary {
-  background-color: var(--evora-primary) !important;
-  color: #FFFFFF !important;
-  border: none !important;
-}
-
-.button--primary:hover {
-  background-color: var(--evora-primary-hover) !important;
-  box-shadow: 0 6px 18px var(--evora-primary-glow) !important;
-}
-
-.button--secondary {
-  border-radius: var(--evora-radius-pill) !important;
-  border: 1px solid var(--evora-border) !important;
-  background: var(--evora-surface) !important;
-  color: var(--evora-text) !important;
-}
-
-.button--secondary:hover {
-  border-color: var(--evora-primary) !important;
-  color: var(--evora-primary) !important;
-}
-
-/* Product Info & Form Styling */
-.product__title h1,
-.product__title h2 {
-  font-size: var(--font-size-h2) !important;
-  letter-spacing: -0.02em !important;
-  margin-bottom: 0.8rem;
-}
-
-.price {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  color: var(--evora-text) !important;
-}
-
-.price--large {
-  font-size: 2.4rem !important;
-}
-
-/* Variant Pills */
-.product-form__input input[type='radio'] + label {
-  border-radius: var(--evora-radius-pill) !important;
-  padding: 0.9rem 2rem !important;
-  font-size: 1.4rem !important;
-  font-weight: 600 !important;
-  border: 1px solid var(--evora-border) !important;
-  background-color: var(--evora-surface) !important;
-  color: var(--evora-text) !important;
-  transition: var(--evora-transition) !important;
-}
-
-.product-form__input input[type='radio']:checked + label {
-  background-color: var(--evora-primary-light) !important;
-  border-color: var(--evora-primary) !important;
-  color: var(--evora-primary) !important;
-  box-shadow: 0 0 0 1px var(--evora-primary) !important;
-}
-
-/* Quantity Input */
-.quantity {
-  border-radius: var(--evora-radius-pill) !important;
-  border: 1px solid var(--evora-border) !important;
-  background: var(--evora-surface) !important;
-  min-height: 4.8rem !important;
-}
-
-.quantity__button {
-  color: var(--evora-text) !important;
-}
-
-/* Cart Drawer */
-.cart-drawer {
-  background: var(--evora-surface) !important;
-  border-top-left-radius: var(--evora-radius-xl);
-  border-bottom-left-radius: var(--evora-radius-xl);
-  box-shadow: var(--evora-shadow-floating) !important;
-}
-
-.cart-drawer__heading {
-  font-family: var(--font-heading) !important;
-  font-size: 2rem !important;
-  font-weight: 700 !important;
-}
-
-/* Subscription Container App Block Enhancement */
-.evora-subscription-widget-container {
-  background: var(--evora-surface-soft);
-  border: 1px solid var(--evora-border);
-  border-radius: var(--evora-radius);
-  padding: 2.4rem;
-  margin: 2rem 0;
-  box-shadow: var(--evora-shadow-subtle);
   position: relative;
 }
 
-.evora-subscription-widget-container .shopify-app-block {
-  margin: 0 !important;
+@media screen and (min-width: 850px) {
+  .evora-newsletter-box {
+    grid-template-columns: 1.2fr 0.8fr;
+    padding: 5rem 6rem;
+  }
+}
+
+.evora-newsletter__form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 440px;
+}
+
+.evora-newsletter__input {
+  flex-grow: 1;
+  padding: 1.4rem 2rem;
+  border-radius: var(--evora-radius-pill);
+  border: 1px solid #F0E6E8;
+  background: #FFFFFF;
+  font-size: 1.45rem;
+}
+
+.evora-newsletter__input:focus {
+  border-color: #FF5B82;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 91, 130, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   6. PRODUCT PAGE & CUSTOM SUBSCRIPTION PURCHASE WIDGET
+   -------------------------------------------------------------------------- */
+.evora-product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media screen and (min-width: 990px) {
+  .evora-product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.evora-product-gallery {
+  position: sticky;
+  top: 100px;
+}
+
+.evora-product-gallery__main {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #F8DCE2;
+  overflow: hidden;
+  box-shadow: var(--evora-shadow-card);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evora-product-gallery__main img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.evora-product-gallery__thumbs {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.evora-product-gallery__thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  cursor: pointer;
+  background: #FFFFFF;
+}
+
+.evora-product-gallery__thumb--active {
+  border-color: #FF5B82;
+}
+
+.evora-product-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Product Info */
+.evora-product-info__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.35rem;
+  color: var(--evora-text-secondary);
+}
+
+.evora-product-info__stars {
+  color: #FF5B82;
+}
+
+.evora-product-info__title {
+  font-size: 3.2rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--evora-text);
+  margin-bottom: 0.6rem;
+}
+
+.evora-product-info__subtitle {
+  font-size: 1.55rem;
+  color: var(--evora-text-secondary);
+  margin-bottom: 2.2rem;
+}
+
+/* Variant Pill Selector */
+.evora-option-group {
+  margin-bottom: 2.4rem;
+}
+
+.evora-option-group__label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--evora-text);
+  margin-bottom: 1rem;
+}
+
+.evora-option-pills {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.evora-option-pill {
+  flex: 1;
+  padding: 1.2rem 2rem;
+  border-radius: var(--evora-radius-pill);
+  border: 1px solid #F0E6E8;
+  background: #FFFFFF;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.45rem;
+  cursor: pointer;
+  transition: var(--evora-transition);
+}
+
+.evora-option-pill--active {
+  border-color: #FF5B82;
+  background: #FFF0F3;
+  color: #FF5B82;
+}
+
+/* Subscription Widget Container */
+.evora-subscription-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.evora-plan-card {
+  border-radius: 18px;
+  border: 1px solid #F0E6E8;
+  background: #FFFFFF;
+  padding: 1.8rem;
+  position: relative;
+  cursor: pointer;
+  transition: var(--evora-transition);
+}
+
+.evora-plan-card--active {
+  border: 2px solid #FF5B82;
+  background: #FFFDFC;
+  box-shadow: 0 8px 24px rgba(255, 91, 130, 0.12);
+}
+
+.evora-plan-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FF5B82;
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 1.4rem;
+  border-radius: var(--evora-radius-pill);
+  white-space: nowrap;
+}
+
+.evora-plan-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.evora-plan-card__radio-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--evora-text);
+}
+
+.evora-plan-card__radio {
+  accent-color: #FF5B82;
+  width: 18px;
+  height: 18px;
+}
+
+.evora-plan-card__price-box {
+  text-align: right;
+}
+
+.evora-plan-card__price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--evora-text);
+}
+
+.evora-plan-card__compare-price {
+  font-size: 1.35rem;
+  color: var(--evora-muted);
+  text-decoration: line-through;
+  margin-left: 0.6rem;
+}
+
+.evora-plan-card__details {
+  margin-top: 0.8rem;
+  font-size: 1.35rem;
+  color: var(--evora-text-secondary);
+}
+
+.evora-plan-card__perks {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid #F0E6E8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.evora-plan-card__perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  color: var(--evora-text);
+}
+
+.evora-plan-card__perk-check {
+  color: #FF5B82;
+  font-weight: 800;
+}
+
+/* Free Gifts Card Box */
+.evora-free-gifts {
+  margin-top: 1.6rem;
+  background: #FFF0F3;
+  border-radius: 14px;
+  padding: 1.4rem;
+  border: 1px dashed #F8DCE2;
+}
+
+.evora-free-gifts__title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--evora-text);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.evora-free-gifts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.evora-gift-card {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 1rem 0.6rem;
+  text-align: center;
+  border: 1px solid #F8DCE2;
+}
+
+.evora-gift-card__icon {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.evora-gift-card__label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--evora-text);
+}
+
+/* Trust Checkout Badge */
+.evora-checkout-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--evora-text-secondary);
+}
+
+.evora-delivery-estimation {
+  margin-top: 1.6rem;
+  padding: 1.2rem 1.6rem;
+  background: #FFF6F8;
+  border-radius: 12px;
+  border: 1px solid #F8DCE2;
+  font-size: 1.35rem;
+  color: var(--evora-text);
+}
+
+/* --------------------------------------------------------------------------
+   7. "HOW DOES IT WORK?" 3-STEP GRID
+   -------------------------------------------------------------------------- */
+.evora-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .evora-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.evora-step-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #F8DCE2;
+  overflow: hidden;
+  box-shadow: var(--evora-shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.evora-step-card__header {
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  border-bottom: 1px solid #F0E6E8;
+}
+
+.evora-step-card__num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #FF5B82;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.evora-step-card__title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--evora-text);
+}
+
+.evora-step-card__media {
+  height: 220px;
+  background: #FFF0F3;
+  overflow: hidden;
+}
+
+.evora-step-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evora-step-card__body {
+  padding: 1.8rem 2rem;
+  font-size: 1.4rem;
+  color: var(--evora-text-secondary);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. 4-ITEM TRUST & FEATURE BAR
+   -------------------------------------------------------------------------- */
+.evora-trust-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background: #FFF6F8;
+  border-radius: 20px;
+  border: 1px solid #F8DCE2;
+  padding: 3rem 2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .evora-trust-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .evora-trust-row {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem 4rem;
+  }
+}
+
+.evora-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+}
+
+.evora-trust-item__icon {
+  font-size: 2.4rem;
+  color: #FF5B82;
+  flex-shrink: 0;
+}
+
+.evora-trust-item__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--evora-text);
+  margin-bottom: 0.4rem;
+}
+
+.evora-trust-item__desc {
+  font-size: 1.3rem;
+  color: var(--evora-text-secondary);
+  line-height: 1.4;
 }

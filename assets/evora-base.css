@@ -1,74 +1,84 @@
 /* ==========================================================================
-   EVORA DESIGN SYSTEM: BASE & TOKENS
+   EVORA DESIGN SYSTEM: BASE & TOKENS (Coral Rose & Soft Botanical Theme)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,400..700&family=Inter+Tight:wght@400..800&display=swap');
 
 :root {
-  /* Brand Color Tokens */
-  --evora-primary: #D9777F;
-  --evora-primary-hover: #C5656D;
-  --evora-primary-light: #FBECEE;
-  --evora-primary-glow: rgba(217, 119, 127, 0.22);
+  /* Brand Primary Accents */
+  --evora-primary: #FF5B82;
+  --evora-primary-hover: #D44A61;
+  --evora-primary-light: #FFF0F3;
+  --evora-primary-glow: rgba(255, 91, 130, 0.25);
+  --evora-primary-gradient: linear-gradient(135deg, #FF6B8A 0%, #FF4F79 100%);
+  --evora-primary-border: #F8DCE2;
   
-  --evora-secondary: #E88D72;
-  --evora-secondary-hover: #D4795E;
-  --evora-secondary-light: #FDF3F0;
+  /* Secondary & Accents */
+  --evora-secondary: #FF8BA7;
+  --evora-secondary-light: #FFF6F8;
+  --evora-accent: #E88D72;
   
-  --evora-accent: #8E7DBE;
-  --evora-accent-light: #F4F1FA;
-  
-  --evora-background: #FDFBFA;
+  /* Background & Surfaces */
+  --evora-background: #FFFFFF;
+  --evora-background-blush: #FFF0F3;
   --evora-surface: #FFFFFF;
-  --evora-surface-soft: #F9F4F2;
-  --evora-surface-alt: #F3EBE7;
+  --evora-surface-soft: #FFF6F8;
+  --evora-surface-selected: #FFE8EF;
+  --evora-surface-alt: #FDEBD0;
   
-  --evora-text: #222026;
-  --evora-text-secondary: #585563;
-  --evora-muted: #7E7B8A;
-  --evora-border: #EFE6E3;
-  --evora-border-light: rgba(239, 230, 227, 0.7);
+  /* Typography & Neutrals */
+  --evora-text: #24222A;
+  --evora-text-secondary: #7A7A85;
+  --evora-muted: #9A9598;
+  --evora-border: #F0E6E8;
+  --evora-border-soft: #F8DCE2;
+  --evora-border-light: rgba(240, 230, 232, 0.7);
   
-  --evora-success: #3E885B;
-  --evora-success-light: #EBF7EE;
+  /* Functional Accents */
+  --evora-success: #2ECC71;
+  --evora-success-light: #EAFAF1;
+  --evora-amber: #F5B041;
+  --evora-amber-light: #FDEBD0;
   
   /* Sizing & Radii Tokens */
   --evora-radius-sm: 8px;
-  --evora-radius-md: 16px;
-  --evora-radius-lg: 24px;
-  --evora-radius-xl: 32px;
+  --evora-radius-md: 14px;
+  --evora-radius-lg: 20px;
+  --evora-radius-xl: 28px;
   --evora-radius-pill: 9999px;
   --evora-radius: var(--evora-radius-lg);
   
-  /* Elevation & Shadows */
-  --evora-shadow-subtle: 0 2px 10px rgba(34, 32, 38, 0.03);
-  --evora-shadow-soft: 0 10px 30px rgba(34, 32, 38, 0.05);
-  --evora-shadow-card: 0 14px 36px rgba(217, 119, 127, 0.08), 0 4px 12px rgba(34, 32, 38, 0.03);
-  --evora-shadow-floating: 0 20px 48px rgba(34, 32, 38, 0.1);
+  /* Elevation & Ambient Shadows */
+  --evora-shadow-subtle: 0 2px 10px rgba(36, 34, 42, 0.03);
+  --evora-shadow-soft: 0 8px 24px rgba(212, 165, 172, 0.1);
+  --evora-shadow-card: 0 14px 36px rgba(212, 165, 172, 0.14), 0 4px 12px rgba(36, 34, 42, 0.03);
+  --evora-shadow-floating: 0 20px 48px rgba(255, 91, 130, 0.18);
   --evora-glow: 0 0 24px var(--evora-primary-glow);
   
   /* Layout & Spacing */
-  --evora-container: 1240px;
-  --evora-container-narrow: 980px;
-  --evora-section-spacing: 96px;
-  --evora-section-spacing-mobile: 56px;
+  --evora-container: 1220px;
+  --evora-container-narrow: 940px;
+  --evora-section-spacing: 80px;
+  --evora-section-spacing-mobile: 48px;
   
   /* Typography Variables */
-  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: 'Inter Tight', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  --font-size-h1: clamp(2.4rem, 4.5vw, 4.2rem);
-  --font-size-h2: clamp(2rem, 3.2vw, 3.2rem);
-  --font-size-h3: clamp(1.6rem, 2.2vw, 2.4rem);
+  --font-size-h1: clamp(2.6rem, 4.8vw, 4.4rem);
+  --font-size-h2: clamp(2.2rem, 3.4vw, 3.4rem);
+  --font-size-h3: clamp(1.6rem, 2.2vw, 2.2rem);
   --font-size-body: 1.6rem;
-  --font-size-small: 1.3rem;
+  --font-size-small: 1.35rem;
   
   --line-height-heading: 1.15;
   --line-height-body: 1.6;
   
   /* Transitions */
-  --evora-transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  --evora-transition-slow: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --evora-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --evora-transition-slow: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Global Typography & Font Overrides for Dawn Harmony */
@@ -94,6 +104,18 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 700;
   color: var(--evora-text);
   line-height: var(--line-height-heading);
+}
+
+.evora-serif {
+  font-family: var(--font-serif) !important;
+  font-weight: 700;
+}
+
+.evora-highlight {
+  color: var(--evora-primary);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
 }
 
 /* Evora Container Utility */
@@ -147,50 +169,99 @@ h1, h2, h3, h4, h5, h6,
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 1.2rem;
+  border: 1px solid var(--evora-border-soft);
 }
 
 .evora-section-header__title {
   font-size: var(--font-size-h2);
-  margin-bottom: 1.2rem;
+  font-weight: 700;
   color: var(--evora-text);
+  margin-bottom: 1rem;
 }
 
-.evora-section-header__subtitle {
+.evora-section-header__description {
   font-size: 1.6rem;
-  line-height: 1.6;
   color: var(--evora-text-secondary);
-  margin: 0;
+  line-height: var(--line-height-body);
 }
 
-/* Background Variations */
-.evora-bg-surface {
-  background-color: var(--evora-surface);
+/* Surfaces & Backgrounds */
+.evora-bg-surface { background-color: var(--evora-surface); }
+.evora-bg-soft { background-color: var(--evora-surface-soft); }
+.evora-bg-blush { background: linear-gradient(180deg, #FFF0F3 0%, #FFFFFF 100%); }
+.evora-bg-glow { background: linear-gradient(135deg, #FFF0F3 0%, #FFEBF0 50%, #FFDFE8 100%); }
+
+/* Global Card System */
+.evora-card {
+  background: var(--evora-surface);
+  border-radius: var(--evora-radius);
+  border: 1px solid var(--evora-border-soft);
+  box-shadow: var(--evora-shadow-card);
+  transition: var(--evora-transition);
 }
 
-.evora-bg-soft {
-  background-color: var(--evora-surface-soft);
+.evora-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(212, 165, 172, 0.2);
 }
 
-.evora-bg-cream {
-  background-color: var(--evora-background);
+/* Global Button System */
+.evora-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-family: var(--font-ui) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 1.2rem 2.6rem;
+  border-radius: var(--evora-radius-pill);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--evora-transition);
+  border: none;
+  text-align: center;
 }
 
-.evora-bg-gradient {
-  background: linear-gradient(180deg, #FDFBFA 0%, #FAF2EF 100%);
+.evora-btn--primary {
+  background: var(--evora-primary-gradient);
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(255, 91, 130, 0.35);
 }
 
-.evora-bg-primary-tint {
-  background: linear-gradient(135deg, #FDF7F8 0%, #FAF0EE 100%);
+.evora-btn--primary:hover {
+  background: linear-gradient(135deg, #FF5B82 0%, #D44A61 100%);
+  box-shadow: 0 10px 26px rgba(255, 91, 130, 0.45);
+  transform: translateY(-2px);
 }
 
-/* Accessibility: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.evora-btn--secondary {
+  background: #FFFFFF;
+  color: var(--evora-text) !important;
+  border: 1px solid var(--evora-border-soft);
+}
+
+.evora-btn--secondary:hover {
+  background: var(--evora-surface-soft);
+  border-color: var(--evora-primary);
+  color: var(--evora-primary) !important;
+}
+
+.evora-btn--lg {
+  padding: 1.5rem 3.4rem;
+  font-size: 1.65rem;
+}
+
+/* Badge Pill */
+.evora-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.6rem;
+  border-radius: var(--evora-radius-pill);
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: var(--evora-primary-light);
+  color: var(--evora-primary);
+  border: 1px solid var(--evora-border-soft);
 }

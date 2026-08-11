@@ -1,155 +1,51 @@
 {
   "sections": {
-    "main": {
-      "type": "main-product",
-      "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share Evora"
-          }
-        }
-      },
-      "block_order": [
-        "vendor",
-        "title",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
-      ],
+    "evora_product_main": {
+      "type": "evora-product-main",
       "settings": {
-        "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 24
+        "review_text": "1,247 Reviews",
+        "title": "Flow Alarm",
+        "subtitle": "The alarm clock that gets you up. No snooze. Just results.",
+        "option_label": "How many Flow Docks?",
+        "opt_1_label": "1 Dock",
+        "opt_2_label": "2 Docks",
+        "sub_badge": "MOST POPULAR: GET 20% OFF + FREE GIFTS 🎁",
+        "sub_title": "Subscribe & Save",
+        "sub_price": "$40.80",
+        "sub_compare_price": "$51.00",
+        "sub_desc": "1 Flow Dock & Flow+ membership",
+        "one_title": "One Time Purchase",
+        "one_price": "$54.40",
+        "one_compare_price": "$68.00",
+        "one_desc": "1 Flow Dock delivered once",
+        "add_to_cart_label": "Add to Cart"
       }
     },
-    "benefits": {
-      "type": "evora-benefits",
-      "blocks": {
-        "ben_1": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "heart",
-            "badge_tag": "Cycle Harmony",
-            "title": "Hormonal Equilibrium",
-            "text": "<p>Targeted bio-adaptogens smooth out cortisol spikes, reduce cycle discomfort, and stabilize mood.</p>"
-          }
-        },
-        "ben_2": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "sparkle",
-            "badge_tag": "Sustained Vitality",
-            "title": "Clean, Jitter-Free Energy",
-            "text": "<p>Active B-complex and cellular CoQ10 power steady all-day focus without caffeine crashes.</p>"
-          }
-        },
-        "ben_3": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "leaf",
-            "badge_tag": "Microbiome Focus",
-            "title": "Gut Harmony & Digestion",
-            "text": "<p>Gentle prebiotic botanicals nurture gut flora, soothing bloating and enhancing nutrient absorption.</p>"
-          }
-        },
-        "ben_4": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "shield",
-            "badge_tag": "Pure & Tested",
-            "title": "Third-Party Verified",
-            "text": "<p>Triple-tested for heavy metals, microbial safety, and active phytonutrient potency.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "ben_1",
-        "ben_2",
-        "ben_3",
-        "ben_4"
-      ],
-      "settings": {
-        "badge_text": "The Evora Difference",
-        "heading": "Why our formula works when others don't",
-        "subheading": "<p>Developed alongside OB-GYNs and endocrinologists to nourish female physiology across all 4 cycle phases.</p>"
-      }
-    },
-    "how_it_works": {
+    "evora_how_it_works": {
       "type": "evora-how-it-works",
       "blocks": {
         "step_1": {
           "type": "step",
           "settings": {
-            "step_number": "01",
-            "title": "Mix 1 Scoop Daily",
-            "text": "<p>Blend effortlessly into 8-10 oz of chilled water, oat milk, or your morning smoothie.</p>"
+            "title": "Set up your alarm",
+            "image_url": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=350&fit=crop",
+            "description": "Open the Flow App and create your first alarm. Takes only 10 seconds."
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
-            "step_number": "02",
-            "title": "Log in Companion App",
-            "text": "<p>Track energy, cycle phase, and symptoms in seconds with your complimentary Evora+ access.</p>"
+            "title": "Place it across the room",
+            "image_url": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?w=600&h=350&fit=crop",
+            "description": "Put your Flow Dock on your nightstand or across the room."
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
-            "step_number": "03",
-            "title": "Feel Continuous Balance",
-            "text": "<p>Enjoy sustained vitality, deeper restorative sleep, and calm PMS symptom-free cycles.</p>"
+            "title": "Get up to dismiss",
+            "image_url": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=350&fit=crop",
+            "description": "When the alarm goes off, you must get up and dismiss it on the Dock."
           }
         }
       },
@@ -159,72 +55,67 @@
         "step_3"
       ],
       "settings": {
-        "badge_text": "Simple Daily Ritual",
-        "heading": "Three steps to biological harmony",
-        "subheading": "<p>Designed to fit seamlessly into your existing morning routine with effortless daily consistency.</p>"
+        "heading": "How does it work?"
       }
     },
-    "faq": {
-      "type": "evora-faq",
+    "evora_trust_bar": {
+      "type": "evora-trust-bar",
       "blocks": {
-        "faq_1": {
-          "type": "faq_item",
+        "t1": {
+          "type": "trust_item",
           "settings": {
-            "question": "How soon will I notice results?",
-            "answer": "<p>Most women report improved energy and digestion within the first 7-10 days, with noticeable PMS and cycle comfort improvements within 30-60 days of consistent daily use.</p>"
+            "icon": "clock",
+            "title": "No snooze",
+            "description": "The only way to turn it off is to get up."
           }
         },
-        "faq_2": {
-          "type": "faq_item",
+        "t2": {
+          "type": "trust_item",
           "settings": {
-            "question": "What does the Evora powder taste like?",
-            "answer": "<p>A naturally crisp, refreshing wild berry flavor lightly sweetened with organic monk fruit. No chalky texture or artificial aftertaste.</p>"
+            "icon": "sleep",
+            "title": "Better sleep",
+            "description": "Builds healthier habits and better mornings."
           }
         },
-        "faq_3": {
-          "type": "faq_item",
+        "t3": {
+          "type": "trust_item",
           "settings": {
-            "question": "How do subscriptions work?",
-            "answer": "<p>Subscribers save 20% on every jar and receive automatic fresh deliveries every 30 days. You can pause, adjust delivery dates, or cancel anytime in 1 click from your account.</p>"
+            "icon": "science",
+            "title": "Science-backed",
+            "description": "Designed with sleep experts and backed by science."
+          }
+        },
+        "t4": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "heart",
+            "title": "Loved by users",
+            "description": "Thousands of 5-star reviews from real customers."
           }
         }
       },
       "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3"
+        "t1",
+        "t2",
+        "t3",
+        "t4"
       ],
-      "settings": {
-        "badge_text": "Got Questions?",
-        "heading": "Product FAQ & Guidance",
-        "subheading": "<p>Everything you need to know about ingredients, timing, and results.</p>",
-        "open_first": true
-      }
+      "settings": {}
     },
-    "related-products": {
-      "type": "related-products",
+    "evora_newsletter": {
+      "type": "evora-newsletter-banner",
       "settings": {
-        "heading": "You may also like",
-        "heading_size": "h2",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 28
+        "heading": "Stay motivated. Stay updated.",
+        "subheading": "Get tips on better sleep, productivity, and exclusive offers straight to your inbox.",
+        "input_placeholder": "Enter your email",
+        "button_label": "Subscribe"
       }
     }
   },
   "order": [
-    "main",
-    "benefits",
-    "how_it_works",
-    "faq",
-    "related-products"
+    "evora_product_main",
+    "evora_how_it_works",
+    "evora_trust_bar",
+    "evora_newsletter"
   ]
 }
