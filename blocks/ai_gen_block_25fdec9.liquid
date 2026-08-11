@@ -5,12 +5,18 @@
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
-{% if section.settings.background_image %}
-  background-image: url('{{ section.settings.background_image | image_url }}');
-  background-size: cover;
-  background-position: center;
-{% endif %}
+.ai-hero-cta-{{ ai_gen_id }}{
+  position: relative;
+  overflow: hidden;
+  padding:
+    {{ block.settings.section_padding_top }}px
+    {{ block.settings.section_padding_horizontal }}px
+    {{ block.settings.section_padding_bottom }}px;
 
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center center;
+}
 
   .ai-hero-cta-container-{{ ai_gen_id }} {
     max-width: {{ block.settings.container_max_width }}px;
@@ -281,7 +287,14 @@ style="{% if section.settings.background_image %}background-image: url('{{ secti
   }
 {% endstyle %}
 
-<hero-cta-{{ ai_gen_id }} class="ai-hero-cta-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+<hero-cta-{{ ai_gen_id }}
+class="ai-hero-cta-{{ ai_gen_id }}"
+{% if block.settings.background_image %}
+style="
+background-image:url('{{ block.settings.background_image | image_url: width: 2200 }}');
+"
+{% endif %}
+{{ block.shopify_attributes }}>
   <div class="ai-hero-cta-container-{{ ai_gen_id }}">
     <div class="ai-hero-cta-main-{{ ai_gen_id }}">
       <div class="ai-hero-cta-logo-{{ ai_gen_id }}">
