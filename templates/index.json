@@ -156,123 +156,6 @@
         "subheading": "Our community is growing stronger every day."
       }
     },
-    "178644800414baf65f": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_4b0d157_hcCXbK": {
-          "type": "ai_gen_block_4b0d157",
-          "settings": {
-            "heading": "Stay in the Loop ❤️",
-            "description": "<p>Subscribe to get special offers, free giveaways, and exclusive deals.</p>",
-            "email_placeholder": "Enter your email",
-            "button_text": "Subscribe",
-            "success_message": "Thanks for subscribing!",
-            "image": "shopify://shop_images/BeigeMinimalistModernNewinMyBlogInstagramStory_1242x2688px.png",
-            "image_max_width": 400,
-            "image_border_radius": 20,
-            "desktop_width_percent": 100,
-            "border_radius": 24,
-            "padding_vertical": 60,
-            "padding_horizontal": 60,
-            "column_gap": 40,
-            "content_gap": 20,
-            "mobile_padding_vertical": 40,
-            "mobile_padding_horizontal": 20,
-            "mobile_gap": 30,
-            "background_color": "#ff8ba7",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "input_background_color": "#ffffff",
-            "input_text_color": "#ffffff",
-            "input_placeholder_color": "#999999",
-            "input_border_color": "#ffffff",
-            "button_color": "#ff5b82",
-            "button_hover_color": "#24222a",
-            "button_text_color": "#ffffff",
-            "success_color": "#ffffff",
-            "error_color": "#ffffff",
-            "heading_size": 36,
-            "text_size": 16,
-            "input_border_radius": 40,
-            "button_border_radius": 40
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_4b0d157_hcCXbK"
-      ],
-      "settings": {}
-    },
-    "1786441936859f416a": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "17864408563b0039b7": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "1786440952c6882bdf": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "1786441568db3ef6f0": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_9483963_aWgPwh": {
-          "type": "ai_gen_block_9483963",
-          "settings": {
-            "logo": "shopify://shop_images/footer-fem-logo.svg",
-            "logo_width": 150,
-            "description": "<p>Clinical nutrition meets personalized health-tech intelligence.</p>",
-            "description_font_size": 14,
-            "apple_badge": "shopify://shop_images/app-store.svg",
-            "apple_store_url": "",
-            "google_badge": "shopify://shop_images/google-play.svg",
-            "google_play_url": "",
-            "badge_height": 40,
-            "show_column_1": true,
-            "column_1_title": "Company",
-            "column_1_menu": "",
-            "show_column_2": true,
-            "column_2_title": "Support",
-            "column_2_menu": "",
-            "show_column_3": true,
-            "column_3_title": "Legal",
-            "column_3_menu": "",
-            "copyright_text": "© 2026 Evora. All rights reserved.",
-            "copyright_font_size": 14,
-            "show_social_icons": true,
-            "facebook_url": "https://facebook.com",
-            "instagram_url": "https://instagram.com",
-            "twitter_url": "https://x.com",
-            "linkedin_url": "https://linkedin.com",
-            "social_icon_size": 22,
-            "column_title_font_size": 16,
-            "link_font_size": 14,
-            "background_color": "#ffffff",
-            "text_color": "#000000",
-            "link_color": "#000000",
-            "link_hover_color": "#ff5b82",
-            "divider_color": "#ffffff",
-            "social_icon_color": "#000000",
-            "social_icon_hover_color": "#000000",
-            "max_width": 1100,
-            "padding_top": 60,
-            "padding_bottom": 40
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_9483963_aWgPwh"
-      ],
-      "settings": {}
-    },
-    "17864437473c977df9": {
-      "type": "_blocks",
-      "settings": {}
-    },
     "17864487063360cdf4": {
       "type": "_blocks",
       "blocks": {
@@ -347,6 +230,75 @@
         "ai_gen_block_25fdec9_34ExMx"
       ],
       "settings": {}
+    },
+    "1786441936859f416a": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "17864408563b0039b7": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1786440952c6882bdf": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1786441568db3ef6f0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9483963_aWgPwh": {
+          "type": "ai_gen_block_9483963",
+          "settings": {
+            "logo": "shopify://shop_images/footer-fem-logo.svg",
+            "logo_width": 150,
+            "description": "<p>Clinical nutrition meets personalized health-tech intelligence.</p>",
+            "description_font_size": 14,
+            "apple_badge": "shopify://shop_images/app-store.svg",
+            "apple_store_url": "",
+            "google_badge": "shopify://shop_images/google-play.svg",
+            "google_play_url": "",
+            "badge_height": 40,
+            "show_column_1": true,
+            "column_1_title": "Company",
+            "column_1_menu": "",
+            "show_column_2": true,
+            "column_2_title": "Support",
+            "column_2_menu": "",
+            "show_column_3": true,
+            "column_3_title": "Legal",
+            "column_3_menu": "",
+            "copyright_text": "© 2026 Evora. All rights reserved.",
+            "copyright_font_size": 14,
+            "show_social_icons": true,
+            "facebook_url": "https://facebook.com",
+            "instagram_url": "https://instagram.com",
+            "twitter_url": "https://x.com",
+            "linkedin_url": "https://linkedin.com",
+            "social_icon_size": 22,
+            "column_title_font_size": 16,
+            "link_font_size": 14,
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "link_color": "#000000",
+            "link_hover_color": "#ff5b82",
+            "divider_color": "#ffffff",
+            "social_icon_color": "#000000",
+            "social_icon_hover_color": "#000000",
+            "max_width": 1100,
+            "padding_top": 60,
+            "padding_bottom": 40
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9483963_aWgPwh"
+      ],
+      "settings": {}
+    },
+    "17864437473c977df9": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
@@ -354,12 +306,11 @@
     "evora_features",
     "evora_empowering",
     "evora_testimonials",
-    "178644800414baf65f",
+    "17864487063360cdf4",
     "1786441936859f416a",
     "17864408563b0039b7",
     "1786440952c6882bdf",
     "1786441568db3ef6f0",
-    "17864437473c977df9",
-    "17864487063360cdf4"
+    "17864437473c977df9"
   ]
 }
