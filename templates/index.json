@@ -200,7 +200,7 @@
             "link_font_size": 14,
             "background_color": "#ffffff",
             "text_color": "#000000",
-            "link_color": "#ffffff",
+            "link_color": "#000000",
             "link_hover_color": "#ff5b82",
             "divider_color": "#FFFFFF",
             "social_icon_color": "#000000",
