@@ -2,9 +2,11 @@
   @prompt
     Create a sticky header section with a white background and a subtle bottom border. Layout: logo image on the far left, horizontal navigation menu links centered in the middle (clean, minimal, no dropdowns needed, dark text), and a rounded pill-shaped CTA button on the far right with a pink/coral gradient background and white text saying "Try it today". The header should be fully responsive and have customizable settings for logo, nav links, button text, button URL, and button color. Keep spacing clean and airy similar to a health/wellness brand aesthetic.
 {% enddoc %}
+
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
+
   .ai-sticky-header-{{ ai_gen_id }} {
     display: block;
     position: sticky;
@@ -18,10 +20,11 @@
   }
 
   .ai-sticky-header-{{ ai_gen_id }}.scrolled {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   }
 
   .ai-sticky-header-container-{{ ai_gen_id }} {
+    width: 100%;
     max-width: {{ block.settings.container_width }}px;
     margin: 0 auto;
     padding: {{ block.settings.vertical_padding }}px {{ block.settings.horizontal_padding }}px;
@@ -29,24 +32,33 @@
     align-items: center;
     justify-content: space-between;
     gap: 32px;
+    box-sizing: border-box;
   }
 
+  /* LOGO */
+
   .ai-sticky-header-logo-{{ ai_gen_id }} {
-    flex-shrink: 0;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1002;
   }
 
   .ai-sticky-header-logo-{{ ai_gen_id }} a {
-    display: block;
+    display: flex;
+    align-items: center;
     line-height: 0;
+    text-decoration: none;
   }
 
   .ai-sticky-header-logo-{{ ai_gen_id }} img {
     display: block;
-    max-height: {{ block.settings.logo_height }}px;
     width: auto;
+    max-width: 200px;
+    max-height: {{ block.settings.logo_height }}px;
     height: auto;
+    object-fit: contain;
   }
 
   .ai-sticky-header-logo-placeholder-{{ ai_gen_id }} {
@@ -57,6 +69,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 4px;
+    overflow: hidden;
   }
 
   .ai-sticky-header-logo-placeholder-{{ ai_gen_id }} svg {
@@ -65,15 +78,20 @@
     object-fit: contain;
   }
 
+  /* DESKTOP NAVIGATION */
+
   .ai-sticky-header-nav-{{ ai_gen_id }} {
-    flex-grow: 1;
+    flex: 1 1 auto;
     display: flex;
+    align-items: center;
     justify-content: center;
+    min-width: 0;
   }
 
   .ai-sticky-header-nav-list-{{ ai_gen_id }} {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: {{ block.settings.nav_spacing }}px;
     list-style: none;
     margin: 0;
@@ -82,54 +100,80 @@
 
   .ai-sticky-header-nav-item-{{ ai_gen_id }} {
     margin: 0;
+    padding: 0;
   }
 
   .ai-sticky-header-nav-link-{{ ai_gen_id }} {
+    display: inline-block;
     color: {{ block.settings.nav_text_color }};
     text-decoration: none;
     font-size: {{ block.settings.nav_font_size }}px;
     font-weight: {{ block.settings.nav_font_weight }};
-    transition: color 0.2s ease;
+    line-height: 1.4;
     white-space: nowrap;
+    transition: color 0.2s ease;
   }
 
   .ai-sticky-header-nav-link-{{ ai_gen_id }}:hover {
     color: {{ block.settings.nav_hover_color }};
   }
 
+  /* DESKTOP CTA */
+
   .ai-sticky-header-cta-{{ ai_gen_id }} {
-    flex-shrink: 0;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
   }
 
   .ai-sticky-header-cta-button-{{ ai_gen_id }} {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-height: 44px;
     padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
-    background: linear-gradient(135deg, {{ block.settings.button_bg_start }} 0%, {{ block.settings.button_bg_end }} 100%);
+    box-sizing: border-box;
+    background: linear-gradient(
+      135deg,
+      {{ block.settings.button_bg_start }} 0%,
+      {{ block.settings.button_bg_end }} 100%
+    );
     color: {{ block.settings.button_text_color }};
     text-decoration: none;
     border-radius: {{ block.settings.button_border_radius }}px;
     font-size: {{ block.settings.button_font_size }}px;
     font-weight: {{ block.settings.button_font_weight }};
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1.2;
     white-space: nowrap;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .ai-sticky-header-cta-button-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.button_text_color }};
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(255, 91, 130, 0.25);
+    box-shadow: 0 5px 16px rgba(255, 91, 130, 0.25);
   }
+
+  /* MOBILE TOGGLE */
 
   .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} {
     display: none;
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
     color: {{ block.settings.nav_text_color }};
+    cursor: pointer;
+    position: relative;
+    z-index: 1002;
   }
 
   .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} svg {
@@ -138,9 +182,21 @@
     display: block;
   }
 
+  .ai-sticky-header-mobile-close-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  /* TABLET / MOBILE */
+
   @media screen and (max-width: 989px) {
+
     .ai-sticky-header-container-{{ ai_gen_id }} {
       gap: 16px;
+    }
+
+    .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} {
+      display: flex;
+      margin-left: auto;
     }
 
     .ai-sticky-header-nav-{{ ai_gen_id }} {
@@ -148,50 +204,47 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
-      background-color: {{ block.settings.header_bg_color }};
+      height: 100dvh;
+      min-height: 100vh;
+      background: {{ block.settings.header_bg_color }};
+      display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: flex-start;
-      padding: 80px 24px 24px;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 999;
+      padding: 100px 24px 40px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      transform: translateX(100%);
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 1001;
     }
 
     .ai-sticky-header-nav-{{ ai_gen_id }}.active {
       transform: translateX(0);
-    }
-
-    .ai-sticky-header-nav-list-{{ ai_gen_id }} {
-      flex-direction: column;
-      gap: 24px;
-      width: 100%;
-    }
-
-    .ai-sticky-header-nav-item-{{ ai_gen_id }} {
-      width: 100%;
-      text-align: center;
-    }
-
-    .ai-sticky-header-nav-link-{{ ai_gen_id }} {
-      font-size: 18px;
-      display: block;
-      padding: 12px 0;
-    }
-
-    .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} {
-      display: block;
+      visibility: visible;
+      opacity: 1;
     }
 
     .ai-sticky-header-mobile-close-{{ ai_gen_id }} {
       position: absolute;
       top: 24px;
       right: 24px;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: 0;
       color: {{ block.settings.nav_text_color }};
+      cursor: pointer;
     }
 
     .ai-sticky-header-mobile-close-{{ ai_gen_id }} svg {
@@ -200,24 +253,52 @@
       display: block;
     }
 
-    .ai-sticky-header-cta-{{ ai_gen_id }} {
-      order: -1;
+    .ai-sticky-header-nav-list-{{ ai_gen_id }} {
       width: 100%;
-      margin-top: 24px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .ai-sticky-header-nav-item-{{ ai_gen_id }} {
+      width: 100%;
+      text-align: center;
+    }
+
+    .ai-sticky-header-nav-link-{{ ai_gen_id }} {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      font-size: 18px;
+    }
+
+    .ai-sticky-header-cta-{{ ai_gen_id }} {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
     }
 
     .ai-sticky-header-cta-button-{{ ai_gen_id }} {
-      width: 100%;
+      width: min(100%, 320px);
+      min-height: 50px;
     }
   }
 
+  /* SMALL MOBILE */
+
   @media screen and (max-width: 749px) {
+
     .ai-sticky-header-container-{{ ai_gen_id }} {
-      padding: {{ block.settings.vertical_padding | times: 0.75 }}px {{ block.settings.horizontal_padding | times: 0.75 }}px;
+      padding:
+        {{ block.settings.vertical_padding | times: 0.75 }}px
+        {{ block.settings.horizontal_padding | times: 0.75 }}px;
     }
 
     .ai-sticky-header-logo-{{ ai_gen_id }} img {
       max-height: {{ block.settings.logo_height | times: 0.8 }}px;
+      max-width: 160px;
     }
 
     .ai-sticky-header-logo-placeholder-{{ ai_gen_id }} {
@@ -225,183 +306,360 @@
       height: {{ block.settings.logo_height | times: 0.8 }}px;
     }
   }
+
 {% endstyle %}
 
-<sticky-header-{{ ai_gen_id }} class="ai-sticky-header-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+
+<sticky-header-{{ ai_gen_id }}
+  class="ai-sticky-header-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+
   <div class="ai-sticky-header-container-{{ ai_gen_id }}">
+
+    <!-- LOGO -->
+
     <div class="ai-sticky-header-logo-{{ ai_gen_id }}">
-      <a href="/">
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
         {% if block.settings.logo %}
+
           <img
             src="{{ block.settings.logo | image_url: width: 400 }}"
-            alt="{{ shop.name }}"
+            alt="{{ block.settings.logo.alt | default: shop.name | escape }}"
             width="{{ block.settings.logo.width }}"
             height="{{ block.settings.logo.height }}"
             loading="eager"
           >
+
         {% else %}
+
           <div class="ai-sticky-header-logo-placeholder-{{ ai_gen_id }}">
             {{ 'image' | placeholder_svg_tag }}
           </div>
+
         {% endif %}
       </a>
     </div>
 
+
+    <!-- MOBILE MENU BUTTON -->
+
     <button
+      type="button"
       class="ai-sticky-header-mobile-toggle-{{ ai_gen_id }}"
       aria-label="Open navigation menu"
       aria-expanded="false"
+      aria-controls="ai-sticky-nav-{{ ai_gen_id }}"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
+
     </button>
 
-    <nav class="ai-sticky-header-nav-{{ ai_gen_id }}">
+
+    <!-- NAVIGATION -->
+
+    <nav
+      id="ai-sticky-nav-{{ ai_gen_id }}"
+      class="ai-sticky-header-nav-{{ ai_gen_id }}"
+      aria-label="Main navigation"
+    >
+
       <button
+        type="button"
         class="ai-sticky-header-mobile-close-{{ ai_gen_id }}"
         aria-label="Close navigation menu"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M6 18L18 6M6 6l12 12"></path>
         </svg>
+
       </button>
 
+
       <ul class="ai-sticky-header-nav-list-{{ ai_gen_id }}">
+
         {% if block.settings.nav_link_1_text != blank %}
           <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
-            <a href="{{ block.settings.nav_link_1_url }}" class="ai-sticky-header-nav-link-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_1_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
               {{ block.settings.nav_link_1_text }}
             </a>
           </li>
         {% endif %}
 
+
         {% if block.settings.nav_link_2_text != blank %}
           <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
-            <a href="{{ block.settings.nav_link_2_url }}" class="ai-sticky-header-nav-link-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_2_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
               {{ block.settings.nav_link_2_text }}
             </a>
           </li>
         {% endif %}
 
+
         {% if block.settings.nav_link_3_text != blank %}
           <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
-            <a href="{{ block.settings.nav_link_3_url }}" class="ai-sticky-header-nav-link-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_3_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
               {{ block.settings.nav_link_3_text }}
             </a>
           </li>
         {% endif %}
 
+
         {% if block.settings.nav_link_4_text != blank %}
           <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
-            <a href="{{ block.settings.nav_link_4_url }}" class="ai-sticky-header-nav-link-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_4_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
               {{ block.settings.nav_link_4_text }}
             </a>
           </li>
         {% endif %}
 
+
         {% if block.settings.nav_link_5_text != blank %}
           <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
-            <a href="{{ block.settings.nav_link_5_url }}" class="ai-sticky-header-nav-link-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_5_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
               {{ block.settings.nav_link_5_text }}
             </a>
           </li>
         {% endif %}
 
-        <li class="ai-sticky-header-cta-{{ ai_gen_id }}">
-          <a
-            href="{{ block.settings.cta_url }}"
-            class="ai-sticky-header-cta-button-{{ ai_gen_id }}"
-          >
-            {{ block.settings.cta_text }}
-          </a>
-        </li>
+
+        <!-- CTA -->
+
+        {% if block.settings.cta_text != blank %}
+          <li class="ai-sticky-header-cta-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.cta_url }}"
+              class="ai-sticky-header-cta-button-{{ ai_gen_id }}"
+            >
+              {{ block.settings.cta_text }}
+            </a>
+          </li>
+        {% endif %}
+
       </ul>
+
     </nav>
+
   </div>
+
 </sticky-header-{{ ai_gen_id }}>
+
 
 <script>
   (function() {
-    class StickyHeader{{ ai_gen_id }} extends HTMLElement {
+
+    const tagName = 'sticky-header-{{ ai_gen_id }}';
+
+    class StickyHeader extends HTMLElement {
+
       constructor() {
         super();
+
         this.header = this;
-        this.nav = this.querySelector('.ai-sticky-header-nav-{{ ai_gen_id }}');
-        this.mobileToggle = this.querySelector('.ai-sticky-header-mobile-toggle-{{ ai_gen_id }}');
-        this.mobileClose = this.querySelector('.ai-sticky-header-mobile-close-{{ ai_gen_id }}');
-        this.navLinks = this.querySelectorAll('.ai-sticky-header-nav-link-{{ ai_gen_id }}');
+
+        this.nav = this.querySelector(
+          '.ai-sticky-header-nav-{{ ai_gen_id }}'
+        );
+
+        this.mobileToggle = this.querySelector(
+          '.ai-sticky-header-mobile-toggle-{{ ai_gen_id }}'
+        );
+
+        this.mobileClose = this.querySelector(
+          '.ai-sticky-header-mobile-close-{{ ai_gen_id }}'
+        );
+
+        this.navLinks = this.querySelectorAll(
+          '.ai-sticky-header-nav-link-{{ ai_gen_id }}'
+        );
+
       }
+
 
       connectedCallback() {
+
         this.setupScrollEffect();
+
         this.setupMobileMenu();
+
       }
 
+
+      disconnectedCallback() {
+
+        if (this.scrollHandler) {
+          window.removeEventListener(
+            'scroll',
+            this.scrollHandler
+          );
+        }
+
+      }
+
+
       setupScrollEffect() {
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-          const currentScroll = window.pageYOffset;
-          
-          if (currentScroll > 10) {
+
+        this.scrollHandler = () => {
+
+          if (window.pageYOffset > 10) {
             this.header.classList.add('scrolled');
           } else {
             this.header.classList.remove('scrolled');
           }
-          
-          lastScroll = currentScroll;
-        });
+
+        };
+
+        window.addEventListener(
+          'scroll',
+          this.scrollHandler,
+          { passive: true }
+        );
+
       }
+
 
       setupMobileMenu() {
+
         if (this.mobileToggle) {
-          this.mobileToggle.addEventListener('click', () => {
-            this.openMobileMenu();
-          });
+
+          this.mobileToggle.addEventListener(
+            'click',
+            () => {
+              this.openMobileMenu();
+            }
+          );
+
         }
+
 
         if (this.mobileClose) {
-          this.mobileClose.addEventListener('click', () => {
-            this.closeMobileMenu();
-          });
-        }
 
-        this.navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 989) {
+          this.mobileClose.addEventListener(
+            'click',
+            () => {
               this.closeMobileMenu();
             }
-          });
+          );
+
+        }
+
+
+        this.navLinks.forEach((link) => {
+
+          link.addEventListener(
+            'click',
+            () => {
+
+              if (window.innerWidth <= 989) {
+                this.closeMobileMenu();
+              }
+
+            }
+          );
+
         });
 
-        document.addEventListener('click', (e) => {
-          if (
-            this.nav.classList.contains('active') &&
-            !this.nav.contains(e.target) &&
-            !this.mobileToggle.contains(e.target)
-          ) {
-            this.closeMobileMenu();
+
+        document.addEventListener(
+          'keydown',
+          (event) => {
+
+            if (
+              event.key === 'Escape' &&
+              this.nav &&
+              this.nav.classList.contains('active')
+            ) {
+              this.closeMobileMenu();
+            }
+
           }
-        });
+        );
+
       }
+
 
       openMobileMenu() {
+
+        if (!this.nav) return;
+
         this.nav.classList.add('active');
-        this.mobileToggle.setAttribute('aria-expanded', 'true');
+
+        if (this.mobileToggle) {
+          this.mobileToggle.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+        }
+
         document.body.style.overflow = 'hidden';
+
       }
+
 
       closeMobileMenu() {
+
+        if (!this.nav) return;
+
         this.nav.classList.remove('active');
-        this.mobileToggle.setAttribute('aria-expanded', 'false');
+
+        if (this.mobileToggle) {
+          this.mobileToggle.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+        }
+
         document.body.style.overflow = '';
+
       }
+
     }
 
-    customElements.define('sticky-header-{{ ai_gen_id }}', StickyHeader{{ ai_gen_id }});
+
+    if (!customElements.get(tagName)) {
+      customElements.define(tagName, StickyHeader);
+    }
+
   })();
 </script>
+
 
 {% schema %}
 {
@@ -427,6 +685,7 @@
       "label": "Logo height",
       "default": 40
     },
+
     {
       "type": "header",
       "content": "Navigation links"
@@ -485,6 +744,7 @@
       "id": "nav_link_5_url",
       "label": "Link 5 URL"
     },
+
     {
       "type": "header",
       "content": "CTA button"
@@ -567,6 +827,7 @@
       "label": "Button font weight",
       "default": 500
     },
+
     {
       "type": "header",
       "content": "Header style"
@@ -623,6 +884,7 @@
       "label": "Container width",
       "default": 1300
     },
+
     {
       "type": "header",
       "content": "Navigation style"
@@ -669,6 +931,7 @@
       "default": 32
     }
   ],
+
   "presets": [
     {
       "name": "Sticky header"
