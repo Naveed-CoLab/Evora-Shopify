@@ -168,7 +168,7 @@
             "section_padding_horizontal": 32,
             "content_gap": 40,
             "features_spacing": 40,
-            "background_gradient": "linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 240, 243, 0.5) 100%)",
+            "background_gradient": "rgba(0,0,0,0)",
             "logo_width": 180,
             "headline": "Your Wellness, All in One",
             "headline_size": 56,
