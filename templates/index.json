@@ -190,21 +190,21 @@
             "column_3_menu": "",
             "copyright_text": "© 2026 Evora. All rights reserved.",
             "copyright_font_size": 14,
-            "show_social_icons": false,
-            "facebook_url": "#",
-            "instagram_url": "#",
-            "twitter_url": "#",
-            "linkedin_url": "#",
-            "social_icon_size": 20,
+            "show_social_icons": true,
+            "facebook_url": "https://facebook.com",
+            "instagram_url": "https://instagram.com",
+            "twitter_url": "https://x.com",
+            "linkedin_url": "https://linkedin.com",
+            "social_icon_size": 22,
             "column_title_font_size": 16,
             "link_font_size": 14,
             "background_color": "#ffffff",
             "text_color": "#000000",
             "link_color": "#ffffff",
             "link_hover_color": "#ff5b82",
-            "divider_color": "#3d3b45",
+            "divider_color": "#FFFFFF",
             "social_icon_color": "#000000",
-            "social_icon_hover_color": "#ff5b82",
+            "social_icon_hover_color": "#000000",
             "max_width": 1100,
             "padding_top": 60,
             "padding_bottom": 40
@@ -223,32 +223,6 @@
     },
     "17864437473c977df9": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_0af5af8_pTdQ8J": {
-          "type": "ai_gen_block_0af5af8",
-          "settings": {
-            "linkedin_url": "https://linkedin.com",
-            "twitter_url": "https://x.com",
-            "tiktok_url": "https://tiktok.com",
-            "facebook_url": "https://facebook.com",
-            "instagram_url": "https://instagram.com",
-            "youtube_url": "https://youtube.com",
-            "icon_size": 22,
-            "icon_spacing": 16,
-            "icon_color": "#000000",
-            "hover_opacity": 70,
-            "alignment": "center",
-            "background_color": "#ffffff",
-            "padding_top": 20,
-            "padding_bottom": 20,
-            "desktop_width_percent": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_0af5af8_pTdQ8J"
-      ],
       "settings": {}
     }
   },
