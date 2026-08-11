@@ -1,8 +1,3 @@
-/** Shopify CDN: Minification failed
-
-Line 1770:1 Unexpected "{"
-
-**/
 /* @font-face {
     font-family: 'Inter Display';
     src: url('/cdn/shop/files/InterDisplay-Thin.woff2?v=1772451686') format('woff2'),
@@ -44,10 +39,10 @@ Line 1770:1 Unexpected "{"
     font-display: swap;
 }
 
-
-
-
 :root {
+  --font-body-family: 'Inter Display', sans-serif !important;
+  --font-heading-family: 'Inter Display', sans-serif !important;
+  --font-inter-display: 'Inter Display', sans-serif;
   --alpha-button-background: 1;
   --alpha-button-border: 1;
   --alpha-link: 0.85;
@@ -57,7 +52,6 @@ Line 1770:1 Unexpected "{"
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 
   /* custom created variable--------------*/
-  --font-inter-display: 'Inter Display';
   --white: #ffffff;
   --black: #000000;
   --near-black: #222222;
@@ -101,9 +95,14 @@ Line 1770:1 Unexpected "{"
   --page-gutter: calc(var(--nav-gutter) + 48px);
 } 
 
-span{
-  font-family: var(--font-inter-display);
+body,
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5,
+p, a, span, button, input, select, textarea,
+.button, .field__input, .menu-drawer, .header {
+  font-family: 'Inter Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
+
 @media (min-width: 991px){
   .common_28{
     font-size: 36px;
