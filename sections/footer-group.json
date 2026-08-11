@@ -1,22 +1,44 @@
 {
-  "name": "t:sections.footer.name",
+  "name": "Footer Group",
   "type": "footer",
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "menu_1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Flow",
+            "menu": "footer"
+          }
+        },
+        "menu_2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "menu": "footer"
+          }
+        },
+        "contact_info": {
+          "type": "contact",
+          "settings": {
+            "heading": "Contact Us",
+            "contact_label": "Email",
+            "email": "support@flowalarmclock.com",
+            "extra_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_1",
+        "menu_2",
+        "contact_info"
+      ],
       "settings": {
-        "color_scheme": "scheme-2",
-        "newsletter_enable": true,
-        "newsletter_heading": "Join the Evora Wellness Circle",
-        "enable_follow_on_shop": false,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 48,
-        "padding_bottom": 48
+        "brand_title": "Flow",
+        "bio_text": "The alarm that actually gets you out of bed. No snooze. No shortcuts. Just real wake-ups.",
+        "show_app_badges": true,
+        "copyright_text": "© 2026 Flow. All Rights Reserved"
       }
     }
   },
