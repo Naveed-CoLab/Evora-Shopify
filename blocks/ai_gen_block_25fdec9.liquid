@@ -6,147 +6,607 @@
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
+  /* =========================================
+     HERO SECTION
+     ========================================= */
+
   .ai-hero-cta-{{ ai_gen_id }} {
     position: relative;
-    display: block;
     width: 100%;
-    min-width: 100%;
     overflow: hidden;
 
-    padding-top: {{ block.settings.section_padding_top }}px;
-    padding-bottom: {{ block.settings.section_padding_bottom }}px;
-    padding-left: {{ block.settings.section_padding_horizontal }}px;
-    padding-right: {{ block.settings.section_padding_horizontal }}px;
+    padding:
+      {{ block.settings.section_padding_top }}px
+      {{ block.settings.section_padding_horizontal }}px
+      {{ block.settings.section_padding_bottom }}px;
+
+    background-color: #fce7ed;
 
     {% if block.settings.background_image %}
-      background-image: url('{{ block.settings.background_image | image_url: width: 2400 }}');
-      background-repeat: no-repeat;
-      background-position: center center;
+      background-image:
+        url('{{ block.settings.background_image | image_url: width: 2400 }}');
       background-size: cover;
-    {% else %}
-      background-color: #f8e8ed;
+      background-position: center center;
+      background-repeat: no-repeat;
     {% endif %}
   }
 
+  /* Soft overlay for readability */
   .ai-hero-cta-{{ ai_gen_id }}::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 0;
+    background: rgba(255, 255, 255, 0.08);
     pointer-events: none;
-
-    {% if block.settings.overlay_opacity > 0 %}
-      background: {{ block.settings.background_overlay }};
-      opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
-    {% endif %}
+    z-index: 0;
   }
 
   .ai-hero-cta-container-{{ ai_gen_id }} {
     position: relative;
     z-index: 1;
 
-    display: block;
     width: 100%;
     max-width: {{ block.settings.container_max_width }}px;
-    min-height: {{ block.settings.hero_min_height }}px;
 
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
+
+
+  /* =========================================
+     MAIN HERO LAYOUT
+     ========================================= */
 
   .ai-hero-cta-main-{{ ai_gen_id }} {
-    width: 100%;
-    min-height: {{ block.settings.hero_min_height }}px;
-
     display: grid;
+
     grid-template-columns:
-      minmax(140px, {{ block.settings.logo_width }}px)
+      minmax(160px, {{ block.settings.logo_width }}px)
       minmax(0, 1fr)
-      minmax(160px, {{ block.settings.phone_width }}px);
+      minmax(180px, {{ block.settings.phone_width }}px);
 
     align-items: center;
+
     gap: {{ block.settings.content_gap }}px;
+
+    width: 100%;
   }
+
+
+  /* =========================================
+     LEFT LOGO / PRODUCT IMAGE
+     ========================================= */
 
   .ai-hero-cta-logo-{{ ai_gen_id }} {
     width: 100%;
+    max-width: {{ block.settings.logo_width }}px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin: 0 auto;
   }
 
   .ai-hero-cta-logo-{{ ai_gen_id }} img {
     display: block;
+
     width: 100%;
-    max-width: {{ block.settings.logo_width }}px;
     height: auto;
+
+    max-width: 100%;
+
     object-fit: contain;
   }
 
-  .ai-hero-cta-content-{{ ai_gen_id }} {
+  .ai-hero-cta-logo-placeholder-{{ ai_gen_id }} {
     width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: {{ block.settings.text_alignment }};
-  }
+    aspect-ratio: 1 / 1;
 
-  .ai-hero-cta-phone-{{ ai_gen_id }} {
-    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+
+    border-radius: 24px;
+
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .ai-hero-cta-phone-{{ ai_gen_id }} img {
+  .ai-hero-cta-logo-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+
+  /* =========================================
+     CENTER CONTENT
+     ========================================= */
+
+  .ai-hero-cta-content-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+
+  /* =========================================
+     HEADLINE
+     ========================================= */
+
+  .ai-hero-cta-headline-{{ ai_gen_id }} {
+    margin:
+      0 0
+      {{ block.settings.headline_spacing }}px;
+
+    color: {{ block.settings.headline_color }};
+
+    font-family: inherit;
+    font-size: {{ block.settings.headline_size }}px;
+    font-weight: {{ block.settings.headline_weight }};
+
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+
+    text-wrap: balance;
+  }
+
+  .ai-hero-cta-headline-{{ ai_gen_id }} .accent {
+    color: {{ block.settings.headline_accent_color }};
+  }
+
+
+  /* =========================================
+     SUBTITLE
+     ========================================= */
+
+  .ai-hero-cta-subtitle-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.subtitle_max_width }}px;
+
+    margin:
+      0 auto
+      {{ block.settings.subtitle_spacing }}px;
+
+    color: {{ block.settings.subtitle_color }};
+
+    font-family: inherit;
+    font-size: {{ block.settings.subtitle_size }}px;
+
+    line-height: 1.55;
+
+    text-wrap: balance;
+  }
+
+  .ai-hero-cta-subtitle-{{ ai_gen_id }} p {
+    margin: 0;
+  }
+
+
+  /* =========================================
+     BUTTON CONTAINER
+     ========================================= */
+
+  .ai-hero-cta-buttons-{{ ai_gen_id }} {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: {{ block.settings.button_gap }}px;
+
+    width: 100%;
+
+    flex-wrap: wrap;
+
+    margin: 0;
+  }
+
+
+  /* =========================================
+     BASE BUTTON
+     ========================================= */
+
+  .ai-hero-cta-button-{{ ai_gen_id }} {
+    box-sizing: border-box;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 52px;
+
+    padding:
+      {{ block.settings.button_padding_vertical }}px
+      {{ block.settings.button_padding_horizontal }}px;
+
+    font-family: inherit;
+
+    font-size: {{ block.settings.button_font_size }}px;
+
+    font-weight: {{ block.settings.button_font_weight }};
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    border-radius:
+      {{ block.settings.button_border_radius }}px;
+
+    border: 2px solid transparent;
+
+    cursor: pointer;
+
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      box-shadow 0.25s ease;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+
+  /* =========================================
+     PRIMARY BUTTON
+     ========================================= */
+
+  .ai-hero-cta-button-primary-{{ ai_gen_id }} {
+    background:
+      {{ block.settings.primary_button_bg }};
+
+    color:
+      {{ block.settings.primary_button_color }};
+
+    border-color:
+      {{ block.settings.primary_button_bg }};
+
+    box-shadow:
+      0 8px 22px rgba(255, 91, 130, 0.20);
+  }
+
+  .ai-hero-cta-button-primary-{{ ai_gen_id }}:hover {
+    background:
+      {{ block.settings.primary_button_hover_bg }};
+
+    border-color:
+      {{ block.settings.primary_button_hover_bg }};
+
+    color:
+      {{ block.settings.primary_button_color }};
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 12px 30px rgba(255, 91, 130, 0.28);
+  }
+
+  .ai-hero-cta-button-primary-{{ ai_gen_id }}:active {
+    transform: translateY(0);
+
+    box-shadow:
+      0 5px 14px rgba(255, 91, 130, 0.18);
+  }
+
+
+  /* =========================================
+     SECONDARY / GHOST BUTTON
+     ========================================= */
+
+  .ai-hero-cta-button-secondary-{{ ai_gen_id }} {
+    background: transparent;
+
+    color:
+      {{ block.settings.secondary_button_color }};
+
+    border-color:
+      {{ block.settings.secondary_button_border }};
+  }
+
+  .ai-hero-cta-button-secondary-{{ ai_gen_id }}:hover {
+    background:
+      {{ block.settings.secondary_button_hover_bg }};
+
+    border-color:
+      {{ block.settings.secondary_button_hover_border }};
+
+    color:
+      {{ block.settings.secondary_button_color }};
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 8px 20px rgba(36, 34, 42, 0.08);
+  }
+
+  .ai-hero-cta-button-secondary-{{ ai_gen_id }}:active {
+    transform: translateY(0);
+  }
+
+
+  /* =========================================
+     BUTTON ARROW
+     ========================================= */
+
+  .ai-hero-cta-button-arrow-{{ ai_gen_id }} {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 auto;
+
     display: block;
+
+    transition:
+      transform 0.25s ease;
+  }
+
+  .ai-hero-cta-button-secondary-{{ ai_gen_id }}:hover
+  .ai-hero-cta-button-arrow-{{ ai_gen_id }} {
+    transform: translateX(4px);
+  }
+
+
+  /* =========================================
+     BUTTON FOCUS
+     ========================================= */
+
+  .ai-hero-cta-button-{{ ai_gen_id }}:focus-visible {
+    outline: 3px solid rgba(255, 91, 130, 0.35);
+
+    outline-offset: 3px;
+  }
+
+
+  /* =========================================
+     RIGHT PHONE IMAGE
+     ========================================= */
+
+  .ai-hero-cta-phone-{{ ai_gen_id }} {
     width: 100%;
     max-width: {{ block.settings.phone_width }}px;
-    height: auto;
-    object-fit: contain;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
   }
+
+  .ai-hero-cta-phone-{{ ai_gen_id }} img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    border-radius:
+      {{ block.settings.phone_border_radius }}px;
+  }
+
+  .ai-hero-cta-phone-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+
+    aspect-ratio: 9 / 16;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    border-radius:
+      {{ block.settings.phone_border_radius }}px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-hero-cta-phone-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+
+  /* =========================================
+     RESPONSIVE — TABLET
+     ========================================= */
+
+  @media screen and (max-width: 1100px) {
+
+    .ai-hero-cta-main-{{ ai_gen_id }} {
+      grid-template-columns:
+        minmax(130px, 180px)
+        minmax(0, 1fr)
+        minmax(150px, 210px);
+
+      gap: 28px;
+    }
+
+    .ai-hero-cta-headline-{{ ai_gen_id }} {
+      font-size:
+        min({{ block.settings.headline_size }}px, 48px);
+    }
+
+    .ai-hero-cta-phone-{{ ai_gen_id }} {
+      max-width: 210px;
+    }
+
+    .ai-hero-cta-logo-{{ ai_gen_id }} {
+      max-width: 180px;
+    }
+  }
+
+
+  /* =========================================
+     RESPONSIVE — MOBILE / TABLET
+     ========================================= */
 
   @media screen and (max-width: 989px) {
-    .ai-hero-cta-main-{{ ai_gen_id }} {
-      grid-template-columns: 160px minmax(0, 1fr) 160px;
-      gap: 24px;
-    }
-  }
 
-  @media screen and (max-width: 749px) {
     .ai-hero-cta-{{ ai_gen_id }} {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding:
+        {{ block.settings.section_padding_top | times: 0.75 }}px
+        {{ block.settings.section_padding_horizontal | times: 0.75 }}px
+        {{ block.settings.section_padding_bottom | times: 0.75 }}px;
+
+      background-position: center center;
     }
 
-    .ai-hero-cta-container-{{ ai_gen_id }},
     .ai-hero-cta-main-{{ ai_gen_id }} {
-      min-height: auto;
-    }
+      display: grid;
 
-    .ai-hero-cta-main-{{ ai_gen_id }} {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
+      grid-template-columns: 1fr;
+
+      gap: 32px;
+
+      text-align: center;
     }
 
     .ai-hero-cta-logo-{{ ai_gen_id }} {
       order: 1;
+
+      max-width:
+        {{ block.settings.logo_width | times: 0.75 }}px;
     }
 
     .ai-hero-cta-content-{{ ai_gen_id }} {
       order: 2;
+
+      max-width: 680px;
+
+      margin: 0 auto;
+
+      text-align: center;
     }
 
     .ai-hero-cta-phone-{{ ai_gen_id }} {
       order: 3;
+
+      max-width:
+        {{ block.settings.phone_width | times: 0.75 }}px;
+    }
+
+    .ai-hero-cta-buttons-{{ ai_gen_id }} {
+      justify-content: center;
+    }
+
+    .ai-hero-cta-subtitle-{{ ai_gen_id }} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+
+  /* =========================================
+     RESPONSIVE — SMALL MOBILE
+     ========================================= */
+
+  @media screen and (max-width: 749px) {
+
+    .ai-hero-cta-{{ ai_gen_id }} {
+      padding:
+        {{ block.settings.section_padding_top | times: 0.6 }}px
+        {{ block.settings.section_padding_horizontal | times: 0.6 }}px
+        {{ block.settings.section_padding_bottom | times: 0.6 }}px;
+    }
+
+    .ai-hero-cta-main-{{ ai_gen_id }} {
+      gap: 26px;
+    }
+
+    .ai-hero-cta-headline-{{ ai_gen_id }} {
+      font-size:
+        {{ block.settings.headline_size | times: 0.60 }}px;
+
+      line-height: 1.08;
+
+      letter-spacing: -0.025em;
+    }
+
+    .ai-hero-cta-subtitle-{{ ai_gen_id }} {
+      font-size:
+        {{ block.settings.subtitle_size | times: 0.9 }}px;
+
+      line-height: 1.5;
+    }
+
+    .ai-hero-cta-logo-{{ ai_gen_id }} {
+      max-width:
+        {{ block.settings.logo_width | times: 0.65 }}px;
+    }
+
+    .ai-hero-cta-phone-{{ ai_gen_id }} {
+      max-width:
+        {{ block.settings.phone_width | times: 0.7 }}px;
+    }
+
+    .ai-hero-cta-buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+
+      align-items: stretch;
+
+      gap: 12px;
+    }
+
+    .ai-hero-cta-button-{{ ai_gen_id }} {
+      width: 100%;
+
+      min-height: 50px;
+
+      padding:
+        12px 22px;
+
+      font-size: 15px;
+    }
+  }
+
+
+  /* =========================================
+     VERY SMALL PHONES
+     ========================================= */
+
+  @media screen and (max-width: 420px) {
+
+    .ai-hero-cta-headline-{{ ai_gen_id }} {
+      font-size:
+        {{ block.settings.headline_size | times: 0.52 }}px;
+    }
+
+    .ai-hero-cta-logo-{{ ai_gen_id }} {
+      max-width: 120px;
+    }
+
+    .ai-hero-cta-phone-{{ ai_gen_id }} {
+      max-width: 180px;
+    }
+  }
+
+
+  /* =========================================
+     REDUCED MOTION
+     ========================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .ai-hero-cta-button-{{ ai_gen_id }},
+    .ai-hero-cta-button-arrow-{{ ai_gen_id }} {
+      transition: none;
     }
   }
 {% endstyle %}
 
-<hero-cta-{{ ai_gen_id }}
-  class="ai-hero-cta-{{ ai_gen_id }}"
-  {{ block.shopify_attributes }}
->
+<hero-cta-{{ ai_gen_id }} class="ai-hero-cta-{{ ai_gen_id }}" {{ block.shopify_attributes }} >
   <div class="ai-hero-cta-container-{{ ai_gen_id }}">
 
     <div class="ai-hero-cta-main-{{ ai_gen_id }}">
