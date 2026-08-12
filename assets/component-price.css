@@ -3,6 +3,8 @@
   letter-spacing: 0.1rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   color: rgb(var(--color-foreground));
+  display: flex;
+  align-items: center;
 }
 
 .price > * {
@@ -84,10 +86,13 @@
   justify-content: center;
 }
 
+/* Strikethrough / was-price — aligned to theme's muted tone */
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
-  color: rgba(var(--color-foreground), 0.75);
+  color: var(--muted-gray, rgba(var(--color-foreground), 0.5));
   font-size: 1.3rem;
+  font-weight: 400;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
 }
 
 .unit-price {
@@ -98,3 +103,4 @@
   margin-top: 0.2rem;
   color: rgba(var(--color-foreground), 0.7);
 }
+

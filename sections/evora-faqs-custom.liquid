@@ -1,0 +1,481 @@
+{% assign sid = section.id %}
+
+{% style %}
+  /* ── Section wrapper ─────────────────────────────── */
+  .faq_section-{{ sid }} {
+    background-color: {{ section.settings.background_color }};
+    font-family: var(--font-body-family, var(--font-inter-display, 'Inter Display', sans-serif));
+  }
+
+  .section-{{ sid }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ sid }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* ── Section heading ─────────────────────────────── */
+  .faq_section-{{ sid }} .faq_heading {
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 {{ section.settings.heading_margin_bottom }}px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .faq_section-{{ sid }} .faq_heading {
+      font-size: {{ section.settings.heading_size | minus: 8 }}px;
+    }
+  }
+
+  /* ── FAQ list ────────────────────────────────────── */
+  .faq_section-{{ sid }} .faq_list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid {{ section.settings.border_color }};
+  }
+
+  /* ── FAQ card (one row) ──────────────────────────── */
+  .faq_section-{{ sid }} .faq_card {
+    border-bottom: 1px solid {{ section.settings.border_color }};
+    overflow: hidden;
+  }
+
+  /* ── Trigger button ──────────────────────────────── */
+  .faq_section-{{ sid }} .faq_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: {{ section.settings.card_padding_vertical }}px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .faq_section-{{ sid }} .faq_header:focus-visible {
+    outline: 2px solid {{ section.settings.question_color }};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ── Question text ───────────────────────────────── */
+  .faq_section-{{ sid }} .faq_title {
+    font-size: {{ section.settings.question_size }}px;
+    font-weight: {{ section.settings.question_weight }};
+    color: {{ section.settings.question_color }};
+    line-height: 1.4;
+    flex: 1;
+    font-family: inherit;
+  }
+
+  @media screen and (max-width: 749px) {
+    .faq_section-{{ sid }} .faq_title {
+      font-size: {{ section.settings.question_size | minus: 2 }}px;
+    }
+  }
+
+  /* ── Chevron icon ────────────────────────────────── */
+  .faq_section-{{ sid }} .faq_chevron {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq_section-{{ sid }} .faq_chevron svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    stroke: {{ section.settings.chevron_color }};
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s;
+  }
+
+  .faq_section-{{ sid }} .faq_card.is_open .faq_chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ── Answer panel — smooth CSS grid trick ────────── */
+  .faq_section-{{ sid }} .faq_content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .faq_section-{{ sid }} .faq_content_inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .faq_section-{{ sid }} .faq_card.is_open .faq_content {
+    grid-template-rows: 1fr;
+  }
+
+  /* ── Answer text ─────────────────────────────────── */
+  .faq_section-{{ sid }} .faq_answer {
+    padding-bottom: {{ section.settings.card_padding_vertical }}px;
+    font-size: {{ section.settings.answer_size }}px;
+    color: {{ section.settings.answer_color }};
+    line-height: 1.65;
+    font-family: inherit;
+  }
+
+  .faq_section-{{ sid }} .faq_answer p {
+    margin: 0 0 10px;
+  }
+
+  .faq_section-{{ sid }} .faq_answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq_section-{{ sid }} .faq_answer a {
+    color: {{ section.settings.question_color }};
+    text-decoration: underline;
+  }
+
+  .faq_section-{{ sid }} .faq_answer ul,
+  .faq_section-{{ sid }} .faq_answer ol {
+    margin: 0 0 10px;
+    padding-left: 20px;
+  }
+
+  .faq_section-{{ sid }} .faq_answer li {
+    margin-bottom: 4px;
+  }
+{% endstyle %}
+
+<div
+  class="faq_section-{{ sid }} section-{{ sid }}-padding"
+  id="faq_section_{{ sid }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="faq_heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="faq_list" data-section-id="{{ sid }}" data-single-open="{{ section.settings.single_open }}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq-item' -%}
+          {%- if forloop.first and section.settings.open_first -%}
+            {%- assign is_first_open = true -%}
+          {%- else -%}
+            {%- assign is_first_open = false -%}
+          {%- endif -%}
+          <div
+            class="faq_card{% if is_first_open %} is_open{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <button
+              type="button"
+              class="faq_header"
+              aria-expanded="{% if is_first_open %}true{% else %}false{% endif %}"
+              aria-controls="faq_content_{{ sid }}_{{ forloop.index }}"
+            >
+              <span class="faq_title">{{ block.settings.question }}</span>
+              <span class="faq_chevron" aria-hidden="true">
+                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.5 6.5L9 12L14.5 6.5"/>
+                </svg>
+              </span>
+            </button>
+
+            <div
+              class="faq_content"
+              id="faq_content_{{ sid }}_{{ forloop.index }}"
+              role="region"
+            >
+              <div class="faq_content_inner">
+                <div class="faq_answer">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var sid = '{{ sid }}';
+  var list = document.querySelector('[data-section-id="' + sid + '"]');
+  if (!list) return;
+
+  var singleOpen = list.dataset.singleOpen === 'true';
+
+  function openCard(card, btn) {
+    card.classList.add('is_open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeCard(card, btn) {
+    card.classList.remove('is_open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  list.addEventListener('click', function (e) {
+    var btn = e.target.closest('.faq_header');
+    if (!btn) return;
+
+    var card = btn.closest('.faq_card');
+    var isCurrentlyOpen = card.classList.contains('is_open');
+
+    if (singleOpen) {
+      list.querySelectorAll('.faq_card.is_open').forEach(function (c) {
+        closeCard(c, c.querySelector('.faq_header'));
+      });
+    }
+
+    if (!isCurrentlyOpen) {
+      openCard(card, btn);
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading font size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading bottom spacing",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#13171B"
+    },
+    {
+      "type": "header",
+      "content": "Questions & Answers"
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "label": "Question font size",
+      "min": 13,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "question_weight",
+      "label": "Question font weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question text color",
+      "default": "#13171B"
+    },
+    {
+      "type": "range",
+      "id": "answer_size",
+      "label": "Answer font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer text color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "chevron_color",
+      "label": "Chevron arrow color",
+      "default": "#13171B"
+    },
+    {
+      "type": "header",
+      "content": "Behaviour"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first question by default",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "single_open",
+      "label": "Only one question open at a time",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Divider line color",
+      "default": "#E7EBEF"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_vertical",
+      "label": "Row padding (top & bottom)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq-item",
+      "name": "Question & Answer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We offer a 30-day hassle-free return policy. If you are not completely satisfied with your purchase, contact our support team and we will make it right.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq-item",
+          "settings": {
+            "question": "Does the product require a subscription?",
+            "answer": "<p>No. You purchase once and can use the core product without any ongoing fees.</p><p>We also offer an optional subscription that grants access to premium features in our app.</p>"
+          }
+        },
+        {
+          "type": "faq-item",
+          "settings": {
+            "question": "Does it require charging?",
+            "answer": "<p>No charging is required. The device is designed to work out of the box with no cables or batteries needed.</p>"
+          }
+        },
+        {
+          "type": "faq-item",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Simply follow the setup guide included in the box. The process takes under five minutes and requires no special tools.</p>"
+          }
+        },
+        {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can I pause or cancel my subscription at any time?",
+            "answer": "<p>Yes — you have full control inside your customer portal. You can adjust delivery frequency, skip a month, or cancel anytime with zero hidden fees.</p>"
+          }
+        },
+        {
+          "type": "faq-item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard shipping takes 3-5 business days. Expedited options are available at checkout.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,972 @@
+{% doc %}
+  @prompt
+    Create a sticky header section with a white background and a subtle bottom border. Layout: logo image on the far left, horizontal navigation menu links centered in the middle (clean, minimal, no dropdowns needed, dark text), and a rounded pill-shaped CTA button on the far right with a pink/coral gradient background and white text saying "Try it today". The header should be fully responsive and have customizable settings for logo, nav links, button text, button URL, and button color. Keep spacing clean and airy similar to a health/wellness brand aesthetic.
+{% enddoc %}
+
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+
+  .ai-sticky-header-{{ ai_gen_id }} {
+    display: block;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: {{ block.settings.header_bg_color }};
+    border-bottom: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }};
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .ai-sticky-header-{{ ai_gen_id }}.scrolled {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .ai-sticky-header-container-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: {{ block.settings.vertical_padding }}px {{ block.settings.horizontal_padding }}px;
+    /* 3-col grid: logo [equal] | nav [auto] | cta [equal]
+       Forces true optical center on all screen widths */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+
+  /* LOGO — left column, left-aligned */
+  .ai-sticky-header-logo-{{ ai_gen_id }} {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .ai-sticky-header-logo-{{ ai_gen_id }} a {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    text-decoration: none;
+  }
+
+  .ai-sticky-header-logo-{{ ai_gen_id }} img {
+    display: block;
+    width: auto;
+    max-width: 200px;
+    max-height: {{ block.settings.logo_height }}px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .ai-sticky-header-logo-placeholder-{{ ai_gen_id }} {
+    width: {{ block.settings.logo_height | times: 2 }}px;
+    height: {{ block.settings.logo_height }}px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .ai-sticky-header-logo-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* DESKTOP NAVIGATION — center column, always truly centered */
+  .ai-sticky-header-nav-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .ai-sticky-header-nav-list-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: {{ block.settings.nav_spacing }}px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ai-sticky-header-nav-item-{{ ai_gen_id }} {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ai-sticky-header-nav-link-{{ ai_gen_id }} {
+    display: inline-block;
+    color: {{ block.settings.nav_text_color }};
+    text-decoration: none;
+    /* base.css typography — Inter Display, no overrides */
+    font-family: var(--font-body-family, 'Inter Display', 'Inter', sans-serif);
+    font-size: var(--text-md, 15px);
+    font-weight: var(--font-body-weight, 400);
+    line-height: 1.5;
+    letter-spacing: 0;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .ai-sticky-header-nav-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.nav_hover_color }};
+  }
+
+  /* DESKTOP CTA — right column, right-aligned */
+  .ai-sticky-header-cta-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide mobile-nav CTA on desktop — desktop uses the grid column div */
+  .ai-sticky-header-cta-mobile-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-sticky-header-cta-button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    box-sizing: border-box;
+    background: linear-gradient(
+      135deg,
+      {{ block.settings.button_bg_start }} 0%,
+      {{ block.settings.button_bg_end }} 100%
+    );
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    /* base.css typography */
+    font-family: var(--font-body-family, 'Inter Display', 'Inter', sans-serif);
+    font-size: var(--text-md, 15px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ai-sticky-header-cta-button-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.button_text_color }};
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgba(255, 91, 130, 0.25);
+  }
+
+  /* MOBILE TOGGLE */
+
+  .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    color: {{ block.settings.nav_text_color }};
+    cursor: pointer;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .ai-sticky-header-mobile-close-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  /* TABLET / MOBILE */
+
+  @media screen and (max-width: 989px) {
+
+    .ai-sticky-header-container-{{ ai_gen_id }} {
+      /* On mobile: simple flex, logo left / hamburger right */
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .ai-sticky-header-mobile-toggle-{{ ai_gen_id }} {
+      display: flex;
+      margin-left: auto;
+    }
+
+    .ai-sticky-header-nav-{{ ai_gen_id }} {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100dvh;
+      min-height: 100vh;
+      background: {{ block.settings.header_bg_color }};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 100px 24px 40px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      transform: translateX(100%);
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 1001;
+    }
+
+    .ai-sticky-header-nav-{{ ai_gen_id }}.active {
+      transform: translateX(0);
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .ai-sticky-header-mobile-close-{{ ai_gen_id }} {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: 0;
+      color: {{ block.settings.nav_text_color }};
+      cursor: pointer;
+    }
+
+    .ai-sticky-header-mobile-close-{{ ai_gen_id }} svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .ai-sticky-header-nav-list-{{ ai_gen_id }} {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .ai-sticky-header-nav-item-{{ ai_gen_id }} {
+      width: 100%;
+      text-align: center;
+    }
+
+    .ai-sticky-header-nav-link-{{ ai_gen_id }} {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      font-size: var(--text-xl, 18px);
+    }
+
+    /* Hide the desktop CTA div on mobile — CTA is inside mobile nav panel */
+    .ai-sticky-header-cta-desktop-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    /* Mobile CTA inside the slide-out nav panel */
+    .ai-sticky-header-cta-{{ ai_gen_id }} {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ai-sticky-header-cta-button-{{ ai_gen_id }} {
+      width: min(100%, 320px);
+      min-height: 50px;
+    }
+  }
+
+  /* SMALL MOBILE */
+
+  @media screen and (max-width: 749px) {
+
+    .ai-sticky-header-container-{{ ai_gen_id }} {
+      padding:
+        {{ block.settings.vertical_padding | times: 0.75 }}px
+        {{ block.settings.horizontal_padding | times: 0.75 }}px;
+    }
+
+    .ai-sticky-header-logo-{{ ai_gen_id }} img {
+      max-height: {{ block.settings.logo_height | times: 0.8 }}px;
+      max-width: 160px;
+    }
+
+    .ai-sticky-header-logo-placeholder-{{ ai_gen_id }} {
+      width: {{ block.settings.logo_height | times: 1.6 }}px;
+      height: {{ block.settings.logo_height | times: 0.8 }}px;
+    }
+  }
+
+{% endstyle %}
+
+
+<sticky-header-{{ ai_gen_id }}
+  class="ai-sticky-header-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+
+  <div class="ai-sticky-header-container-{{ ai_gen_id }}">
+
+    <!-- LOGO -->
+
+    <div class="ai-sticky-header-logo-{{ ai_gen_id }}">
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {% if block.settings.logo %}
+
+          <img
+            src="{{ block.settings.logo | image_url: width: 400 }}"
+            alt="{{ block.settings.logo.alt | default: shop.name | escape }}"
+            width="{{ block.settings.logo.width }}"
+            height="{{ block.settings.logo.height }}"
+            loading="eager"
+          >
+
+        {% else %}
+
+          <div class="ai-sticky-header-logo-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+
+        {% endif %}
+      </a>
+    </div>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+      type="button"
+      class="ai-sticky-header-mobile-toggle-{{ ai_gen_id }}"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="ai-sticky-nav-{{ ai_gen_id }}"
+    >
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+
+    </button>
+
+
+    <!-- NAVIGATION -->
+
+    <nav
+      id="ai-sticky-nav-{{ ai_gen_id }}"
+      class="ai-sticky-header-nav-{{ ai_gen_id }}"
+      aria-label="Main navigation"
+    >
+
+      <button
+        type="button"
+        class="ai-sticky-header-mobile-close-{{ ai_gen_id }}"
+        aria-label="Close navigation menu"
+      >
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+
+      </button>
+
+
+      <ul class="ai-sticky-header-nav-list-{{ ai_gen_id }}">
+
+        {% if block.settings.nav_link_1_text != blank %}
+          <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_1_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
+              {{ block.settings.nav_link_1_text }}
+            </a>
+          </li>
+        {% endif %}
+
+
+        {% if block.settings.nav_link_2_text != blank %}
+          <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_2_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
+              {{ block.settings.nav_link_2_text }}
+            </a>
+          </li>
+        {% endif %}
+
+
+        {% if block.settings.nav_link_3_text != blank %}
+          <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_3_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
+              {{ block.settings.nav_link_3_text }}
+            </a>
+          </li>
+        {% endif %}
+
+
+        {% if block.settings.nav_link_4_text != blank %}
+          <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_4_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
+              {{ block.settings.nav_link_4_text }}
+            </a>
+          </li>
+        {% endif %}
+
+
+        {% if block.settings.nav_link_5_text != blank %}
+          <li class="ai-sticky-header-nav-item-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.nav_link_5_url }}"
+              class="ai-sticky-header-nav-link-{{ ai_gen_id }}"
+            >
+              {{ block.settings.nav_link_5_text }}
+            </a>
+          </li>
+        {% endif %}
+
+        <!-- Mobile-only CTA inside nav panel -->
+        {% if block.settings.cta_text != blank %}
+          <li class="ai-sticky-header-cta-{{ ai_gen_id }} ai-sticky-header-cta-mobile-{{ ai_gen_id }}">
+            <a
+              href="{{ block.settings.cta_url }}"
+              class="ai-sticky-header-cta-button-{{ ai_gen_id }}"
+            >
+              {{ block.settings.cta_text }}
+            </a>
+          </li>
+        {% endif %}
+
+      </ul>
+
+    </nav>
+
+
+    <!-- CTA — right grid column (desktop only, inside mobile menu on mobile) -->
+
+    {% if block.settings.cta_text != blank %}
+      <div class="ai-sticky-header-cta-{{ ai_gen_id }} ai-sticky-header-cta-desktop-{{ ai_gen_id }}">
+        <a
+          href="{{ block.settings.cta_url }}"
+          class="ai-sticky-header-cta-button-{{ ai_gen_id }}"
+        >
+          {{ block.settings.cta_text }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+</sticky-header-{{ ai_gen_id }}>
+
+
+<script>
+  (function() {
+
+    const tagName = 'sticky-header-{{ ai_gen_id }}';
+
+    class StickyHeader extends HTMLElement {
+
+      constructor() {
+        super();
+
+        this.header = this;
+
+        this.nav = this.querySelector(
+          '.ai-sticky-header-nav-{{ ai_gen_id }}'
+        );
+
+        this.mobileToggle = this.querySelector(
+          '.ai-sticky-header-mobile-toggle-{{ ai_gen_id }}'
+        );
+
+        this.mobileClose = this.querySelector(
+          '.ai-sticky-header-mobile-close-{{ ai_gen_id }}'
+        );
+
+        this.navLinks = this.querySelectorAll(
+          '.ai-sticky-header-nav-link-{{ ai_gen_id }}'
+        );
+
+      }
+
+
+      connectedCallback() {
+
+        this.setupScrollEffect();
+
+        this.setupMobileMenu();
+
+      }
+
+
+      disconnectedCallback() {
+
+        if (this.scrollHandler) {
+          window.removeEventListener(
+            'scroll',
+            this.scrollHandler
+          );
+        }
+
+      }
+
+
+      setupScrollEffect() {
+
+        this.scrollHandler = () => {
+
+          if (window.pageYOffset > 10) {
+            this.header.classList.add('scrolled');
+          } else {
+            this.header.classList.remove('scrolled');
+          }
+
+        };
+
+        window.addEventListener(
+          'scroll',
+          this.scrollHandler,
+          { passive: true }
+        );
+
+      }
+
+
+      setupMobileMenu() {
+
+        if (this.mobileToggle) {
+
+          this.mobileToggle.addEventListener(
+            'click',
+            () => {
+              this.openMobileMenu();
+            }
+          );
+
+        }
+
+
+        if (this.mobileClose) {
+
+          this.mobileClose.addEventListener(
+            'click',
+            () => {
+              this.closeMobileMenu();
+            }
+          );
+
+        }
+
+
+        this.navLinks.forEach((link) => {
+
+          link.addEventListener(
+            'click',
+            () => {
+
+              if (window.innerWidth <= 989) {
+                this.closeMobileMenu();
+              }
+
+            }
+          );
+
+        });
+
+
+        document.addEventListener(
+          'keydown',
+          (event) => {
+
+            if (
+              event.key === 'Escape' &&
+              this.nav &&
+              this.nav.classList.contains('active')
+            ) {
+              this.closeMobileMenu();
+            }
+
+          }
+        );
+
+      }
+
+
+      openMobileMenu() {
+
+        if (!this.nav) return;
+
+        this.nav.classList.add('active');
+
+        if (this.mobileToggle) {
+          this.mobileToggle.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+        }
+
+        document.body.style.overflow = 'hidden';
+
+      }
+
+
+      closeMobileMenu() {
+
+        if (!this.nav) return;
+
+        this.nav.classList.remove('active');
+
+        if (this.mobileToggle) {
+          this.mobileToggle.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+        }
+
+        document.body.style.overflow = '';
+
+      }
+
+    }
+
+
+    if (!customElements.get(tagName)) {
+      customElements.define(tagName, StickyHeader);
+    }
+
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "Sticky header",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo height",
+      "default": 40
+    },
+
+    {
+      "type": "header",
+      "content": "Navigation links"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_1_text",
+      "label": "Link 1 text",
+      "default": "Features"
+    },
+    {
+      "type": "url",
+      "id": "nav_link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_2_text",
+      "label": "Link 2 text",
+      "default": "About"
+    },
+    {
+      "type": "url",
+      "id": "nav_link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_3_text",
+      "label": "Link 3 text",
+      "default": "Blog"
+    },
+    {
+      "type": "url",
+      "id": "nav_link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_4_text",
+      "label": "Link 4 text",
+      "default": "Contact"
+    },
+    {
+      "type": "url",
+      "id": "nav_link_4_url",
+      "label": "Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_5_text",
+      "label": "Link 5 text"
+    },
+    {
+      "type": "url",
+      "id": "nav_link_5_url",
+      "label": "Link 5 URL"
+    },
+
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Try it today"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_start",
+      "label": "Button gradient start",
+      "default": "#ff5b82"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_end",
+      "label": "Button gradient end",
+      "default": "#ff8ba7"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Button vertical padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Button horizontal padding",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button font size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "button_font_weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "label": "Button font weight",
+      "default": 500
+    },
+
+    {
+      "type": "header",
+      "content": "Header style"
+    },
+    {
+      "type": "color",
+      "id": "header_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1300
+    },
+
+    {
+      "type": "header",
+      "content": "Navigation style"
+    },
+    {
+      "type": "color",
+      "id": "nav_text_color",
+      "label": "Text color",
+      "default": "#24222a"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_color",
+      "label": "Hover color",
+      "default": "#ff5b82"
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "nav_font_weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "label": "Font weight",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "nav_spacing",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Link spacing",
+      "default": 32
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Sticky header"
+    }
+  ]
+}
+{% endschema %}

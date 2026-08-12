@@ -1,0 +1,697 @@
+{% doc %}
+  @prompt
+    Update the existing Custom footer block to use these two specific uploaded SVG image URLs as the app store badges instead of hardcoded or placeholder badge images. Apple App Store badge URL: https://cdn.shopify.com/s/files/1/1055/4395/8862/files/app-store.svg?v=1786441507 and Google Play badge URL: https://cdn.shopify.com/s/files/1/1055/4395/8862/files/google-play.svg?v=1786441507. Also add image_picker settings in the schema for both badges so the merchant can swap them from the theme editor in future.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-custom-footer-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px;
+    width: 100%;
+  }
+
+  .ai-custom-footer-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-custom-footer-content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ai-custom-footer-top-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .ai-custom-footer-left-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .ai-custom-footer-logo-{{ ai_gen_id }} {
+    margin-bottom: 16px;
+  }
+
+  .ai-custom-footer-logo-{{ ai_gen_id }} img {
+    max-width: {{ block.settings.logo_width }}px;
+    height: auto;
+  }
+
+  .ai-custom-footer-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_font_size }}px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .ai-custom-footer-app-badges-{{ ai_gen_id }} {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ai-custom-footer-badge-{{ ai_gen_id }} {
+    display: block;
+  }
+
+  .ai-custom-footer-badge-{{ ai_gen_id }} img {
+    height: {{ block.settings.badge_height }}px;
+    width: auto;
+    display: block;
+  }
+
+  .ai-custom-footer-right-{{ ai_gen_id }} {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .ai-custom-footer-column-{{ ai_gen_id }} {
+    min-width: 150px;
+  }
+
+  .ai-custom-footer-column-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.column_title_font_size }}px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-custom-footer-links-{{ ai_gen_id }} {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ai-custom-footer-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.link_font_size }}px;
+    transition: color 0.3s ease;
+  }
+
+  .ai-custom-footer-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-custom-footer-bottom-{{ ai_gen_id }} {
+    border-top: 1px solid {{ block.settings.divider_color }};
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ai-custom-footer-copyright-{{ ai_gen_id }} {
+    font-size: {{ block.settings.copyright_font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-custom-footer-social-{{ ai_gen_id }} {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .ai-custom-footer-social-link-{{ ai_gen_id }} {
+    color: {{ block.settings.social_icon_color }};
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-custom-footer-social-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.social_icon_hover_color }};
+  }
+
+  .ai-custom-footer-social-link-{{ ai_gen_id }} svg {
+    width: {{ block.settings.social_icon_size }}px;
+    height: {{ block.settings.social_icon_size }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-custom-footer-top-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-custom-footer-right-{{ ai_gen_id }} {
+      gap: 40px;
+      width: 100%;
+    }
+
+    .ai-custom-footer-column-{{ ai_gen_id }} {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .ai-custom-footer-bottom-{{ ai_gen_id }} {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+{% endstyle %}
+
+<footer-custom-{{ ai_gen_id }} class="ai-custom-footer-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-custom-footer-container-{{ ai_gen_id }}">
+    <div class="ai-custom-footer-content-{{ ai_gen_id }}">
+      <div class="ai-custom-footer-top-{{ ai_gen_id }}">
+        <div class="ai-custom-footer-left-{{ ai_gen_id }}">
+          {% if block.settings.logo %}
+            <div class="ai-custom-footer-logo-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.logo | image_url: width: 400 }}"
+                alt="{{ shop.name }}"
+                loading="lazy"
+                width="{{ block.settings.logo.width }}"
+                height="{{ block.settings.logo.height }}"
+              >
+            </div>
+          {% endif %}
+
+          {% if block.settings.description != blank %}
+            <div class="ai-custom-footer-description-{{ ai_gen_id }}">
+              {{ block.settings.description }}
+            </div>
+          {% endif %}
+
+          <div class="ai-custom-footer-app-badges-{{ ai_gen_id }}">
+            {% if block.settings.apple_badge %}
+              <a
+                href="{{ block.settings.apple_store_url }}"
+                class="ai-custom-footer-badge-{{ ai_gen_id }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Download on the App Store"
+              >
+                <img
+                  src="{{ block.settings.apple_badge | image_url }}"
+                  alt="Download on the App Store"
+                  loading="lazy"
+                  width="120"
+                  height="{{ block.settings.badge_height }}"
+                >
+              </a>
+            {% endif %}
+
+            {% if block.settings.google_badge %}
+              <a
+                href="{{ block.settings.google_play_url }}"
+                class="ai-custom-footer-badge-{{ ai_gen_id }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Get it on Google Play"
+              >
+                <img
+                  src="{{ block.settings.google_badge | image_url }}"
+                  alt="Get it on Google Play"
+                  loading="lazy"
+                  width="135"
+                  height="{{ block.settings.badge_height }}"
+                >
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="ai-custom-footer-right-{{ ai_gen_id }}">
+          {% if block.settings.show_column_1 %}
+            <div class="ai-custom-footer-column-{{ ai_gen_id }}">
+              {% if block.settings.column_1_title != blank %}
+                <h3 class="ai-custom-footer-column-title-{{ ai_gen_id }}">
+                  {{ block.settings.column_1_title }}
+                </h3>
+              {% endif %}
+              {% if block.settings.column_1_menu != blank %}
+                <ul class="ai-custom-footer-links-{{ ai_gen_id }}">
+                  {% for link in linklists[block.settings.column_1_menu].links %}
+                    <li>
+                      <a
+                        href="{{ link.url }}"
+                        class="ai-custom-footer-link-{{ ai_gen_id }}"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if block.settings.show_column_2 %}
+            <div class="ai-custom-footer-column-{{ ai_gen_id }}">
+              {% if block.settings.column_2_title != blank %}
+                <h3 class="ai-custom-footer-column-title-{{ ai_gen_id }}">
+                  {{ block.settings.column_2_title }}
+                </h3>
+              {% endif %}
+              {% if block.settings.column_2_menu != blank %}
+                <ul class="ai-custom-footer-links-{{ ai_gen_id }}">
+                  {% for link in linklists[block.settings.column_2_menu].links %}
+                    <li>
+                      <a
+                        href="{{ link.url }}"
+                        class="ai-custom-footer-link-{{ ai_gen_id }}"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if block.settings.show_column_3 %}
+            <div class="ai-custom-footer-column-{{ ai_gen_id }}">
+              {% if block.settings.column_3_title != blank %}
+                <h3 class="ai-custom-footer-column-title-{{ ai_gen_id }}">
+                  {{ block.settings.column_3_title }}
+                </h3>
+              {% endif %}
+              {% if block.settings.column_3_menu != blank %}
+                <ul class="ai-custom-footer-links-{{ ai_gen_id }}">
+                  {% for link in linklists[block.settings.column_3_menu].links %}
+                    <li>
+                      <a
+                        href="{{ link.url }}"
+                        class="ai-custom-footer-link-{{ ai_gen_id }}"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="ai-custom-footer-bottom-{{ ai_gen_id }}">
+        <div class="ai-custom-footer-copyright-{{ ai_gen_id }}">
+          {{ block.settings.copyright_text }}
+        </div>
+
+        {% if block.settings.show_social_icons %}
+          <div class="ai-custom-footer-social-{{ ai_gen_id }}">
+            {% if block.settings.facebook_url != blank %}
+              <a
+                href="{{ block.settings.facebook_url }}"
+                class="ai-custom-footer-social-link-{{ ai_gen_id }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+            {% endif %}
+
+            {% if block.settings.instagram_url != blank %}
+              <a
+                href="{{ block.settings.instagram_url }}"
+                class="ai-custom-footer-social-link-{{ ai_gen_id }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            {% endif %}
+
+            {% if block.settings.twitter_url != blank %}
+              <a
+                href="{{ block.settings.twitter_url }}"
+                class="ai-custom-footer-social-link-{{ ai_gen_id }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Twitter"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+              </a>
+            {% endif %}
+
+            {% if block.settings.linkedin_url != blank %}
+              <a
+                href="{{ block.settings.linkedin_url }}"
+                class="ai-custom-footer-social-link-{{ ai_gen_id }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer-custom-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FooterCustom{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('footer-custom-{{ ai_gen_id }}', FooterCustom{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo and description"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 150
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Clinical nutrition meets personalized health-tech intelligence.</p>"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description font size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "App store badges"
+    },
+    {
+      "type": "image_picker",
+      "id": "apple_badge",
+      "label": "Apple App Store badge"
+    },
+    {
+      "type": "url",
+      "id": "apple_store_url",
+      "label": "Apple App Store URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "google_badge",
+      "label": "Google Play badge"
+    },
+    {
+      "type": "url",
+      "id": "google_play_url",
+      "label": "Google Play URL"
+    },
+    {
+      "type": "range",
+      "id": "badge_height",
+      "min": 30,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Badge height",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_column_1",
+      "label": "Show column 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "column_1_title",
+      "label": "Title",
+      "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "column_1_menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_column_2",
+      "label": "Show column 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "column_2_title",
+      "label": "Title",
+      "default": "Support"
+    },
+    {
+      "type": "link_list",
+      "id": "column_2_menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_column_3",
+      "label": "Show column 3",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "column_3_title",
+      "label": "Title",
+      "default": "Legal"
+    },
+    {
+      "type": "link_list",
+      "id": "column_3_menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Bottom section"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "© 2026 Evora. All rights reserved."
+    },
+    {
+      "type": "range",
+      "id": "copyright_font_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Copyright font size",
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show social icons",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "range",
+      "id": "social_icon_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Social icon size",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "column_title_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Column title font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "link_font_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Link font size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#24222a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover",
+      "default": "#ff5b82"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider",
+      "default": "#3d3b45"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Social icon",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_hover_color",
+      "label": "Social icon hover",
+      "default": "#ff5b82"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom footer"
+    }
+  ]
+}
+{% endschema %}

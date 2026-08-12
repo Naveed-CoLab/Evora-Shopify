@@ -1,0 +1,20 @@
+{{ block.settings.question }}
+{{ block.settings.answer }}
+
+{% schema %}
+{
+  "name": "FAQ Item",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "question",
+      "label": "Question"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "Answer"
+    }
+  ]
+}
+{% endschema %}
