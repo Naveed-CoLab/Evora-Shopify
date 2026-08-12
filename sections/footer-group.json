@@ -10,6 +10,63 @@
 {
   "name": "Footer Group",
   "type": "footer",
-  "sections": {},
-  "order": []
+  "sections": {
+    "blocks_4TzXDH": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9483963_b4ri9b": {
+          "type": "ai_gen_block_9483963",
+          "settings": {
+            "logo": "shopify://shop_images/footer-fem-logo.svg",
+            "logo_width": 150,
+            "description": "<p>Clinical nutrition meets personalized health-tech intelligence.</p>",
+            "description_font_size": 14,
+            "apple_badge": "shopify://shop_images/app-store.svg",
+            "apple_store_url": "",
+            "google_badge": "shopify://shop_images/google-play.svg",
+            "google_play_url": "",
+            "badge_height": 40,
+            "show_column_1": true,
+            "column_1_title": "Company",
+            "column_1_menu": "",
+            "show_column_2": true,
+            "column_2_title": "Support",
+            "column_2_menu": "",
+            "show_column_3": true,
+            "column_3_title": "Legal",
+            "column_3_menu": "",
+            "copyright_text": "© 2026 Evora. All rights reserved.",
+            "copyright_font_size": 14,
+            "show_social_icons": true,
+            "facebook_url": "https://facebook.com",
+            "instagram_url": "https://instgraam.com",
+            "twitter_url": "https://tiktok.com",
+            "linkedin_url": "https://linknedi.com",
+            "social_icon_size": 20,
+            "column_title_font_size": 16,
+            "link_font_size": 14,
+            "background_color": "#FFFFFF",
+            "text_color": "#000000",
+            "link_color": "#ffffff",
+            "link_hover_color": "#ff5b82",
+            "divider_color": "#3d3b45",
+            "social_icon_color": "#000000",
+            "social_icon_hover_color": "#ff5b82",
+            "max_width": 1300,
+            "padding_top": 60,
+            "padding_bottom": 40
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9483963_b4ri9b"
+      ],
+      "name": "Custom footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "blocks_4TzXDH"
+  ]
 }
