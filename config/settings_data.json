@@ -11,9 +11,9 @@
   "current": {
     "logo_width": 110,
     "type_header_font": "inter_n4",
-    "heading_scale": 105,
+    "heading_scale": 100,
     "type_body_font": "roboto_n4",
-    "body_scale": 125,
+    "body_scale": 100,
     "page_width": 1300,
     "spacing_sections": 24,
     "spacing_grid_horizontal": 32,
@@ -83,7 +83,7 @@
     "text_boxes_shadow_blur": 5,
     "media_border_thickness": 1,
     "media_border_opacity": 5,
-    "media_radius": 24,
+    "media_radius": 0,
     "media_shadow_opacity": 0,
     "media_shadow_horizontal_offset": 0,
     "media_shadow_vertical_offset": 4,
@@ -158,7 +158,7 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#24222a",
+          "text": "#121212",
           "button": "#ff5b82",
           "button_label": "#ffffff",
           "secondary_button_label": "#ff5b82",
@@ -169,7 +169,7 @@
         "settings": {
           "background": "#fff6f8",
           "background_gradient": "",
-          "text": "#24222a",
+          "text": "#121212",
           "button": "#ff5b82",
           "button_label": "#ffffff",
           "secondary_button_label": "#24222a",
@@ -180,7 +180,7 @@
         "settings": {
           "background": "#24222a",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#121212",
           "button": "#ff5b82",
           "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
@@ -191,7 +191,7 @@
         "settings": {
           "background": "#fff0f3",
           "background_gradient": "",
-          "text": "#24222a",
+          "text": "#121212",
           "button": "#ff5b82",
           "button_label": "#ffffff",
           "secondary_button_label": "#ff5b82",
@@ -202,7 +202,7 @@
         "settings": {
           "background": "#ff8ba7",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#121212",
           "button": "#24222a",
           "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
@@ -213,7 +213,7 @@
         "settings": {
           "background": "#fdbecc",
           "background_gradient": "",
-          "text": "#24222a",
+          "text": "#121212",
           "button": "#ff5b82",
           "button_label": "#ffffff",
           "secondary_button_label": "#ff5b82",
